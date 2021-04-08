@@ -3,29 +3,62 @@ import React from "react";
 //Feature 1: user is presented with a form with 3 values that they must input: location, income and houshold size
 
 function GetUserInfo(){
-    const [location, setLocation] = React.useState();
-    const [place, setPlace] = React.useState();
-    const [income, setIncome] = React.useState();
-    const [size, setSize] = React.useState();
+    const [location, setLocation] = React.useState("1");
+    const [place, setPlace] = React.useState("New York City");
+    const [income, setIncome] = React.useState("1");
+    const [size, setSize] = React.useState("1");
 
-    const handleChange = (e) => {
+    const changePlace = (e) => {
         setPlace(e.target.value)
+        // console.log(setPlace)
     };
+    const changeLocationMode = (e) => {
+        setLocation(e.target.value)
+    };
+    const changeIncome = (e) => {
+        setIncome(e.target.value)
+    }
+    const changeSize = (e) => {
+        setSize(e.target.value)
+    }
     
     const handleSubmit = (event) => {
         event.preventDefault(); 
-        
+        console.log(place)
+        console.log(income)
+        console.log(size)
+        console.log(location)
+        console.log("submit form")
         let url = `https://apis.berkeley.edu/coolclimate/footprint-defaults?input_location_mode=${location}&input_location=${place}&input_income=${income}&input_size=${size}`
+        // let url = `https://apis.berkeley.edu/coolclimate/footprint-defaults?&input_location=${place}`
+        console.log(url)
+       
+        // function load(url, callback) {
+        //     var xhr = new XMLHttpRequest();
+          
+        //     xhr.onreadystatechange = function() {
+        //       if (xhr.readyState === 4) {
+        //         callback(xhr.response);
+        //       }
+        //     }
+          
+        //     xhr.open('GET', url, true);
+        //     xhr.send('');
+        //   }
+
         fetch(url, {
             method: "GET",
             headers: {
+                // "Content-Type":"application/json",
                 app_id: "f69e66f2",
                 app_key: "8945dbb265921be3f110a47ff6cf44cf"
             }
-        }).then(res => res.json())
-        .then((data) => {
-            console.log(data)
         })
+        .then(response => response.text())
+        .then(str => (new window.DOMParser()).parseFromString(str, "text/xml")) // str, "text/xml"
+        .then(data => 
+            console.log(data)
+        )
         .catch((error)=> console.log(error));   
     };
 
@@ -35,17 +68,17 @@ function GetUserInfo(){
             
             <form onSubmit={handleSubmit}>
                 <p>Location type:</p>
-                <select value={location}>
+                <select onChange={changeLocationMode}>
                     <option value="1">ZIP code</option> 
                     <option value="2">City</option>
                     <option value="3">County</option>
                     <option value="4">State</option>
                 </select>
                 
-                <input id="location" type="text" value={place} onChange={handleChange} />
+                <input id="place" type="text" onChange={changePlace} />
 
                 <p>What is your annual household income?</p>
-                <select value={income}> 
+                <select onChange={changeIncome}> 
                 <option value="1">Average</option> 
                 <option value="2">Less than $10,000</option>
                 <option value="3">$10,000 to $19,999</option>
@@ -60,7 +93,7 @@ function GetUserInfo(){
                 </select>
 
                 <p>How many people live in your household?</p>
-                <select value={size}> 
+                <select onChange={changeSize}> 
                 <option value="0">Average (2.5 persons)</option>
                 <option value="1">1 person</option>
                 <option value="2">2 person</option>
@@ -70,7 +103,7 @@ function GetUserInfo(){
                 </select>
 
                 <p></p>
-                <input onSubmit={handleSubmit} id="submitbtn" type="submit" value="Submit"/>
+                <input id="submitbtn" type="submit" value="Submit"/>
             </form>
 
             <div>
