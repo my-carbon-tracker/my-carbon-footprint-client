@@ -1,5 +1,5 @@
 import React from "react";
-
+import XMLParser from 'react-xml-parser';
 //Feature 1: user is presented with a form with 3 values that they must input: location, income and houshold size
 
 function GetUserInfo(){
@@ -21,7 +21,7 @@ function GetUserInfo(){
     const changeSize = (e) => {
         setSize(e.target.value)
     }
-    
+    let xml = null;
     const handleSubmit = (event) => {
         event.preventDefault(); 
         console.log(place)
@@ -30,35 +30,20 @@ function GetUserInfo(){
         console.log(location)
         console.log("submit form")
         let url = `https://apis.berkeley.edu/coolclimate/footprint-defaults?input_location_mode=${location}&input_location=${place}&input_income=${income}&input_size=${size}`
-        // let url = `https://apis.berkeley.edu/coolclimate/footprint-defaults?&input_location=${place}`
         console.log(url)
-       
-        // function load(url, callback) {
-        //     var xhr = new XMLHttpRequest();
-          
-        //     xhr.onreadystatechange = function() {
-        //       if (xhr.readyState === 4) {
-        //         callback(xhr.response);
-        //       }
-        //     }
-          
-        //     xhr.open('GET', url, true);
-        //     xhr.send('');
-        //   }
 
         fetch(url, {
             method: "GET",
             headers: {
-                // "Content-Type":"application/json",
                 app_id: "f69e66f2",
                 app_key: "8945dbb265921be3f110a47ff6cf44cf"
             }
         })
-        .then(response => response.text())
-        .then(str => (new window.DOMParser()).parseFromString(str, "text/xml")) // str, "text/xml"
-        .then(data => 
-            console.log(data)
-        )
+        .then(res => res.text())
+        .then(data => {
+            var xml = new XMLParser().parseFromString(data); 
+            console.log(xml)
+        })
         .catch((error)=> console.log(error));   
     };
 
