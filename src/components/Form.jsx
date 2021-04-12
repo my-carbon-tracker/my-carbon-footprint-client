@@ -20,28 +20,11 @@ export default function Form(props) {
     const [nameInput, setName] = useState('')
     const [passInput, setPass] = useState('')
 
-    const login = async (name,pass) =>{
-        const url = `http://localhost:3000/auth/login`
-        const body = {
-            username: name,
-            password: pass
-        }
-        const response = await fetch(url,{
-            method:'POST',
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(body)
-        })
-        const data = await response.json()
-        props.setToken(data.token)
-    }
-
     const submitForm = (e) =>{
         e.preventDefault()
         if(nameInput && passInput){
             console.log('here')
-            login(nameInput, passInput)
+            props.onSubmit(nameInput, passInput)
         }else{
             console.log('Add errors on input that is missing')
         }

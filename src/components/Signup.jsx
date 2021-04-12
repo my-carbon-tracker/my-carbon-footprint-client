@@ -1,4 +1,4 @@
-import {React, useState} from 'react'
+import React from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import { Card, CardContent, Grid} from '@material-ui/core'
 import Form from './Form'
@@ -26,14 +26,15 @@ const useStyles = makeStyles({
     }
   });
 
-  export default function Login(props){
+  export default function SignUp(props){
     const classes = useStyles();
-
-    const login = async (name,pass) =>{
-        const url = `http://localhost:3000/auth/login`
+    
+    const register = async (name,pass) =>{
+        const url = `http://localhost:3000/auth/signup`
         const body = {
             username: name,
-            password: pass
+            password: pass,
+            emission: 5000 //pass prop from quiz?
         }
         const response = await fetch(url,{
             method:'POST',
@@ -43,9 +44,8 @@ const useStyles = makeStyles({
             body: JSON.stringify(body)
         })
         const data = await response.json()
-        props.setToken(data.token)
+        console.log(data)
     }
-
       return(
         <div className="login">
             <Grid container direction='column' alignItems="center" justify="center">
@@ -55,7 +55,7 @@ const useStyles = makeStyles({
                             <Typography className={classes.title} color='textSecondary' gutterBottom>
                                 Login
                             </Typography>
-                            <Form onSubmit={login}/>
+                            <Form onSubmit={register}/>
                         </CardContent>
                     </Card>
                 </Grid>
