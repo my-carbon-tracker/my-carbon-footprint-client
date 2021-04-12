@@ -1,7 +1,9 @@
 import './App.css';
+import { useState } from 'react'
 import {BrowserRouter,Route, Switch} from 'react-router-dom'
 import Home from './components/Home';
 import FootprintQuiz from "./components/footprint-quiz";
+import Login from "./components/Login"
 //import GetUserInfo from "./carbonEstimation";
 import Header from "./components/Header"
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -21,6 +23,7 @@ const theme = createMuiTheme({
 })
 //style={{ background: theme.palette.primary.mainGradient }}
 function App() {
+  const [userToken, setToken] = useState('')
   return (
     <MuiThemeProvider theme={theme}>
       <CssBaseline/>
@@ -34,7 +37,10 @@ function App() {
             <FootprintQuiz />
           </Route>
           <Route path="estimate-quize">
-          <GetUserInfo />
+          {/* <GetUserInfo /> */}
+          </Route>
+          <Route path='/login'>
+            <Login setToken = {setToken}/>
           </Route>
         </Switch>  
       </BrowserRouter>    
