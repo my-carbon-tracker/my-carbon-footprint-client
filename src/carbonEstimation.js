@@ -1,5 +1,6 @@
 import React from "react";
 import XMLParser from 'react-xml-parser';
+import {Pie} from 'react-chartjs-2'; 
 //Feature 1: user is presented with a form with 3 values that they must input: location, income and houshold size
 
 function GetUserInfo(){
@@ -7,6 +8,9 @@ function GetUserInfo(){
     const [place, setPlace] = React.useState("New York City");
     const [income, setIncome] = React.useState("1");
     const [size, setSize] = React.useState("1");
+    const [chartData, setChartData] = React.useState({});    
+    const [totalEmissions, setTotalEmissions] = React.useState();
+    
 
     const changePlace = (e) => {
         setPlace(e.target.value)
@@ -21,7 +25,7 @@ function GetUserInfo(){
     const changeSize = (e) => {
         setSize(e.target.value)
     }
-    let xml = null;
+    // let xml = null;
     const handleSubmit = (event) => {
         event.preventDefault(); 
         console.log(place)
@@ -40,9 +44,26 @@ function GetUserInfo(){
             }
         })
         .then(res => res.text())
-        .then(data => {
-            var xml = new XMLParser().parseFromString(data); 
+        .then(results => {
+            var xml = new XMLParser().parseFromString(results); 
             console.log(xml)
+            //get data objs
+            let foodEmission = xml.children[264]['value'];
+            let housingEmission = xml.children[263]['value'];
+            let transportationEmission = xml.children[262]['value'];
+            let goodsEmission = xml.children[265]['value'];
+            let serviceEmission = xml.children[266]['value'];
+
+            setTotalEmissions(xml.children[267]['value']);
+            //add the comparison to average 
+   
+            setChartData({
+                labels: ["Food","Housing","Transportation", "Goods/Products", "Services"],
+                datasets: [{
+                    data: [foodEmission, housingEmission, transportationEmission, goodsEmission, serviceEmission],
+                    backgroundColor: ['red','blue','green','yellow','pink']
+                }]
+            })
         })
         .catch((error)=> console.log(error));   
     };
@@ -92,8 +113,9 @@ function GetUserInfo(){
             </form>
 
             <div>
-                <p>Here is your estimated carbon footprint</p>
-                <p>Here is how you compare to other in your location</p>
+                <p>Here is your estimated carbon footprint: {totalEmissions} tons CO2eq/year</p>
+                <p>Here is the breakdown of your carbon emissions</p>
+                <Pie data={chartData}/>
             </div>
         </div>
     )

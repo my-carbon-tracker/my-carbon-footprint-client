@@ -34,7 +34,7 @@ function App() {
             <FootprintQuiz />
           </Route>
           <Route path="estimate-quize">
-            {/* {<GetUserInfo />} */}
+          <GetUserInfo />
           </Route>
         </Switch>  
       </BrowserRouter>    
