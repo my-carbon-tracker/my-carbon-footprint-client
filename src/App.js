@@ -24,7 +24,9 @@ const theme = createMuiTheme({
 })
 //style={{ background: theme.palette.primary.mainGradient }}
 function App() {
-  const [userToken, setToken] = useState('')
+  let token = localStorage.getItem('token') || ''
+  const [userToken, setToken] = useState(token)
+  
 
   return (
     <MuiThemeProvider theme={theme}>

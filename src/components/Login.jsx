@@ -44,6 +44,7 @@ const useStyles = makeStyles({
         })
         const data = await response.json()
         props.setToken(data.token)
+        localStorage.setItem('token', data.token)
     }
 
       return(
