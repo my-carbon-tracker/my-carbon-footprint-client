@@ -33,7 +33,7 @@ function Header(){
                         My Carbon Tracker
                     </Typography>
                     {/* {<img className="" src={earthIcon} style={{width:25, position:'relative'}}/>} */}
-                    <Button color="inherit">
+                    <Button color="inherit" href="/login">
                         Login
                     </Button>
                 </Toolbar>
