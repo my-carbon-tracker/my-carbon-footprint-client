@@ -16,7 +16,6 @@ const theme = createMuiTheme({
       //background: 'linear gradient(#157A42,#25DB77)',
     },
     background: {default:'#157A42'}
-    
   }
 })
 //style={{ background: theme.palette.primary.mainGradient }}
@@ -31,7 +30,7 @@ function App() {
             <Home />
           </Route>
           <Route path="/quiz">
-            <FootprintQuiz />
+            <FootprintQuiz/>
           </Route>
           <Route path="estimate-quize">
             {/* {<GetUserInfo />} */}
