@@ -1,7 +1,7 @@
 import './App.css';
 import {BrowserRouter,Route, Switch} from 'react-router-dom'
 import Home from './components/Home';
-import FootprintQuiz from "./components/footprint-quiz";
+import FootprintQuiz from "./components/footprint-quiz/footprint-quiz";
 //import GetUserInfo from "./carbonEstimation";
 import Header from "./components/Header"
 import CssBaseline from "@material-ui/core/CssBaseline";
