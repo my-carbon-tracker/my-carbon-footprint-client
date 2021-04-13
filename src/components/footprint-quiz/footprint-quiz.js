@@ -9,11 +9,12 @@ const useStyles = makeStyles({
     background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
 })
 
-function FootprintQuiz() {
+function FootprintQuiz(props) {
     /*
     calculates greenhouse gas emissions produced by one kilo of each food
     1 kilo = 2.2 lbs
     */
+    const {token} = props
     const [currentStep, setCurrentStep] = useState(1)
     const [arrFoodServings, setArrFoodServings] = useState([])
 
@@ -26,7 +27,17 @@ function FootprintQuiz() {
             console.log(itemEmissions)
             return accum + itemEmissions
         },0)
-        fetch()
+        //will change URL once backend route is created
+        fetch(`localhost:8000`,{
+            method:'POST',
+            headers:{
+                "Content-Type":"application/json",
+                "Authorization":`Bearer ${token}`
+            },
+            body: JSON.stringify({result_food_total:totalEmissions})
+        })
+        .then((res)=>res.json())
+        .then((responseJSON)=>console.log(responseJSON))
         console.log(totalEmissions)
     } 
 

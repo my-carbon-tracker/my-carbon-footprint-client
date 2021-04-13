@@ -22,6 +22,7 @@ const theme = createMuiTheme({
   }
 })
 //style={{ background: theme.palette.primary.mainGradient }}
+
 function App() {
   let token = localStorage.getItem('token') || ''
   const [userToken, setToken] = useState(token)
@@ -37,7 +38,7 @@ function App() {
             <Home />
           </Route>
           <Route path="/quiz">
-            <FootprintQuiz/>
+            <FootprintQuiz token={token}/>
           </Route>
           <Route path="estimate-quize">
           {/* <GetUserInfo /> */}
