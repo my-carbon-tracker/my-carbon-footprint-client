@@ -18,7 +18,6 @@ function Step1(props){
                 </Typography>
                 <input id="food" type="button" value="food" onClick={()=>setFood(foodCategory=> !foodCategory)}/>
                 <input id="transportation" type="button" value="transportation" onClick={()=>setTransportation(transportationCategory => !transportationCategory)}/>
-                <input type="submit" value="Next"/>
             </Container>
         </div>
     )

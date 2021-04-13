@@ -47,13 +47,14 @@ function FootprintQuiz(props) {
                 <Step1 currentStep={currentStep} />
                 <Step2 currentStep={currentStep} />
                 <Step3 currentStep={currentStep} setArrFoodServings={setArrFoodServings}/>
+                {(currentStep===1 || currentStep===2) &&              
                 <button 
                     className="btn btn-primary float-right" 
                     type="button" 
                     onClick={()=>setCurrentStep(currentStep+1)}
                 >
                     Next
-                </button> 
+                </button> }
             </form>
         </div>
     )

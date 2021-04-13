@@ -1,9 +1,11 @@
-import Grid from '@material-ui/core/Grid';
+import {Link} from 'react-router-dom';
 function Home () {
     return(
         <div>
             <h2 style={{bottom:0, color:'white', textAlign:'center'}}>
-                Home Page content goes here
+                <Link to="/quiz">
+                    <button >Find Out Your Carbon Footprint</button>
+                </Link>
             </h2>
             <div style={{position:'fixed', bottom:0}}>
                 <climate-clock />
