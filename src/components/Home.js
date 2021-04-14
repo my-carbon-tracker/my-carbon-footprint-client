@@ -6,13 +6,17 @@ import {
 import Pledges from '../components/pledges';
 // import userCurrentEmissions from '../components/usersEmission';
 import React, { useContext } from 'react';
-import { OffsetContext } from "../contexts/pledgeContext"
+import { useOffsetContext } from '../contexts/pledgeContext'
+import { useAverageEmissionContext } from '../contexts/averageEmissionContext';
 
 function Home () {
-  const {totalOffset, setTotalOffset } = React.useContext(OffsetContext); 
+  const { totalOffset, setTotalOffset } = useOffsetContext() 
   console.log(totalOffset) 
+  // const { totalEmissions, setTotalEmissions } = useAverageEmissionContext();
+  // console.log(totalEmissions)
 
     return(
+      
         <div>
 <>
     <Box
@@ -67,6 +71,7 @@ function Home () {
             xs={12}
           >
             <p>Compared to average</p>
+            {/* <p> {totalEmissions} </p> */}
           </Grid>
 
           <Grid
@@ -113,6 +118,7 @@ function Home () {
             {/* </div> */}
             </footer>
         </div>
+       
     )
 }
 

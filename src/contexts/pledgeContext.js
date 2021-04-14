@@ -1,10 +1,11 @@
-import { createContext, useState, useMemo} from 'react';
+import { createContext, useState, useMemo, useContext} from 'react';
 
-export const OffsetContext = createContext();
+const OffsetContext = createContext();
 
 export const OffsetProvider = ({ children }) => {
-    const [totalOffset, setTotalOffset] = useState("0"); 
-    const value = useMemo(() => ([totalOffset, setTotalOffset]), [totalOffset, setTotalOffset])
+    const [totalOffset, setTotalOffset] = useState(0); 
+    
+    const value = useMemo(() => ({totalOffset, setTotalOffset}), [totalOffset, setTotalOffset])
 
     return (
     <OffsetContext.Provider value={value}>
@@ -12,3 +13,9 @@ export const OffsetProvider = ({ children }) => {
     </OffsetContext.Provider>
     )
 };
+
+export function useOffsetContext() {
+    const context = useContext(OffsetContext)
+
+    return context;
+}
