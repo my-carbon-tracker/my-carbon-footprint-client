@@ -4,9 +4,14 @@ import {
     Grid
   } from '@material-ui/core';
 import Pledges from '../components/pledges';
-import userCurrentEmissions from '../components/usersEmission';
+// import userCurrentEmissions from '../components/usersEmission';
+import React, { useContext } from 'react';
+import { OffsetContext } from "../contexts/pledgeContext"
 
 function Home () {
+  const {totalOffset, setTotalOffset } = React.useContext(OffsetContext); 
+  console.log(totalOffset) 
+
     return(
         <div>
 <>
@@ -50,7 +55,7 @@ function Home () {
             xs={12}
           >
             <p>Your current total carbon emission</p>
-            
+            <p> {totalOffset} </p>
 
           </Grid>
 
