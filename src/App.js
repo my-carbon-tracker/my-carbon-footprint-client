@@ -6,7 +6,8 @@ import FootprintQuiz from "./components/footprint-quiz/footprint-quiz";
 import Login from "./components/Login"
 import Signup from "./components/Signup"
 import GetUserInfo from "./components/carbonEstimation";
-import Header from "./components/Header"
+import Header from "./components/Header";
+import Quizzes from "./components/quizzes";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import { createMuiTheme, ThemeProvider, MuiThemeProvider } from "@material-ui/core/styles";
 // import { AverageEmissionProvider } from "./contexts/averageEmissionContext";
@@ -42,14 +43,17 @@ function App() {
       <BrowserRouter>
         <Switch>
         <OffsetProvider>
-          <Route exact path="/" component={Home}>
+          <Route exact path="/home" component={Home}>
             <Home />
           </Route>
           <Route path="/carbon-estimation">
           <GetUserInfo />
           </Route>
-          <Route path="/quiz">
+          <Route path="/food-quiz">
             <FootprintQuiz token={token}/>
+          </Route>
+          <Route path="/">
+          <Quizzes />
           </Route>
           <Route path='/login'>
             <Login setToken = {setToken}/>
