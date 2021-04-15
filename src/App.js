@@ -2,7 +2,7 @@ import './App.css';
 import { useState, useMemo, useContext } from 'react'
 import {BrowserRouter,Route, Switch} from 'react-router-dom'
 import Home from './components/Home';
-import FootprintQuiz from "./components/footprint-quiz";
+import FootprintQuiz from "./components/footprint-quiz/footprint-quiz";
 import Login from "./components/Login"
 import Signup from "./components/Signup"
 import GetUserInfo from "./components/carbonEstimation";
@@ -23,11 +23,14 @@ const theme = createMuiTheme({
       //mainGradient: "linear-gradient(#157A42,#25DB77)"
       //background: 'linear gradient(#157A42,#25DB77)',
     },
+    secondary: {
+      main: '#25DB77'
+    },
     background: {default:'#157A42'}
-    
   }
 })
 //style={{ background: theme.palette.primary.mainGradient }}
+
 function App() {
   let token = localStorage.getItem('token') || ''
   const [userToken, setToken] = useState(token)
@@ -46,7 +49,7 @@ function App() {
           <GetUserInfo />
           </Route>
           <Route path="/quiz">
-            <FootprintQuiz />
+            <FootprintQuiz token={token}/>
           </Route>
           <Route path='/login'>
             <Login setToken = {setToken}/>

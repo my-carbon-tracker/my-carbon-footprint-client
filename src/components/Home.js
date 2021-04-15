@@ -1,3 +1,4 @@
+import {Link} from 'react-router-dom';
 import {
     Box,
     Container,
@@ -16,108 +17,111 @@ function Home () {
   // console.log(totalEmissions)
 
     return(
-      
-        <div>
-<>
-    <Box
-      sx={{
-        backgroundColor: 'background.default',
-        minHeight: '100%',
-        py: 3
-      }}
-    >
-      <Container maxWidth={false}>
-        <Grid
-          container
-          spacing={3}
+    <>
+        <Box
+          sx={{
+            backgroundColor: 'background.default',
+            minHeight: '100%',
+            py: 3
+          }}
         >
-          <Grid
-            item
-            lg={3}
-            sm={6}
-            xl={3}
-            xs={12}
-          >
-            <p>Welcome back userName</p>
-          </Grid>
+          <Container maxWidth={false}>
+            <Grid
+              container
+              spacing={3}
+            >
+              <Grid
+                item
+                lg={3}
+                sm={6}
+                xl={3}
+                xs={12}
+              >
+                <p>Welcome back userName</p>
+              </Grid>
 
-          <Grid
-            item
-            lg={3}
-            sm={6}
-            xl={3}
-            xs={12}
-          >
-            <p>Location</p>
-          </Grid>
+              <Grid
+                item
+                lg={3}
+                sm={6}
+                xl={3}
+                xs={12}
+              >
+                <p>Location</p>
+              </Grid>
 
-          <Grid
-            item
-            lg={3}
-            sm={6}
-            xl={3}
-            xs={12}
-          >
-            <p>Your current total carbon emission</p>
-            <p> {totalOffset} </p>
+              <Grid
+                item
+                lg={3}
+                sm={6}
+                xl={3}
+                xs={12}
+              >
+                <p>Your current total carbon emission</p>
+                <p> {totalOffset} </p>
 
-          </Grid>
+              </Grid>
 
-          <Grid
-            item
-            lg={3}
-            sm={6}
-            xl={3}
-            xs={12}
-          >
-            <p>Compared to average</p>
-            {/* <p> {totalEmissions} </p> */}
-          </Grid>
+              <Grid
+                item
+                lg={3}
+                sm={6}
+                xl={3}
+                xs={12}
+              >
+                <p>Compared to average</p>
+                {/* <p> {totalEmissions} </p> */}
+              </Grid>
 
-          <Grid
-            item
-            lg={4}
-            md={6}
-            xl={3}
-            xs={12}
-          >
-              graph 
-            {/* add graph  */}
-          </Grid>
+              <Grid
+                item
+                lg={4}
+                md={6}
+                xl={3}
+                xs={12}
+              >
+                  graph 
+                {/* add graph  */}
+              </Grid>
 
-          <Grid
-            item
-            lg={4}
-            md={6}
-            xl={3}
-            xs={12}
-          >
-            {/* list of pledges you can take */}
-            <Pledges />
-          </Grid>
+              <Grid
+                item
+                lg={4}
+                md={6}
+                xl={3}
+                xs={12}
+              >
+                {/* list of pledges you can take */}
+                <Pledges />
+              </Grid>
 
-          <Grid
-            item
-            lg={8}
-            md={12}
-            xl={9}
-            xs={12}
-          >
-            {/* Leardboard*/}
-            leaderboard
-          </Grid>
+              <Grid
+                item
+                lg={8}
+                md={12}
+                xl={9}
+                xs={12}
+              >
+                {/* Leardboard*/}
+                leaderboard
+              </Grid>
 
-        </Grid>
-      </Container>
-    </Box>
-  </>
-
-            <footer>
-            {/* <div style={{position:'fixed', bottom:0}}> */}
-                <climate-clock />
-            {/* </div> */}
-            </footer>
-        </div>
+            </Grid>
+          </Container>
+          <h2 style={{bottom:0, color:'white', textAlign:'center'}}>
+            <Link to="/quiz">
+                <button >Find Out Your Carbon Footprint</button>
+            </Link>
+          </h2>
+          <div style={{position:'fixed', bottom:0}}>
+              <footer>
+              {/* <div style={{position:'fixed', bottom:0}}> */}
+                  <climate-clock />
+              {/* </div> */}
+              </footer>
+          </div>
+        </Box>
+      </>
        
     )
 }
