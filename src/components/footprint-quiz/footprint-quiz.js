@@ -23,6 +23,7 @@ function FootprintQuiz(props) {
     const [arrFoodServings, setArrFoodServings] = useState([])
     const [totalEmissions, setTotalEmissions] = useState(0);
 
+
     const submitServings = (e) => {
         e.preventDefault()
         const totalEmissions = arrFoodServings.reduce((accum, curr)=>{
