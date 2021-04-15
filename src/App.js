@@ -51,7 +51,9 @@ function App() {
           </Route>
           <Route path="/quiz">
             <FootprintQuiz token={token}/>
-
+          </Route>
+          <Route path="/">
+          <Quizzes />
           </Route>
           <Route path='/login'>
             <Login setToken = {setToken}/>
