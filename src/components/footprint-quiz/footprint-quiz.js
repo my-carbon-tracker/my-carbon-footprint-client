@@ -2,8 +2,9 @@ import {React, useState} from 'react';
 import {makeStyles} from '@material-ui/styles';
 import { transport, food } from 'carbon-footprint';
 import Step1 from './step1';
-import Step2 from './step2';
-import Step3 from './step3';
+import FoodStep1 from './foodStep1';
+import FoodStep2 from './foodStep2';
+import TransportationStep1 from './transportationStep1';
 
 const useStyles = makeStyles({
     background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
@@ -16,6 +17,7 @@ function FootprintQuiz(props) {
     */
     const {token} = props
     const [currentStep, setCurrentStep] = useState(1)
+    const [categories, setCategories] = useState({food:false, transportation:false})
     const [arrFoodServings, setArrFoodServings] = useState([])
 
     const submitServings = (e) => {
@@ -44,17 +46,10 @@ function FootprintQuiz(props) {
     return (
         <div style={{background: 'linear-gradient(#157A42,#25DB77)', height:'100vh'}}>
             <form onSubmit={submitServings} style={{textAlign:'center'}}> 
-                <Step1 currentStep={currentStep} />
-                <Step2 currentStep={currentStep} />
-                <Step3 currentStep={currentStep} setArrFoodServings={setArrFoodServings}/>
-                {(currentStep===1 || currentStep===2) &&              
-                <button 
-                    className="btn btn-primary float-right" 
-                    type="button" 
-                    onClick={()=>setCurrentStep(currentStep+1)}
-                >
-                    Next
-                </button> }
+                <Step1 currentStep={currentStep} setCurrentStep={setCurrentStep} categories={categories} setCategories={setCategories}/>
+                <FoodStep1 currentStep={currentStep} setCurrentStep={setCurrentStep}/>
+                <FoodStep2 currentStep={currentStep} setArrFoodServings={setArrFoodServings}/>
+                <TransportationStep1 currentStep={currentStep}/>
             </form>
         </div>
     )

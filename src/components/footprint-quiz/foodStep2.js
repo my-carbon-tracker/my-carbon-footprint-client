@@ -1,7 +1,8 @@
 import {useState, useEffect} from 'react';
-import {Container, Typography, Box} from '@material-ui/core/';
+import {Container, Typography, Grid} from '@material-ui/core/';
+import PrimaryButton from '../reusable/PrimaryButton'
 
-function Step3(props){
+function FoodStep2(props){
     const {currentStep, setArrFoodServings} = props
     const [lambServings, setLambServings] = useState(0)
     const [beefServings, setBeefServings] = useState(0)
@@ -74,7 +75,7 @@ function Step3(props){
         coffeeServings,
         chocolateServings]);
 
-    if(currentStep!==3){
+    if(currentStep!=='FoodStep2'){
         return null
     }
 
@@ -83,55 +84,60 @@ function Step3(props){
                     <Typography variant="h5" style={{color:'white'}}>
                         How many servings did you have?
                     </Typography>
-                    <Box display="flex" flexDirection="column" p={1} m={1}>
+                    {/* display="flex" flexDirection="column" p={1} m={1} */}
+                    <Grid container>
+                        <Grid item xs>
                         <label htmlFor="lambServings"> Lamb </label>
                         <input id="lambServings" type="number" value={lambServings} onChange={(e)=>setLambServings(e.target.value)}/>
-                        <label htmlFor="beefServings"> Beef </label>
+                        <div/><label htmlFor="beefServings"> Beef </label>
                         <input id="beefServings" type="number" value={beefServings} onChange={(e)=>setBeefServings(e.target.value)}/>
-                        <label htmlFor="redMeatServings"> Red Meat </label>
+                        <div/><label htmlFor="redMeatServings"> Red Meat </label>
                         <input id="redMeatServings" type="number" value={redMeatServings} onChange={(e)=>setRedMeatServings(e.target.value)}/>
-                        <label htmlFor="cheeseServings"> Cheese </label>
+                        <div/><label htmlFor="cheeseServings"> Cheese </label>
                         <input id="cheeseServings" type="number" value={cheeseServings} onChange={(e)=>setCheeseServings(e.target.value)}/>
-                        <label htmlFor="porkServings"> Pork </label>
+                        <div/><label htmlFor="porkServings"> Pork </label>
                         <input id="porkServings" type="number" value={porkServings} onChange={(e)=>setPorkServings(e.target.value)}/>  
-                        <label htmlFor="turkeyServings"> Turkey </label>
+                        <div/><label htmlFor="turkeyServings"> Turkey </label>
                         <input id="turkeyServings" type="number" value={turkeyServings} onChange={(e)=>setTurkeyServings(e.target.value)}/>
-                        <label htmlFor="chickenServings"> Chicken </label>
+                        <div/><label htmlFor="chickenServings"> Chicken </label>
                         <input id="chickenServings" type="number" value={chickenServings} onChange={(e)=>setChickenServings(e.target.value)}/>
-                        <label htmlFor="whiteMeatServings"> White Meat </label>
+                        <div/><label htmlFor="whiteMeatServings"> White Meat </label>
                         <input id="whiteMeatServings" type="number" value={whiteMeatServings} onChange={(e)=>setWhiteMeatServings(e.target.value)}/>
-                        <label htmlFor="tunaServings"> Tuna </label>
+                        <div/><label htmlFor="tunaServings"> Tuna </label>
                         <input id="tunaServings" type="number" value={tunaServings} onChange={(e)=>setTunaServings(e.target.value)}/>
-                        <label htmlFor="fishServings"> Fish </label>
+                        <div/><label htmlFor="fishServings"> Fish </label>
                         <input id="fishServings" type="number" value={fishServings} onChange={(e)=>setFishServings(e.target.value)}/>
-                        <label htmlFor="eggsServings"> Eggs </label>
+                        <div/><label htmlFor="eggsServings"> Eggs </label>
                         <input id="eggsServings" type="number" value={eggsServings} onChange={(e)=>setEggsServings(e.target.value)}/>
+                        </Grid>
+                        <Grid item xs>
                         <label htmlFor="potatoesServings"> Potatoes </label>
                         <input id="potatoesServings" type="number" value={potatoesServings} onChange={(e)=>setPotatoesServings(e.target.value)}/>
-                        <label htmlFor="riceServings"> Rice </label>
+                        <div/><label htmlFor="riceServings"> Rice </label>
                         <input id="riceServings" type="number" value={riceServings} onChange={(e)=>setRiceServings(e.target.value)}/>
-                        <label htmlFor="nutsServings"> Nuts </label>
+                        <div/><label htmlFor="nutsServings"> Nuts </label>
                         <input id="nutsServings" type="number" value={nutsServings} onChange={(e)=>setNutsServings(e.target.value)}/>
-                        <label htmlFor="beansServings"> Beans </label>
+                        <div/><label htmlFor="beansServings"> Beans </label>
                         <input id="beansServings" type="number" value={beansServings} onChange={(e)=>setBeansServings(e.target.value)}/>
-                        <label htmlFor="tofuServings"> Tofu </label>
+                        <div/><label htmlFor="tofuServings"> Tofu </label>
                         <input id="tofuServings" type="number" value={tofuServings} onChange={(e)=>setTofuServings(e.target.value)}/>
-                        <label htmlFor="vegetablesServings"> Vegetables </label>
+                        <div/><label htmlFor="vegetablesServings"> Vegetables </label>
                         <input id="vegetablesServings" type="number" value={vegetablesServings} onChange={(e)=>setVegetablesServings(e.target.value)}/>
-                        <label htmlFor="milkServings"> Milk </label>
+                        <div/><label htmlFor="milkServings"> Milk </label>
                         <input id="milkServings" type="number" value={milkServings} onChange={(e)=>setMilkServings(e.target.value)}/>
-                        <label htmlFor="fruitsServings"> Fruits </label>
+                        <div/><label htmlFor="fruitsServings"> Fruits </label>
                         <input id="fruitsServings" type="number" value={fruitServings} onChange={(e)=>setFruitServings(e.target.value)}/>
-                        <label htmlFor="lentilsServings"> Lentils </label>
+                        <div/><label htmlFor="lentilsServings"> Lentils </label>
                         <input id="lentilsServings" type="number" value={lentilsServings} onChange={(e)=>setLentilsServings(e.target.value)}/>
-                        <label htmlFor="coffeeServings"> Coffee </label>
+                        <div/><label htmlFor="coffeeServings"> Coffee </label>
                         <input id="coffeeServings" type="number" value={coffeeServings} onChange={(e)=>setCoffeeServings(e.target.value)}/>
-                        <label htmlFor="chocolateServings"> Chocolate </label>
+                        <div/><label htmlFor="chocolateServings"> Chocolate </label>
                         <input id="chocolateServings" type="number" value={chocolateServings} onChange={(e)=>setChocolateServings(e.target.value)}/>
-                        <input type="submit" value="Submit"/>
-                    </Box>
+                        </Grid>
+                    </Grid>
+                    <PrimaryButton type="submit" text="Submit"/>
             </Container>
     )
 }
 
-export default Step3
+export default FoodStep2
