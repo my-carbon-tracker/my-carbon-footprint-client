@@ -49,7 +49,7 @@ function App() {
           <Route path="/carbon-estimation">
           <GetUserInfo />
           </Route>
-          <Route path="/food-quiz">
+          <Route path="/quiz">
             <FootprintQuiz token={token}/>
           </Route>
           <Route path="/">
