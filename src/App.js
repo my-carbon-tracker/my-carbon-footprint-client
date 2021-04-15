@@ -1,14 +1,19 @@
 import './App.css';
-import { useState } from 'react'
+import { useState, useMemo, useContext } from 'react'
 import {BrowserRouter,Route, Switch} from 'react-router-dom'
 import Home from './components/Home';
 import FootprintQuiz from "./components/footprint-quiz/footprint-quiz";
 import Login from "./components/Login"
 import Signup from "./components/Signup"
-//import GetUserInfo from "./carbonEstimation";
+import GetUserInfo from "./components/carbonEstimation";
 import Header from "./components/Header"
 import CssBaseline from "@material-ui/core/CssBaseline";
 import { createMuiTheme, ThemeProvider, MuiThemeProvider } from "@material-ui/core/styles";
+// import { AverageEmissionProvider } from "./contexts/averageEmissionContext";
+// import { OffsetProvider } from "./components/pledges";
+import { OffsetProvider } from './contexts/pledgeContext'
+// import { AverageEmissionProvider } from "./contexts/averageEmissionContext";
+import Pledges from './components/pledges';
 
 const theme = createMuiTheme({
   
@@ -29,7 +34,6 @@ const theme = createMuiTheme({
 function App() {
   let token = localStorage.getItem('token') || ''
   const [userToken, setToken] = useState(token)
-  
 
   return (
     <MuiThemeProvider theme={theme}>
@@ -37,14 +41,15 @@ function App() {
       <Header />
       <BrowserRouter>
         <Switch>
-          <Route exact path="/">
+        <OffsetProvider>
+          <Route exact path="/" component={Home}>
             <Home />
+          </Route>
+          <Route path="/carbon-estimation">
+          <GetUserInfo />
           </Route>
           <Route path="/quiz">
             <FootprintQuiz token={token}/>
-          </Route>
-          <Route path="estimate-quize">
-          {/* <GetUserInfo /> */}
           </Route>
           <Route path='/login'>
             <Login setToken = {setToken}/>
@@ -52,6 +57,7 @@ function App() {
           <Route path='/register'>
             <Signup setToken = {setToken}/>
           </Route>
+          </OffsetProvider>
         </Switch>  
       </BrowserRouter>    
     </MuiThemeProvider>

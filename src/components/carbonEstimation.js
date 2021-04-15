@@ -10,11 +10,9 @@ function GetUserInfo(){
     const [size, setSize] = React.useState("1");
     const [chartData, setChartData] = React.useState({});    
     const [totalEmissions, setTotalEmissions] = React.useState();
-    
 
     const changePlace = (e) => {
         setPlace(e.target.value)
-        // console.log(setPlace)
     };
     const changeLocationMode = (e) => {
         setLocation(e.target.value)
@@ -25,7 +23,6 @@ function GetUserInfo(){
     const changeSize = (e) => {
         setSize(e.target.value)
     }
-    // let xml = null;
     const handleSubmit = (event) => {
         event.preventDefault(); 
         console.log(place)
@@ -55,7 +52,6 @@ function GetUserInfo(){
             let serviceEmission = xml.children[266]['value'];
 
             setTotalEmissions(xml.children[267]['value']);
-            //add the comparison to average 
    
             setChartData({
                 labels: ["Food","Housing","Transportation", "Goods/Products", "Services"],
