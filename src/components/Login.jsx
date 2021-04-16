@@ -43,6 +43,7 @@ const useStyles = makeStyles({
             body: JSON.stringify(body)
         })
         const data = await response.json()
+        console.log(data)
         props.setToken(data.token)
         localStorage.setItem('token', data.token)
     }
@@ -59,10 +60,8 @@ const useStyles = makeStyles({
                             <Form onSubmit={login}/>
                         </CardContent>
                     </Card>
-                </Grid>
-                
-            </Grid>
-            
+                </Grid>   
+            </Grid> 
         </div>
       )
   }

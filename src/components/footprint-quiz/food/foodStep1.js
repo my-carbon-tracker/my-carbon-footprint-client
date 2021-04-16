@@ -1,6 +1,6 @@
 import {useState} from 'react';
 import {Container, Typography} from '@material-ui/core/';
-import PrimaryButton from '../reusable/PrimaryButton'
+import PrimaryButton from '../../reusable/PrimaryButton'
 
 function FoodStep1(props){
     const {currentStep, setCurrentStep} = props;
@@ -48,7 +48,7 @@ function FoodStep1(props){
             <PrimaryButton selected={eggs} onClick={()=>setEggs(eggs=> !eggs)} text="Eggs"/>
             <PrimaryButton selected={potatoes} onClick={()=>setPotatoes(potatoes=> !potatoes)} text="Potatoes"/>
             <PrimaryButton selected={rice} onClick={()=>setRice(rice=> !rice)} text="Rice"/>
-            <PrimaryButton selected={nuts} onClick={()=>setBeans(beans=> !beans)} text="Beans"/>
+            <PrimaryButton selected={beans} onClick={()=>setBeans(beans=> !beans)} text="Beans"/>
             <PrimaryButton selected={tofu} onClick={()=>setTofu(tofu=> !tofu)} text="Tofu"/>
             <PrimaryButton selected={vegetables} onClick={()=>setVegetables(vegetables=> !vegetables)} text="Vegetables"/>
             <PrimaryButton selected={milk} onClick={()=>setMilk(milk=> !milk)} text="Milk"/>

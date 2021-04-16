@@ -1,37 +1,35 @@
 import React from "react";
 import XMLParser from 'react-xml-parser';
 import {Pie} from 'react-chartjs-2'; 
+import { useContext } from 'react';
+// import { useAverageEmissionContext } from "../contexts/averageEmissionContext";
 //Feature 1: user is presented with a form with 3 values that they must input: location, income and houshold size
 
 function GetUserInfo(){
-    const [location, setLocation] = React.useState("1");
-    const [place, setPlace] = React.useState("New York City");
+    //save to db and render in home page 
+    const [totalEmissions, setTotalEmissions] = React.useState()
+    const [place, setPlace] = React.useState(); //save to render in home page too
     const [income, setIncome] = React.useState("1");
     const [size, setSize] = React.useState("1");
     const [chartData, setChartData] = React.useState({});    
-    const [totalEmissions, setTotalEmissions] = React.useState();
+    console.log(totalEmissions)
 
     const changePlace = (e) => {
         setPlace(e.target.value)
     };
-    const changeLocationMode = (e) => {
-        setLocation(e.target.value)
-    };
     const changeIncome = (e) => {
         setIncome(e.target.value)
-    }
+    };
     const changeSize = (e) => {
         setSize(e.target.value)
-    }
+    };
     const handleSubmit = (event) => {
         event.preventDefault(); 
-        console.log(place)
-        console.log(income)
-        console.log(size)
-        console.log(location)
-        console.log("submit form")
-        let url = `https://apis.berkeley.edu/coolclimate/footprint-defaults?input_location_mode=${location}&input_location=${place}&input_income=${income}&input_size=${size}`
-        console.log(url)
+        // console.log(place)
+        // console.log(income)
+        // console.log(size)
+        // console.log("submit form")
+        let url = `https://apis.berkeley.edu/coolclimate/footprint-defaults?input_location_mode=1&input_location=${place}&input_income=${income}&input_size=${size}`
 
         fetch(url, {
             method: "GET",
@@ -69,15 +67,8 @@ function GetUserInfo(){
             <p>Let's get started with a quick carbon footprint estimate</p>
             
             <form onSubmit={handleSubmit}>
-                <p>Location type:</p>
-                <select onChange={changeLocationMode}>
-                    <option value="1">ZIP code</option> 
-                    <option value="2">City</option>
-                    <option value="3">County</option>
-                    <option value="4">State</option>
-                </select>
-                
-                <input id="place" type="text" onChange={changePlace} />
+                <p>Enter your zipcode below</p>                
+                <label>zipcode: <input id="place" type="text" onChange={changePlace} /> </label>
 
                 <p>What is your annual household income?</p>
                 <select onChange={changeIncome}> 
