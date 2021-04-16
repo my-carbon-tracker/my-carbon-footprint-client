@@ -52,14 +52,14 @@ function App() {
           <Route path="/quiz">
             <FootprintQuiz token={token}/>
           </Route>
-          <Route path="/">
-          <Quizzes />
-          </Route>
           <Route path='/login'>
             <Login setToken = {setToken}/>
           </Route>
           <Route path='/register'>
             <Signup setToken = {setToken}/>
+          </Route>
+          <Route exact path="/">
+            <Quizzes />
           </Route>
           </OffsetProvider>
         </Switch>  

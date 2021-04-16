@@ -26,24 +26,25 @@ function FootprintQuiz(props) {
 
     const submitServings = (e) => {
         e.preventDefault()
-        const totalEmissions = arrFoodServings.reduce((accum, curr)=>{
+        let totalEmissions = arrFoodServings.reduce((accum, curr)=>{
             const {name, servings} = curr
             console.log(name,servings)
             const itemEmissions = food[name].emissionsPerServing * servings
             console.log(itemEmissions)
             return accum + itemEmissions
         },0)
-        //will change URL once backend route is created
-        // fetch(`http://localhost:3000/logFood`,{
-        //     method:'POST',
-        //     headers:{
-        //         "Content-Type":"application/json",
-        //         "Authorization":`Bearer ${token}`
-        //     },
-        //     body: JSON.stringify({result_food_total:totalEmissions})
-        //  })
-        // .then((res)=>res.json())
-        // .then((responseJSON)=>console.log(responseJSON))
+        //rounding to integer for now because database needs to be changed to take in a float/decimal
+        totalEmissions = Math.round(totalEmissions)
+        fetch(`http://localhost:3000/food/logFood`,{
+            method:'POST',
+            headers:{
+                "Content-Type":"application/json",
+                "Authorization":`Bearer ${token}`
+            },
+            body: JSON.stringify({result_food_total:totalEmissions})
+         })
+        .then((res)=>res.json())
+        .then((responseJSON)=>console.log(responseJSON))
 
         console.log(totalEmissions)
         setTotalEmissions(totalEmissions)
