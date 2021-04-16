@@ -1,4 +1,4 @@
-import earthIcon from '../images/earth.svg'
+// import earthIcon from '../images/earth.svg'
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar';
@@ -43,7 +43,7 @@ function Header(){
                     <Menu id="simple-menu" anchorEl={anchorEl} keepMounted open={Boolean(anchorEl)} onClose={handleClose}>
                     <div>
                     <Button color="inherit" href="/home" >Home</Button></div>
-                    <div><Button color="inherit" href="/">Quizzes</Button></div>
+                    <div><Button color="inherit" href="/quiz">Quizzes</Button></div>
 
                     <Button color="inherit" href="/news">Climate News</Button>
                     {/* <Button color="inherit" href="/login">Logout</Button>

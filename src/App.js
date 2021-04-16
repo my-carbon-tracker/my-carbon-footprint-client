@@ -7,7 +7,7 @@ import Login from "./components/Login"
 import Signup from "./components/Signup"
 import GetUserInfo from "./components/carbonEstimation";
 import Header from "./components/Header";
-import Quizzes from "./components/quizzes";
+import MainPage from "./components/main";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import { createMuiTheme, ThemeProvider, MuiThemeProvider } from "@material-ui/core/styles";
 // import { AverageEmissionProvider } from "./contexts/averageEmissionContext";
@@ -34,13 +34,26 @@ const theme = createMuiTheme({
 
 function App() {
   let token = localStorage.getItem('token') || ''
-  const [userToken, setToken] = useState(token)
+  const [userToken, setToken] = useState(token);
+  let urlPath = window.location.pathname;
+  // console.log(pathArray)
 
   return (
-    <MuiThemeProvider theme={theme}>
+    <BrowserRouter>
+    <Route path="/main">
+      <MainPage />
+    </Route>
+    <Route path='/login'>
+      <Login setToken = {setToken}/>
+    </Route>
+    <Route path='/register'>
+      <Signup setToken = {setToken}/>
+    </Route>
+      <MuiThemeProvider theme={theme}>
       <CssBaseline/>
-      <Header />
-      <BrowserRouter>
+      
+      {urlPath !== '/main' && urlPath !== '/login' && urlPath !== '/register' ? (<Header /> ) : (null)}
+      
         <Switch>
         <OffsetProvider>
           <Route exact path="/home" component={Home}>
@@ -49,22 +62,13 @@ function App() {
           <Route path="/carbon-estimation">
           <GetUserInfo />
           </Route>
-          <Route path="/food-quiz">
+          <Route path="/quiz">
             <FootprintQuiz token={token}/>
-          </Route>
-          <Route path="/">
-          <Quizzes />
-          </Route>
-          <Route path='/login'>
-            <Login setToken = {setToken}/>
-          </Route>
-          <Route path='/register'>
-            <Signup setToken = {setToken}/>
           </Route>
           </OffsetProvider>
         </Switch>  
-      </BrowserRouter>    
     </MuiThemeProvider>
+    </BrowserRouter> 
   );
 }
 
