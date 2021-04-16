@@ -108,18 +108,14 @@ function Home () {
 
             </Grid>
           </Container>
-          <h2 style={{bottom:0, color:'white', textAlign:'center'}}>
-            <Link to="/quiz">
-                <button >Find Out Your Carbon Footprint</button>
-            </Link>
-          </h2>
           <div style={{position:'fixed', bottom:0}}>
-              <footer>
+              
+          </div>
+          <footer>
               {/* <div style={{position:'fixed', bottom:0}}> */}
                   <climate-clock />
               {/* </div> */}
               </footer>
-          </div>
         </Box>
       </>
        

@@ -1,6 +1,6 @@
 import {useState, useEffect} from 'react';
 import {Container, Typography, Grid} from '@material-ui/core/';
-import PrimaryButton from '../reusable/PrimaryButton'
+import PrimaryButton from '../../reusable/PrimaryButton'
 
 function FoodStep2(props){
     const {currentStep, setArrFoodServings} = props
