@@ -1,4 +1,5 @@
 import { React, useState } from 'react';
+import { Box } from '@material-ui/core'
 import TextField from '@material-ui/core/TextField';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button'
@@ -8,11 +9,16 @@ const useStyles = makeStyles((theme) => ({
     '& .MuiTextField-root': {
       margin: theme.spacing(1),
       width: '25ch',
+      opacity: '1'
     },
     button: {
         margin: theme.spacing(1),
       },
   },
+  text: {
+    textAlign: "center",
+    }
+
 }));
 
 export default function Form(props) {
@@ -34,9 +40,16 @@ export default function Form(props) {
     return (
         <form className={classes.root} onSubmit={(e)=>submitForm(e)} noValidate autoComplete="off">
             <div>
-                <TextField placeholder='Username' onChange={(e) =>setName(e.target.value)} />
-                <TextField placeholder='Password' onChange={(e) =>setPass(e.target.value)} />
-                <Button variant='contained' color='primary' type='submit' >Submit</Button>
+                <Box m={1} className={classes.text} >
+                    <TextField variant="outlined" label="Username" onChange={(e) =>setName(e.target.value)} />
+                </Box>
+                <Box className={classes.text} m={1}>
+                    <TextField variant="outlined" label="Password" onChange={(e) =>setPass(e.target.value)} />
+                </Box>
+                <Box className={classes.text} mt={1} >
+                    <Button variant='contained' color='primary' type='submit' >Submit</Button>
+                </Box>
+                
             </div>
         </form>
     )

@@ -1,29 +1,34 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/core/styles'
-import { Card, CardContent, Grid} from '@material-ui/core'
+import { Card, CardContent, Box} from '@material-ui/core'
 import Form from './Form'
 import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles({
-    root: {
-      minWidth: "25%",
-      maxWidth: "50%",
-    },
-    bullet: {
-      display: 'inline-block',
-      margin: '0 2px',
-      transform: 'scale(0.8)',
-    },
-    title: {
-      fontSize: 14,
-    },
-    pos: {
-      marginBottom: 12,
-    },
-    center: {
-        direction: 'column',
-        alignItems: 'center',
-    }
+  root: {
+    height: '100vh',
+    backgroundImage:"url(https://res.cloudinary.com/dd6dpafkm/image/upload/v1618611186/ice_signin_gheuo2.jpg)",
+    backgroundSize: "cover",
+  },
+  card: {
+    display:'flex',
+    flexDirection: 'column',
+    minWidth:'100%',
+    opacity: '.75'
+  },
+  bullet: {
+    display: 'inline-block',
+    margin: '0 2px',
+    transform: 'scale(0.8)',
+  },
+  title: {
+    fontSize: 40,
+    textAlign: "Center",
+    marginTop:'4px',
+  },
+  pos: {
+    marginBottom: 12,
+  },
   });
 
   export default function SignUp(props){
@@ -47,21 +52,25 @@ const useStyles = makeStyles({
         console.log(data)
     }
       return(
-        <div className="login">
-            <Grid container direction='column' alignItems="center" justify="center">
-                <Grid item>
-                    <Card className={classes.root}>
-                        <CardContent>
-                            <Typography className={classes.title} color='textSecondary' gutterBottom>
-                                Login
-                            </Typography>
-                            <Form onSubmit={register}/>
-                        </CardContent>
-                    </Card>
-                </Grid>
-                
-            </Grid>
-            
+        <div className={classes.root}>
+          <Box className={classes.root}
+            display="flex" 
+            alignItems="center" 
+            justifyContent="center"
+            p={1} 
+            m={1}
+          >
+            <Box border={2} borderRadius={8} borderColor="white">
+              <Card className={classes.card}>
+                <CardContent>
+                    <Typography className={classes.title} color='textSecondary' gutterBottom>
+                        SignUp
+                    </Typography>
+                    <Form onSubmit={register}/>
+                </CardContent>
+            </Card>
+            </Box>
+          </Box>
         </div>
       )
   }
