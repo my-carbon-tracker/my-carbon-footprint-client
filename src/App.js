@@ -20,14 +20,15 @@ const theme = createMuiTheme({
   
   palette:{
     primary: {
-      main: '#000000',
+      main: '#41B898',
+      contrastText: "#fff"
       //mainGradient: "linear-gradient(#157A42,#25DB77)"
       //background: 'linear gradient(#157A42,#25DB77)',
     },
     secondary: {
-      main: '#25DB77'
+      main: '#D9F563'
     },
-    background: {default:'#157A42'}
+    background: {default:'#41B898'}
   }
 })
 //style={{ background: theme.palette.primary.mainGradient }}
