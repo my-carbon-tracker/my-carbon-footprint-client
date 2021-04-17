@@ -9,7 +9,7 @@ import TransportationStep1 from './transportation/transportationStep1';
 import TotalEmissions from './TotalEmissions';
 
 const useStyles = makeStyles({
-    background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
+    background: 'linear-gradient(#41B898 50%, #84C57F 50%)',
 })
 
 function FootprintQuiz(props) {
@@ -52,8 +52,8 @@ function FootprintQuiz(props) {
     } 
 
     return (
-        <div style={{background: 'linear-gradient(#157A42,#25DB77)', height:'100vh'}}>
-            <form onSubmit={submitServings} style={{textAlign:'center'}}> 
+        <div style={{background: 'linear-gradient(#41B898, #84C57F)', height:'100vh'}}>
+            <form onSubmit={submitServings} style={{textAlign:'center', color:'white'}}> 
                 <Step1 currentStep={currentStep} setCurrentStep={setCurrentStep} categories={categories} setCategories={setCategories}/>
                 <FoodStep1 currentStep={currentStep} setCurrentStep={setCurrentStep}/>
                 <FoodStep2 currentStep={currentStep} setArrFoodServings={setArrFoodServings}/>
