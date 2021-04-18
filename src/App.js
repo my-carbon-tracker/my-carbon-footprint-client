@@ -42,7 +42,7 @@ function App() {
 
   return (
     <BrowserRouter>
-    <Route path="/">
+    <Route exact path="/">
       <MainPage />
     </Route>
     <Route path='/login'>
