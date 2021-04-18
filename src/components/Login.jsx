@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import { Card, CardContent, Box} from '@material-ui/core'
 import Form from './Form'
@@ -28,11 +28,15 @@ const useStyles = makeStyles({
     pos: {
       marginBottom: 12,
     },
+    p:{
+      textAlign: "Center",
+      color: "#dd2c00",
+    }
   });
 
   export default function Login(props){
     const classes = useStyles();
-
+    const [prompt, setPrompt] = useState(false);
     const login = async (name,pass) =>{
         const url = `http://localhost:3000/auth/login`
         const body = {
@@ -48,7 +52,8 @@ const useStyles = makeStyles({
         })
         const data = await response.json()
         if(response.status !== 200){
-          alert('Incorrect login');
+          // alert('Incorrect login');
+          setPrompt(true);
         }
         else{
           console.log(data)
@@ -73,6 +78,8 @@ const useStyles = makeStyles({
                     <Typography className={classes.title} color='textSecondary' gutterBottom>
                         Login
                     </Typography>
+                    {prompt?(<p className={classes.p}>Username/password match doesn't exist</p>):(null)
+                    }
                     <Form onSubmit={login}/>
                 </CardContent>
             </Card>
