@@ -3,7 +3,6 @@ import { makeStyles } from '@material-ui/core/styles'
 import { Card, CardContent, Box} from '@material-ui/core'
 import Form from './Form'
 import Typography from '@material-ui/core/Typography';
-
 const useStyles = makeStyles({
     root: {
       height: '100vh',
@@ -48,9 +47,15 @@ const useStyles = makeStyles({
             body: JSON.stringify(body)
         })
         const data = await response.json()
-        console.log(data)
-        props.setToken(data.token)
-        localStorage.setItem('token', data.token)
+        if(response.status !== 200){
+          alert('Incorrect login');
+        }
+        else{
+          console.log(data)
+          props.setToken(data.token)
+          localStorage.setItem('token', data.token)
+          window.location.replace("/home")
+      }
     }
 
       return(
