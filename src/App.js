@@ -15,6 +15,7 @@ import { createMuiTheme, ThemeProvider, MuiThemeProvider } from "@material-ui/co
 import { OffsetProvider } from './contexts/pledgeContext'
 // import { AverageEmissionProvider } from "./contexts/averageEmissionContext";
 import Pledges from './components/pledges';
+import ClimateNews from "./components/getArticles";
 
 const theme = createMuiTheme({
   
@@ -41,7 +42,7 @@ function App() {
 
   return (
     <BrowserRouter>
-    <Route path="/main">
+    <Route path="/">
       <MainPage />
     </Route>
     <Route path='/login'>
@@ -53,18 +54,21 @@ function App() {
       <MuiThemeProvider theme={theme}>
       <CssBaseline/>
       
-      {urlPath !== '/main' && urlPath !== '/login' && urlPath !== '/register' ? (<Header /> ) : (null)}
+      {urlPath !== '/' && urlPath !== '/login' && urlPath !== '/register' ? (<Header /> ) : (null)}
       
         <Switch>
         <OffsetProvider>
           <Route exact path="/home" component={Home}>
-            <Home />
+            <Home token={token}/>
           </Route>
           <Route path="/carbon-estimation">
           <GetUserInfo />
           </Route>
           <Route path="/quiz">
             <FootprintQuiz token={token}/>
+          </Route>
+          <Route path="/news">
+            <ClimateNews />
           </Route>
           </OffsetProvider>
         </Switch>  

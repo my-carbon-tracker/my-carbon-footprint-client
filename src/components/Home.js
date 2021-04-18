@@ -5,6 +5,7 @@ import {
     Grid
   } from '@material-ui/core';
 import Pledges from '../components/pledges';
+import LeaderBoard from './leaderboard';
 // import userCurrentEmissions from '../components/usersEmission';
 import React, { useContext } from 'react';
 import { useOffsetContext } from '../contexts/pledgeContext'
@@ -103,7 +104,7 @@ function Home () {
                 xs={12}
               >
                 {/* Leardboard*/}
-                leaderboard
+                <LeaderBoard />
               </Grid>
 
             </Grid>
