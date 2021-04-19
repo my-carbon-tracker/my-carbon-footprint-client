@@ -39,7 +39,7 @@ function FootprintQuiz(props) {
         },0)
 
         let filteredFoodArr = arrFoodServings.filter((item)=>item.servings)
-
+        console.log(JSON.stringify(filteredFoodArr))
         //rounding to integer for now because database needs to be changed to take in a float/decimal
         totalFoodEmissions = Math.round(totalFoodEmissions)
         fetch(`http://localhost:3000/food/logFood`,{

@@ -9,6 +9,7 @@ import GetUserInfo from "./components/carbonEstimation";
 import Header from "./components/Header";
 import MainPage from "./components/main";
 import CssBaseline from "@material-ui/core/CssBaseline";
+import FoodEmission from './components/Emissions/foodTable'
 import { createMuiTheme, ThemeProvider, MuiThemeProvider } from "@material-ui/core/styles";
 // import { AverageEmissionProvider } from "./contexts/averageEmissionContext";
 // import { OffsetProvider } from "./components/pledges";
@@ -70,6 +71,9 @@ function App() {
           </Route>
           <Route path="/news">
             <ClimateNews />
+          </Route>
+          <Route path="/emissions">
+            <FoodEmission token={token}/>
           </Route>
           </OffsetProvider>
         </Switch>  
