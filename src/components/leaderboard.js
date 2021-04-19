@@ -24,17 +24,17 @@ function getData(props) {
      })
     .then((res)=>res.json())
     .then(responseJSON => {
-        return { username, result_grand_total, carbon_emission_goal};
+        //return { username, result_grand_total, carbon_emission_goal};
     })
 }
 
-const rows = [
-  getData(1, username, result_grand_total, carbon_emission_goal),
-  getData(2, username, result_grand_total, carbon_emission_goal),
-  getData(3, username, result_grand_total, carbon_emission_goal),
-  getData(4, username, result_grand_total, carbon_emission_goal),
-  getData(5, username, result_grand_total, carbon_emission_goal),
-];
+ const rows = [
+//   getData(1, username, result_grand_total, carbon_emission_goal),
+//   getData(2, username, result_grand_total, carbon_emission_goal),
+//   getData(3, username, result_grand_total, carbon_emission_goal),
+//   getData(4, username, result_grand_total, carbon_emission_goal),
+//   getData(5, username, result_grand_total, carbon_emission_goal),
+ ];
 
 function preventDefault(event) {
   event.preventDefault();
