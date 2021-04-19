@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
     },
   }));
 
-function Header(){
+function Header(props){
     const classes = useStyles();
     const [anchorEl, setAnchorEl] = React.useState(null);
     const handleClick = (event) => {
@@ -33,7 +33,10 @@ function Header(){
       const handleClose = () => {
         setAnchorEl(null);
       };
-
+      const handelLogout = () =>{
+        window.localStorage.clear();
+        props.setToken('');
+      }
     return(
         <div className="">
             <AppBar position="static">
@@ -57,6 +60,9 @@ function Header(){
                     {/* {<img className="" src={earthIcon} style={{width:25, position:'relative'}}/>} */}
                     <Button color="inherit" href="/login">
                         Login
+                    </Button>
+                    <Button color="inherit" onClick = {handelLogout} href="/main">
+                        Logout
                     </Button>
                 </Toolbar>
             </AppBar>
