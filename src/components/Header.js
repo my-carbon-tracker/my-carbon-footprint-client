@@ -33,7 +33,9 @@ function Header(){
       const handleClose = () => {
         setAnchorEl(null);
       };
-
+      const handelLogout = () =>{
+        window.localStorage.clear();
+      }
     return(
         <div className="">
             <AppBar position="static">
@@ -57,6 +59,9 @@ function Header(){
                     {/* {<img className="" src={earthIcon} style={{width:25, position:'relative'}}/>} */}
                     <Button color="inherit" href="/login">
                         Login
+                    </Button>
+                    <Button color="inherit" onClick = {handelLogout} href="/main">
+                        Logout
                     </Button>
                 </Toolbar>
             </AppBar>
