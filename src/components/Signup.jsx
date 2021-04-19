@@ -52,7 +52,7 @@ const useStyles = makeStyles({
         // Check if username is taken ?
         console.log(data);
         if(response.status === 200){
-          window.location.assign("/home")
+          window.location.assign("/login")
         }
     }
       return(
