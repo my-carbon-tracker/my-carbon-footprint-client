@@ -20,6 +20,7 @@ function FootprintQuiz(props) {
     const {token} = props
     const [currentStep, setCurrentStep] = useState(1)
     const [categories, setCategories] = useState({food:false, transportation:false})
+    const [foodItems, setFoodItems] = useState([])
     const [arrFoodServings, setArrFoodServings] = useState([])
     const [totalEmissions, setTotalEmissions] = useState(0);
 
@@ -55,9 +56,9 @@ function FootprintQuiz(props) {
         <div style={{background: 'linear-gradient(#41B898, #84C57F)', height:'100vh'}}>
             <form onSubmit={submitServings} style={{textAlign:'center', color:'white'}}> 
                 <Step1 currentStep={currentStep} setCurrentStep={setCurrentStep} categories={categories} setCategories={setCategories}/>
-                <FoodStep1 currentStep={currentStep} setCurrentStep={setCurrentStep}/>
-                <FoodStep2 currentStep={currentStep} setArrFoodServings={setArrFoodServings}/>
-                <TransportationStep1 currentStep={currentStep}/>
+                <FoodStep1 currentStep={currentStep} setCurrentStep={setCurrentStep} setFoodItems={setFoodItems}/>
+                <FoodStep2 currentStep={currentStep} setCurrentStep={setCurrentStep} setArrFoodServings={setArrFoodServings} categories={categories} foodItems={foodItems}/>
+                <TransportationStep1 currentStep={currentStep} setCurrentStep={setCurrentStep}/>
                 <TotalEmissions currentStep={currentStep} totalEmissions={totalEmissions}/>
             </form>
         </div>
