@@ -32,7 +32,7 @@ export default function(props){
 
     return(
         <div>
-            <Typography variant="h5" style={{color:'white'}}>
+            <Typography variant="h5" style={{color:'white', padding:30}}>
                 How many kilometers did you travel in ...
             </Typography>
             {modesOfTransport.train && <TextField style={{margin:20}} id='trainDistance' label='Train' type="number" InputLabelProps={{shrink: true,}} variant="outlined" color="secondary" value={trainDistance} onChange={(e)=>setTrainDistance(e.target.value)}/>}
@@ -43,7 +43,7 @@ export default function(props){
             {modesOfTransport.motorbike && <TextField style={{margin:20}} id='motorbike' label='Motorbike' type="number" InputLabelProps={{shrink: true,}} variant="outlined" color="secondary" value={motorbikeDistance} onChange={(e)=>setMotorbikeDistance(e.target.value)}/>}
             {modesOfTransport.boat && <TextField style={{margin:20}} id='boatDistance' label='Boat' type="number" InputLabelProps={{shrink: true,}} variant="outlined" color="secondary" value={boatDistance} onChange={(e)=>setBoatDistance(e.target.value)}/>}
             {modesOfTransport.plane && <TextField style={{margin:20}} id='planeDistance' label='Plane' type="number" InputLabelProps={{shrink: true,}} variant="outlined" color="secondary" value={planeDistance} onChange={(e)=>setPlaneDistance(e.target.value)}/>}
-            <div>
+            <div style={{padding:30}}>
                 <PrimaryButton onClick={()=>setCurrentStep('TransportationStep1')} text="Previous"/>
                 <PrimaryButton type="submit" text="Submit"/>
             </div>
