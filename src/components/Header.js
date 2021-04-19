@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
     },
   }));
 
-function Header(){
+function Header(props){
     const classes = useStyles();
     const [anchorEl, setAnchorEl] = React.useState(null);
     const handleClick = (event) => {
@@ -35,6 +35,7 @@ function Header(){
       };
       const handelLogout = () =>{
         window.localStorage.clear();
+        props.setToken('');
       }
     return(
         <div className="">
