@@ -27,12 +27,12 @@ function Step1(props){
     return(
         <div className='form group'>
             <Container maxWidth="sm">
-                <Typography variant="h5" style={{color:'white', padding:50}}>
+                <Typography variant="h5" style={{color:'white', padding:30}}>
                     What categories do you want to include into the calculation of your carbon footprint?
                 </Typography>
                 <PrimaryButton selected={foodCategory} onClick={()=>setFood(foodCategory=> !foodCategory)} text="Food"/>
                 <PrimaryButton selected={transportationCategory} onClick={()=>setTransportation(transportationCategory => !transportationCategory)} text="Transportation" />
-                <div>
+                <div style={{padding:30}}>
                     <PrimaryButton onClick={()=>setCurrentStep(nextStep)} text="Next" />
                 </div>
             </Container>

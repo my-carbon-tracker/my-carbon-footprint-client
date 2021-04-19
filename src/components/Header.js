@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
     },
   }));
 
-function Header(){
+function Header(props){
     const classes = useStyles();
     const [anchorEl, setAnchorEl] = React.useState(null);
     const handleClick = (event) => {
@@ -33,7 +33,10 @@ function Header(){
       const handleClose = () => {
         setAnchorEl(null);
       };
-
+      const handelLogout = () =>{
+        window.localStorage.clear();
+        props.setToken('');
+      }
     return(
         <div className="">
             <AppBar position="static">
@@ -44,19 +47,18 @@ function Header(){
                     <div>
                     <Button color="inherit" href="/home" >Home</Button></div>
                     <div><Button color="inherit" href="/quiz">Quizzes</Button></div>
-
+                    <div><Button color="inherit" href="/carbon-estimation">Compare Emissions</Button></div>
                     <Button color="inherit" href="/news">Climate News</Button>
-                    {/* <Button color="inherit" href="/login">Logout</Button>
-                    <Button color="inherit" href="/register">Sign Up</Button> */}
                     </Menu>
-                        {/* <MenuIcon id="simple-menu" anchorEl={anchorEl} keepMounted open={Boolean(anchorEl)} onClose={handleClose}/> */}
                     </IconButton> 
                     <Typography variant="h6" className={classes.title}>
                         My Carbon Tracker
                     </Typography>
-                    {/* {<img className="" src={earthIcon} style={{width:25, position:'relative'}}/>} */}
                     <Button color="inherit" href="/login">
                         Login
+                    </Button>
+                    <Button color="inherit" onClick = {handelLogout} href="/main">
+                        Logout
                     </Button>
                 </Toolbar>
             </AppBar>

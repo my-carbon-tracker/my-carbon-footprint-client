@@ -1,9 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import { Card, CardContent, Box} from '@material-ui/core'
 import Form from './Form'
 import Typography from '@material-ui/core/Typography';
-
 const useStyles = makeStyles({
     root: {
       height: '100vh',
@@ -29,11 +28,15 @@ const useStyles = makeStyles({
     pos: {
       marginBottom: 12,
     },
+    p:{
+      textAlign: "Center",
+      color: "#dd2c00",
+    }
   });
 
   export default function Login(props){
     const classes = useStyles();
-
+    const [prompt, setPrompt] = useState(false);
     const login = async (name,pass) =>{
         const url = `http://localhost:3000/auth/login`
         const body = {
@@ -48,9 +51,16 @@ const useStyles = makeStyles({
             body: JSON.stringify(body)
         })
         const data = await response.json()
-        console.log(data)
-        props.setToken(data.token)
-        localStorage.setItem('token', data.token)
+        if(response.status !== 200){
+          // alert('Incorrect login');
+          setPrompt(true);
+        }
+        else{
+          console.log(data)
+          props.setToken(data.token)
+          localStorage.setItem('token', data.token)
+          window.location.assign("/home")
+      }
     }
 
       return(
@@ -68,6 +78,8 @@ const useStyles = makeStyles({
                     <Typography className={classes.title} color='textSecondary' gutterBottom>
                         Login
                     </Typography>
+                    {prompt?(<p className={classes.p}>Username/password match doesn't exist</p>):(null)
+                    }
                     <Form onSubmit={login}/>
                 </CardContent>
             </Card>
