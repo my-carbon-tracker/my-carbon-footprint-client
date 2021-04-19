@@ -59,7 +59,7 @@ const useStyles = makeStyles({
           console.log(data)
           props.setToken(data.token)
           localStorage.setItem('token', data.token)
-          window.location.replace("/home")
+          window.location.assign("/home")
       }
     }
 

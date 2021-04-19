@@ -49,7 +49,11 @@ const useStyles = makeStyles({
             body: JSON.stringify(body)
         })
         const data = await response.json()
-        console.log(data)
+        // Check if username is taken ?
+        console.log(data);
+        if(response.status === 200){
+          window.location.assign("/home")
+        }
     }
       return(
         <div className={classes.root}>
