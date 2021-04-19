@@ -27,7 +27,8 @@ const theme = createMuiTheme({
       //background: 'linear gradient(#157A42,#25DB77)',
     },
     secondary: {
-      main: '#D9F563'
+      main: '#2E4089',
+      contrastText: "#fff"
     },
     background: {default:'#41B898'}
   }
@@ -42,7 +43,7 @@ function App() {
 
   return (
     <BrowserRouter>
-    <Route path="/">
+    <Route exact path="/">
       <MainPage />
     </Route>
     <Route path='/login'>

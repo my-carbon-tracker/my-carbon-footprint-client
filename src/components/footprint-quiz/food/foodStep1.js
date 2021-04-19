@@ -1,9 +1,9 @@
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 import {Container, Typography} from '@material-ui/core/';
 import PrimaryButton from '../../reusable/PrimaryButton'
 
 function FoodStep1(props){
-    const {currentStep, setCurrentStep} = props;
+    const {currentStep, setCurrentStep,setFoodItems} = props;
     const [lamb, setLamb] = useState(false)
     const [beef, setBeef] = useState(false)
     const [redMeat, setRedMeat] = useState(false)
@@ -27,6 +27,76 @@ function FoodStep1(props){
     const [coffee,setCoffee] = useState(false)
     const [chocolate,setChocolate] = useState(false)
 
+    useEffect(() => {
+        setFoodItems(
+            {coffee:coffee,
+            chocolate:chocolate,
+            redMeat:redMeat,
+            whiteMeat:whiteMeat,
+            fish:fish,
+            lamb:lamb,
+            beef:beef,
+            cheese:cheese,
+            pork:pork,
+            turkey:turkey,
+            chicken:chicken,
+            tuna:tuna,
+            eggs:eggs,
+            potatoes:potatoes,
+            rice:rice,
+            nuts:nuts,
+            beans:beans,
+            tofu:tofu,
+            vegetables:vegetables,
+            milk:milk,
+            fruit:fruit,
+            lentils:lentils}
+            // [{name:'Coffee', show:coffee},
+            // {name:'Chocolate', show:chocolate},
+            // {name:'Red Meat', show:redMeat},
+            // {name:'White Meat', show:whiteMeat},
+            // {name:'Fish', show:fish},
+            // {name:'Lamb', show:lamb},
+            // {name:'Beef', show:beef},
+            // {name:'Cheese', show:cheese},
+            // {name:'Pork', show:pork},
+            // {name:'Turkey', show:turkey},
+            // {name:'Chicken', show:chicken},
+            // {name:'Tuna', show:tuna},
+            // {name:'Eggs',show:eggs},
+            // {name:'Potatoes',show:potatoes},
+            // {name:'Rice',show:rice},
+            // {name:'Nuts',show:nuts},
+            // {name:'Beans',show:beans},
+            // {name:'Tofu',show:tofu},
+            // {name:'Vegetables',show:vegetables},
+            // {name:'Milk',show:milk},
+            // {name:'Fruit',show:fruit},
+            // {name:'Lentils',show:lentils}]
+        )
+    },[coffee,
+        chocolate,
+        redMeat,
+        whiteMeat,
+        fish,
+        lamb,
+        beef,
+        cheese,
+        pork,
+        turkey,
+        chicken,
+        tuna,
+        eggs,
+        potatoes,
+        rice,
+        nuts,
+        beans,
+        tofu,
+        vegetables,
+        milk,
+        fruit,
+        lentils])
+
     if(currentStep!=='FoodStep1'){
         return null
     }
@@ -48,6 +118,7 @@ function FoodStep1(props){
             <PrimaryButton selected={eggs} onClick={()=>setEggs(eggs=> !eggs)} text="Eggs"/>
             <PrimaryButton selected={potatoes} onClick={()=>setPotatoes(potatoes=> !potatoes)} text="Potatoes"/>
             <PrimaryButton selected={rice} onClick={()=>setRice(rice=> !rice)} text="Rice"/>
+            <PrimaryButton selected={nuts} onClick={()=>setNuts(nuts=> !nuts)} text="Nuts"/>
             <PrimaryButton selected={beans} onClick={()=>setBeans(beans=> !beans)} text="Beans"/>
             <PrimaryButton selected={tofu} onClick={()=>setTofu(tofu=> !tofu)} text="Tofu"/>
             <PrimaryButton selected={vegetables} onClick={()=>setVegetables(vegetables=> !vegetables)} text="Vegetables"/>
@@ -57,6 +128,7 @@ function FoodStep1(props){
             <PrimaryButton selected={coffee} onClick={()=>setCoffee(coffee=> !coffee)} text="Coffee"/>
             <PrimaryButton selected={chocolate} onClick={()=>setChocolate(chocolate=> !chocolate)} text="Chocolate"/>
             <div>
+                <PrimaryButton onClick={()=>setCurrentStep(1)} text="Previous"/>
                 <PrimaryButton onClick={()=>setCurrentStep('FoodStep2')} text="Next"/>
             </div>
         </Container>
