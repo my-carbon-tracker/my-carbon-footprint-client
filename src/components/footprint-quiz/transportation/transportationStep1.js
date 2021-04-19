@@ -1,4 +1,4 @@
-import {Container, Typography, Card} from '@material-ui/core/';
+import {Container, Typography, Card, Grid} from '@material-ui/core/';
 import PrimaryButton from '../../reusable/PrimaryButton'
 import { useState, useEffect } from 'react';
 
@@ -26,7 +26,7 @@ function TransportationStep1(props){
     }
     return(
         <Container maxWidth="sm">
-            <Typography variant="h5" style={{color:'white'}}>
+            <Typography variant="h5" style={{color:'white', padding:30}}>
                 What mode(s) of transport did you take?
             </Typography>
             <PrimaryButton selected={train} onClick={()=>setTrain(train=> !train)} text="Train"/>
@@ -38,8 +38,10 @@ function TransportationStep1(props){
             <PrimaryButton selected={motorbike} onClick={()=>setMotorbike(motorbike=> !motorbike)} text="Motorbike"/>
             <PrimaryButton selected={boat} onClick={()=>setBoat(boat=> !boat)} text="Boat"/>
             <PrimaryButton selected={plane} onClick={()=>setPlane(plane=> !plane)} text="Plane"/>
-            {categories.food?<PrimaryButton onClick={()=>setCurrentStep('FoodStep2')} text="Go Back"/>:<PrimaryButton onClick={()=>setCurrentStep(1)} text="Go Back"/>}
-            <PrimaryButton onClick={()=>setCurrentStep('TransportationStep2')} text="Next"/>
+            <div style={{padding:30}}>
+                {categories.food?<PrimaryButton onClick={()=>setCurrentStep('FoodStep2')} text="Go Back"/>:<PrimaryButton onClick={()=>setCurrentStep(1)} text="Go Back"/>}
+                <PrimaryButton onClick={()=>setCurrentStep('TransportationStep2')} text="Next"/>
+            </div>
         </Container>
     )
 }
