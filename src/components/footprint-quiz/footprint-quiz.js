@@ -41,7 +41,7 @@ function FootprintQuiz(props) {
         let filteredFoodArr = arrFoodServings.filter((item)=>item.servings)
 
         //rounding to integer for now because database needs to be changed to take in a float/decimal
-        totalFoodEmissions = Math.round(totalFoodEmissions)
+        //totalFoodEmissions = Math.round(totalFoodEmissions)
         fetch(`http://localhost:3000/food/logFood`,{
             method:'POST',
             headers:{
@@ -66,7 +66,7 @@ function FootprintQuiz(props) {
             const tripEmissions = transport[type]*distance
             return accum + tripEmissions
         },0)
-        totalTransportEmissions = Math.round(totalTransportEmissions)
+        //totalTransportEmissions = Math.round(totalTransportEmissions)
         fetch(`http://localhost:3000/transport/logTransport`,{
             method:'POST',
             headers:{
