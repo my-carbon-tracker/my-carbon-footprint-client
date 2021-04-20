@@ -19,8 +19,6 @@ const Pledges = () => {
     const [showerheads, setShowerheads] = React.useState("0")
     const [led, setLED] = React.useState("0");
     const {totalOffset, setTotalOffset} = useOffsetContext();
-   
-
     console.log(totalOffset)
 
 const changeCarpoolDays = (e) => {
@@ -314,6 +312,5 @@ const handleLED = (e) => {
         </div>
     )
 }
-
 
 export default Pledges;
