@@ -4,8 +4,9 @@ import {Pie} from 'react-chartjs-2';
 import { useContext } from 'react';
 // import { useAverageEmissionContext } from "../contexts/averageEmissionContext";
 //Feature 1: user is presented with a form with 3 values that they must input: location, income and houshold size
+//send data to database:
 
-function GetUserInfo(){
+function GetUserInfo(props){
     //save to db and render in home page 
     const [totalEmissions, setTotalEmissions] = React.useState()
     const [place, setPlace] = React.useState(); //save to render in home page too
@@ -13,6 +14,7 @@ function GetUserInfo(){
     const [size, setSize] = React.useState("1");
     const [chartData, setChartData] = React.useState({});    
     console.log(totalEmissions)
+    const {token} = props
 
     const changePlace = (e) => {
         setPlace(e.target.value)
@@ -25,10 +27,6 @@ function GetUserInfo(){
     };
     const handleSubmit = (event) => {
         event.preventDefault(); 
-        // console.log(place)
-        // console.log(income)
-        // console.log(size)
-        // console.log("submit form")
         let url = `https://apis.berkeley.edu/coolclimate/footprint-defaults?input_location_mode=1&input_location=${place}&input_income=${income}&input_size=${size}`
 
         fetch(url, {
@@ -62,8 +60,27 @@ function GetUserInfo(){
         .catch((error)=> console.log(error));   
     };
 
+    // //send data to database:
+    const handleSave = (e) => {
+        e.preventDefault();
+        fetch(`http://localhost:3000/logEmission/estimated`,{
+            method:'POST',
+            headers:{
+                "Content-Type":"application/json",
+                "Authorization":`Bearer ${token}`
+            },
+            body: JSON.stringify({
+                location: place,
+                estimated_emission: totalEmissions
+            })
+        })
+        .then((res)=>res.json())
+        // .then((responseJSON)=>console.log(responseJSON))
+        console.log(totalEmissions)
+    }
+
     return (
-        <div>
+        <div style={{textAlign: "center"}}>
             <p>Let's get started with a quick carbon footprint estimate</p>
             
             <form onSubmit={handleSubmit}>
@@ -97,7 +114,9 @@ function GetUserInfo(){
 
                 <p></p>
                 <input id="submitbtn" type="submit" value="Submit"/>
+                
             </form>
+            <form onSubmit={handleSave}><input id="savebtn" type="submit" value="Save" /></form>
 
             <div>
                 <p>Here is your estimated carbon footprint: {totalEmissions} tons CO2eq/year</p>

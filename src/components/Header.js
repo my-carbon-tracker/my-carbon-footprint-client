@@ -48,7 +48,7 @@ function Header(props){
                     <Button color="inherit" href="/home" >Home</Button></div>
                     <div><Button color="inherit" href="/quiz">Quizzes</Button></div>
                     <div><Button color="inherit" href="/carbon-estimation">Compare Emissions</Button></div>
-                    <Button color="inherit" href="/news">Climate News</Button>
+                    <Button color="inherit" href="/climate-news">Climate News</Button>
                     </Menu>
                     </IconButton> 
                     <Typography variant="h6" className={classes.title}>
