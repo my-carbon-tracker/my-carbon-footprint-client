@@ -1,11 +1,9 @@
 import React from "react";
-import { createContext, useMemo } from 'react';
 import { AiFillCar, AiOutlineSkin} from "react-icons/ai";
 import { GiTreeGrowth, GiSolarPower, GiElectric, GiMilkCarton, GiCow } from "react-icons/gi";
 import { FaShower, FaCarrot, FaAward } from "react-icons/fa";
 import { RiLightbulbLine } from "react-icons/ri";
 import { ImSwitch } from "react-icons/im";
-import { useContext } from "react";
 import { useOffsetContext } from "../contexts/pledgeContext";
 
 const Pledges = () => {
@@ -21,8 +19,6 @@ const Pledges = () => {
     const [showerheads, setShowerheads] = React.useState("0")
     const [led, setLED] = React.useState("0");
     const {totalOffset, setTotalOffset} = useOffsetContext();
-   
-
     console.log(totalOffset)
 
 const changeCarpoolDays = (e) => {
@@ -316,6 +312,5 @@ const handleLED = (e) => {
         </div>
     )
 }
-
 
 export default Pledges;
