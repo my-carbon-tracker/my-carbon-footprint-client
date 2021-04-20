@@ -10,12 +10,13 @@ import Header from "./components/Header";
 import MainPage from "./components/main";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import { createMuiTheme, ThemeProvider, MuiThemeProvider } from "@material-ui/core/styles";
-// import { AverageEmissionProvider } from "./contexts/averageEmissionContext";
-// import { OffsetProvider } from "./components/pledges";
 import { OffsetProvider } from './contexts/pledgeContext'
-// import { AverageEmissionProvider } from "./contexts/averageEmissionContext";
-import Pledges from './components/pledges';
-import ClimateNews from "./components/getArticles";
+// import ClimateNews from "./components/getArticles";
+import Articles from "./components/articles"
+import { AverageEmissionProvider } from './contexts/averageEmissionContext';
+import { LocationProvider } from './contexts/locationContext';
+import { EmissionProvider } from './contexts/emissionContext';
+import { UserNameProvider } from './contexts/usernameContext';
 
 const theme = createMuiTheme({
   
@@ -59,18 +60,26 @@ function App() {
       
         <Switch>
         <OffsetProvider>
+          <AverageEmissionProvider>
+            <LocationProvider>
+              <EmissionProvider>
+                <UserNameProvider>
           <Route exact path="/home" component={Home}>
             <Home token={token}/>
           </Route>
           <Route path="/carbon-estimation">
-          <GetUserInfo />
+          <GetUserInfo token={token}/>
           </Route>
           <Route path="/quiz">
             <FootprintQuiz token={token}/>
           </Route>
-          <Route path="/news">
-            <ClimateNews />
+          <Route path="/climate-news">
+            <Articles />
           </Route>
+          </UserNameProvider>
+          </EmissionProvider>
+          </LocationProvider>
+          </AverageEmissionProvider>
           </OffsetProvider>
         </Switch>  
     </MuiThemeProvider>
