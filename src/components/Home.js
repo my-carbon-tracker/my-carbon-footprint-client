@@ -1,23 +1,23 @@
-import {Link} from 'react-router-dom';
-import {
-    Box,
-    Container,
-    Grid
-  } from '@material-ui/core';
+import { Box, Container, Grid } from '@material-ui/core';
 import Pledges from '../components/pledges';
 import LeaderBoard from './leaderboard';
-// import userCurrentEmissions from '../components/usersEmission';
 import React, { useContext } from 'react';
 import { useOffsetContext } from '../contexts/pledgeContext'
 import { useAverageEmissionContext } from '../contexts/averageEmissionContext';
-//import UserEmission from "./getUserEmission";
+import UserData from "./getUserData";
+import { useLocationContext } from '../contexts/locationContext';
+import { useEmissionContext } from '../contexts/emissionContext';
+import { useUserNameContext } from "../contexts/usernameContext";
 
 function Home (props) {
   const {token} = props;
-  const { totalOffset, setTotalOffset } = useOffsetContext() 
-  console.log(totalOffset) 
-  // const { totalEmissions, setTotalEmissions } = useAverageEmissionContext();
-  // console.log(totalEmissions)
+  const { name, setName } = useUserNameContext();
+  const { totalOffset, setTotalOffset } = useOffsetContext(); 
+  const { compareToOthers, setCompareToOthers } = useAverageEmissionContext();
+  const { location, setLocation } = useLocationContext()
+  const { totalEmission, setTotalEmission } = useEmissionContext();
+  let carbonFootprint  = totalEmission - (totalOffset * 1000);
+ 
 
     return(
     <>
@@ -35,53 +35,52 @@ function Home (props) {
             >
               <Grid
                 item
-                lg={3}
+                lg={6}
                 sm={6}
-                xl={3}
+                xl={12}
                 xs={12}
               >
-                <p>Welcome back </p>
+                <UserData token={token}/>
+                <p>Welcome back {name}  </p>
               </Grid>
 
               <Grid
                 item
-                lg={3}
+                lg={6}
                 sm={6}
-                xl={3}
+                xl={12}
                 xs={12}
               >
-                <p>Location</p>
+                <p>Location {location} </p>
               </Grid>
 
               <Grid
                 item
-                lg={3}
+                lg={6}
                 sm={6}
-                xl={3}
+                xl={12}
                 xs={12}
               >
-                <p>Your current total carbon emission</p>
-                {/* <p>total: <UserEmission /> </p> */}
-                <p> {totalOffset} </p>
+                <p>Your current total carbon emission {carbonFootprint} </p>
 
               </Grid>
 
               <Grid
                 item
-                lg={3}
+                lg={6}
                 sm={6}
-                xl={3}
+                xl={12}
                 xs={12}
               >
-                <p>Compared to average</p>
-                {/* <p> {totalEmissions} </p> */}
+                <p>Compared to average person in {location}</p>
+                <p> {compareToOthers} CO2 Tons per Year</p>
               </Grid>
 
               <Grid
                 item
-                lg={4}
+                lg={6}
                 md={6}
-                xl={3}
+                xl={12}
                 xs={12}
               >
                   graph 
@@ -90,9 +89,9 @@ function Home (props) {
 
               <Grid
                 item
-                lg={4}
+                lg={6}
                 md={6}
-                xl={3}
+                xl={12}
                 xs={12}
               >
                 {/* list of pledges you can take */}
@@ -101,9 +100,9 @@ function Home (props) {
 
               <Grid
                 item
-                lg={8}
+                lg={12}
                 md={12}
-                xl={9}
+                xl={12}
                 xs={12}
               >
                 {/* Leardboard*/}
