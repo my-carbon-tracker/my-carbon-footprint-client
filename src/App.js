@@ -55,7 +55,7 @@ function App() {
       <MuiThemeProvider theme={theme}>
       <CssBaseline/>
       
-      {urlPath !== '/' && urlPath !== '/login' && urlPath !== '/register' ? (<Header /> ) : (null)}
+      {urlPath !== '/' && urlPath !== '/login' && urlPath !== '/register' ? (<Header setToken = {setToken} userToken = {userToken}/> ) : (null)}
       
         <Switch>
         <OffsetProvider>
