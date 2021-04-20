@@ -69,7 +69,7 @@ export default function LeaderBoard() {
             <TableCell>Rank</TableCell>
             <TableCell>User Name</TableCell>
             <TableCell>Carbon Footprint kg CO2 Per kg</TableCell>
-            <TableCell>Goal</TableCell>
+            <TableCell>Emission Goal</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
