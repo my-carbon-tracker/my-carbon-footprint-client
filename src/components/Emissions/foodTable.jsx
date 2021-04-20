@@ -4,7 +4,6 @@ import EmissionGraph from './graphs'
 import food from '../footprint-quiz/food/food'
 
 
-
 export default function FoodEmission(props) {
     const [rows, setRows] = useState([])
     const columns = [
@@ -25,11 +24,10 @@ export default function FoodEmission(props) {
                 },
             })
             const data = await response.json()
-            // // console.log(data)
             data.response.forEach((obj) => {
                 makeRows(obj.food_serving, obj.id)
             })
-        setRows(container)
+            setRows(container)
         }
 
         const makeRows = (entries, entryidx) => {
