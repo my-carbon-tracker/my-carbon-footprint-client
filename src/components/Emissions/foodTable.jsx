@@ -1,5 +1,6 @@
 import {React, useEffect, useState} from 'react'
 import { DataGrid } from '@material-ui/data-grid'
+import EmissionGraph from './graphs'
 import food from '../footprint-quiz/food/food'
 
 
@@ -50,6 +51,7 @@ export default function FoodEmission(props) {
     return (
         <div style={{height:400, width: '100%', backgroundColor:'white'}}>
             <DataGrid rows={rows} columns={columns} checkboxSelection />
+            <EmissionGraph data ={rows}/>
         </div>
     )
 }
