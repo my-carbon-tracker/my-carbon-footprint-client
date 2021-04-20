@@ -1,12 +1,11 @@
-
 import { createContext, useState, useMemo, useContext} from 'react';
 
 const AverageEmissionContext = createContext();
 
 export const AverageEmissionProvider = ({ children }) => {
-    const [totalEmissions, setTotalEmissions] = useState(); 
+    const [compareToOthers, setCompareToOthers] = useState(); 
     
-    const value = useMemo(() => ({totalEmissions, setTotalEmissions}), [totalEmissions, setTotalEmissions])
+    const value = useMemo(() => ({compareToOthers, setCompareToOthers}), [compareToOthers, setCompareToOthers])
 
     return (
     <AverageEmissionContext.Provider value={value}>
