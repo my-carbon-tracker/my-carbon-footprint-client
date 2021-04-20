@@ -102,7 +102,7 @@ function FoodStep1(props){
     }
     return (
         <Container maxWidth="sm">
-            <Typography variant="h5" style={{color:'white', padding:50}}>
+            <Typography variant="h5" style={{color:'white', padding:30}}>
                 What did you eat?
             </Typography>
             <PrimaryButton selected={lamb} onClick={()=>setLamb(lamb=> !lamb)} text="Lamb"/>
@@ -127,7 +127,7 @@ function FoodStep1(props){
             <PrimaryButton selected={lentils} onClick={()=>setLentils(lentils=> !lentils)} text="Lentils"/>
             <PrimaryButton selected={coffee} onClick={()=>setCoffee(coffee=> !coffee)} text="Coffee"/>
             <PrimaryButton selected={chocolate} onClick={()=>setChocolate(chocolate=> !chocolate)} text="Chocolate"/>
-            <div>
+            <div style={{padding:30}}>
                 <PrimaryButton onClick={()=>setCurrentStep(1)} text="Previous"/>
                 <PrimaryButton onClick={()=>setCurrentStep('FoodStep2')} text="Next"/>
             </div>

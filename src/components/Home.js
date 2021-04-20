@@ -10,7 +10,7 @@ import LeaderBoard from './leaderboard';
 import React, { useContext } from 'react';
 import { useOffsetContext } from '../contexts/pledgeContext'
 import { useAverageEmissionContext } from '../contexts/averageEmissionContext';
-import UserEmission from "./getUserEmission";
+//import UserEmission from "./getUserEmission";
 
 function Home (props) {
   const {token} = props;
@@ -61,7 +61,7 @@ function Home (props) {
                 xs={12}
               >
                 <p>Your current total carbon emission</p>
-                <p>total: <UserEmission /> </p>
+                {/* <p>total: <UserEmission /> </p> */}
                 <p> {totalOffset} </p>
 
               </Grid>

@@ -118,7 +118,7 @@ function FoodStep2(props){
     }
     return(
         <Container maxWidth="sm">
-                    <Typography variant="h5" style={{color:'white'}}>
+                    <Typography variant="h5" style={{color:'white', padding:30}}>
                         How many servings did you have?
                     </Typography>
                     {/* display="flex" flexDirection="column" p={1} m={1} */}
@@ -148,11 +148,13 @@ function FoodStep2(props){
                         {foodItems.chocolate && <TextField style={{margin:20}} id='chocolate' label='Chocolate' type="number" InputLabelProps={{shrink: true,}} variant="outlined" color="secondary" value={chocolateServings} onChange={(e)=>setChocolateServings(e.target.value)}/>}
                         </Grid>
                     </Grid>
-                    <PrimaryButton onClick={()=>setCurrentStep('FoodStep1')} text="Previous"/>
-                    {categories.transportation? 
-                        <PrimaryButton text="Next" onClick={()=>setCurrentStep('TransportationStep1')}/>: 
-                        <PrimaryButton type="submit" text="Submit"/>
-                    }
+                    <div style={{padding:30}}>
+                        <PrimaryButton onClick={()=>setCurrentStep('FoodStep1')} text="Previous"/>
+                        {categories.transportation? 
+                            <PrimaryButton text="Next" onClick={()=>setCurrentStep('TransportationStep1')}/>: 
+                            <PrimaryButton type="submit" text="Submit"/>
+                        }
+                    </div>
             </Container>
     )
 }
