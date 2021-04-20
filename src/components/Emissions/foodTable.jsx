@@ -10,7 +10,8 @@ export default function FoodEmission(props) {
         {field: 'id', headerName: 'ID', width: 70},
         {field: 'meal', headerName: 'Meal #', width: 120},
         {field: 'name', headerName: 'Food Type', width: 120},
-        {field: 'serving', headerName: 'Servings', width: 120}
+        {field: 'serving', headerName: 'Servings', width: 120},
+        {field: 'emission', headerName: 'Emissions', width: 120}
     ]
     
     useEffect(() => {
@@ -38,6 +39,7 @@ export default function FoodEmission(props) {
                 entry.meal = entryidx
                 entry.name = obj.name
                 entry.serving = obj.servings
+                entry.emission = obj.servings * food[obj.name].emissionsPerServing
                 container.push(entry)
             })
         }
