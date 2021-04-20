@@ -33,7 +33,7 @@ function Header(props){
       const handleClose = () => {
         setAnchorEl(null);
       };
-      const handelLogout = () =>{
+      const handleLogout = () =>{
         window.localStorage.clear();
         props.setToken('');
       }
@@ -54,12 +54,15 @@ function Header(props){
                     <Typography variant="h6" className={classes.title}>
                         My Carbon Tracker
                     </Typography>
-                    <Button color="inherit" href="/login">
+                    { (props.userToken === '') ?
+                      <Button color="inherit" href="/login">
                         Login
-                    </Button>
-                    <Button color="inherit" onClick = {handelLogout} href="/main">
+                      </Button>
+                    :
+                      <Button color="inherit" onClick = {handleLogout} href = "/">
                         Logout
-                    </Button>
+                      </Button>
+                    }
                 </Toolbar>
             </AppBar>
         </div>
