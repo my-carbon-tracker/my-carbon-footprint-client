@@ -6,7 +6,6 @@ import food from '../footprint-quiz/food/food'
 
 export default function FoodEmission(props) {
     const [rows, setRows] = useState([])
-    const [refresh,setRefresh] = useState(0)
     const columns = [
         {field: 'id', headerName: 'ID', width: 70},
         {field: 'meal', headerName: 'Meal #', width: 120},
@@ -16,6 +15,7 @@ export default function FoodEmission(props) {
     
     useEffect(() => {
         let id = 0
+        const container = []
         const getEntries = async() => {
             const response = await fetch('http://localhost:3000/food/entries',{
                 headers: {
@@ -23,15 +23,14 @@ export default function FoodEmission(props) {
                 },
             })
             const data = await response.json()
-            setRows([])
+            // // console.log(data)
             data.response.forEach((obj) => {
                 makeRows(obj.food_serving, obj.id)
             })
+        setRows(container)
         }
 
         const makeRows = (entries, entryidx) => {
-            
-            const container = rows
             entries.forEach(obj => {
                 id++
                 const entry = {}
@@ -40,21 +39,15 @@ export default function FoodEmission(props) {
                 entry.name = obj.name
                 entry.serving = obj.servings
                 container.push(entry)
-                setRows(container)
             })
-            
         }
 
         getEntries()
-        console.log(rows)
-    }, [refresh, props.token])
-    
-
+    }, [props.token])
 
     return (
         <div style={{height:400, width: '100%', backgroundColor:'white'}}>
             <DataGrid rows={rows} columns={columns} checkboxSelection />
-
         </div>
     )
 }
