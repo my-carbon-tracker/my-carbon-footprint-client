@@ -4,23 +4,38 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import Image from '../images/earth.png';
+// import Image from '../images/earth.png';
+import Logo from '../images/Logo.png';
 
 const useStyles = makeStyles((theme) => ({
   heroContent: {
     padding: theme.spacing(8, 10, 30),
-    backgroundImage: `url(${Image})`,
+    backgroundImage: `url(${Logo})`,
     backgroundRepeat: "no-repeat",
     backgroundPosition: "center center",
-    backgroungSize: "cover",
     backgroundAttachment: "fixed",
+    backgroundSize: '450px',
+    background: 'linear-gradient(#DFB593, #DF7B7D 50%)',
+    
   },
   heroButtons: {
     marginTop: theme.spacing(5),
-    marginBottom: theme.spacing(5)
+    marginBottom: theme.spacing(5),
   },
   spacing: {
     backgroundColor: "black"
+  },
+  btn: {
+    background: 'linear-gradient(#DFB593, #DF7B7D 50%)',
+    borderRadius: 20,
+    border: 5,
+    color: 'white',
+    height:'7.7vh',
+   boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
+  },
+  textBox: {
+    backgroundColor:"rgba(196,196,196,.4)",
+    borderRadius: 20,
   }
 }));
 
@@ -30,11 +45,11 @@ export default function MainPage() {
   return (
     <div>
         <div className={classes.heroContent}>
-          <Container maxWidth="lg" >
+          <Container maxWidth="lg" className = {classes.textBox}>
             <Typography component="h1" variant="h2" align="center" color="white" gutterBottom>
               My Carbon Footprint
             </Typography>
-            <Typography spacing= "10px">
+            <Typography spacing= "10px" b>
             What is carbon footprint?
             Carbon footprint is the amount of carbon dioxide emissions directly or indirectly is generated from a person's activity. 
             The average American produces 20 tons of CO2—three times higher than the world average. Here's your chance to put some of that carbon back in the ground.
@@ -42,22 +57,22 @@ export default function MainPage() {
             <div className={classes.heroButtons}> 
               <Grid container spacing={2} justify="center">
                 <Grid item>
-                  <Button variant="contained" color="primary" href="/quiz">
+                  <Button variant="contained" className = {classes.btn} href="/quiz">
                     In Depth Analysis
                   </Button>
                   </Grid>
                 <Grid item>
-                  <Button variant="contained" color="primary" href="/carbon-estimation">
+                  <Button variant="contained" className = {classes.btn} href="/carbon-estimation">
                     Assestment
                   </Button>
                 </Grid>
                 <Grid item>
-                  <Button variant="contained" color="primary" href="/login">
+                  <Button variant="contained" className = {classes.btn} href="/login">
                     Login
                   </Button>
                   </Grid>
                   <Grid item>
-                  <Button variant="contained" color="primary" href="/register">
+                  <Button variant="contained" className = {classes.btn} href="/register">
                     Signup 
                   </Button>
                   </Grid>
