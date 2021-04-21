@@ -33,7 +33,7 @@ function Header(props){
       const handleClose = () => {
         setAnchorEl(null);
       };
-      const handelLogout = () =>{
+      const handleLogout = () =>{
         window.localStorage.clear();
         props.setToken('');
       }
@@ -48,18 +48,21 @@ function Header(props){
                     <Button color="inherit" href="/home" >Home</Button></div>
                     <div><Button color="inherit" href="/quiz">Quizzes</Button></div>
                     <div><Button color="inherit" href="/carbon-estimation">Compare Emissions</Button></div>
-                    <Button color="inherit" href="/news">Climate News</Button>
+                    <Button color="inherit" href="/climate-news">Climate News</Button>
                     </Menu>
                     </IconButton> 
                     <Typography variant="h6" className={classes.title}>
                         My Carbon Tracker
                     </Typography>
-                    <Button color="inherit" href="/login">
+                    { (props.userToken === '') ?
+                      <Button color="inherit" href="/login">
                         Login
-                    </Button>
-                    <Button color="inherit" onClick = {handelLogout} href="/main">
+                      </Button>
+                    :
+                      <Button color="inherit" onClick = {handleLogout} href = "/">
                         Logout
-                    </Button>
+                      </Button>
+                    }
                 </Toolbar>
             </AppBar>
         </div>
