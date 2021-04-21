@@ -61,7 +61,7 @@ function FootprintQuiz(props) {
     const submitTransportationEmissions = () => {
         let totalTransportEmissions = distances.reduce((accum,curr)=>{
             const {type,distance} = curr
-            const tripEmissions = transport[type]*distance
+            const tripEmissions = transport[type]*distance*1609.34
             return accum + tripEmissions
         },0)
         //totalTransportEmissions = Math.round(totalTransportEmissions)

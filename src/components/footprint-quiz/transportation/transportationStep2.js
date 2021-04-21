@@ -33,7 +33,7 @@ export default function(props){
     return(
         <div>
             <Box fontWeight="fontWeightBold" fontSize="h6.fontSize" letterSpacing={2} style={{color:'#2E4089', padding:30}}>
-                How many meters did you travel in ...
+                How many miles did you travel by ...
             </Box>            
             {modesOfTransport.train && <TextField style={{margin:20}} id='trainDistance' label='Train' type="number" InputLabelProps={{shrink: true,}} variant="outlined"  value={trainDistance} onChange={(e)=>setTrainDistance(e.target.value)}/>}
             {modesOfTransport.bus && <TextField style={{margin:20}} id='busDistance' label='Bus' type="number" InputLabelProps={{shrink: true,}} variant="outlined"  value={busDistance} onChange={(e)=>setBusDistance(e.target.value)}/>}
