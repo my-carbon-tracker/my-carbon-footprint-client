@@ -1,4 +1,4 @@
-import {Container, Typography, Card, Grid} from '@material-ui/core/';
+import {Container, Box} from '@material-ui/core/';
 import PrimaryButton from '../../reusable/PrimaryButton'
 import { useState, useEffect } from 'react';
 
@@ -26,9 +26,9 @@ function TransportationStep1(props){
     }
     return(
         <Container maxWidth="sm">
-            <Typography variant="h5" style={{color:'white', padding:30}}>
+            <Box fontWeight="fontWeightBold" fontSize="h6.fontSize" letterSpacing={2} style={{color:'#2E4089', padding:30}}>
                 What mode(s) of transport did you take?
-            </Typography>
+            </Box>
             <PrimaryButton selected={train} onClick={()=>setTrain(train=> !train)} text="Train"/>
             <PrimaryButton selected={bus} onClick={()=>setBus(bus=> !bus)} text="Bus"/>
             {/* <PrimaryButton selected={fossilFueledCar} onClick={()=>setFossilFueledCar(fossilFueledCar=> !fossilFueledCar)} text="Fossil Fueled Car"/> */}

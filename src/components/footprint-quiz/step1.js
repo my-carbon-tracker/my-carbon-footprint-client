@@ -1,5 +1,5 @@
 import {useState, useEffect} from 'react';
-import {Container, Typography} from '@material-ui/core/';
+import {Container, Box} from '@material-ui/core/';
 import PrimaryButton from '../reusable/PrimaryButton';
 
 
@@ -27,9 +27,9 @@ function Step1(props){
     return(
         <div className='form group'>
             <Container maxWidth="sm">
-                <Typography variant="h5" style={{color:'white', padding:30}}>
-                    What categories do you want to include into the calculation of your carbon footprint?
-                </Typography>
+                <Box fontWeight="fontWeightBold" fontSize="h6.fontSize" letterSpacing={2} style={{color:'#2E4089', padding:30}}>
+                What categories do you want to include into the calculation of your carbon footprint?
+                </Box>
                 <PrimaryButton selected={foodCategory} onClick={()=>setFood(foodCategory=> !foodCategory)} text="Food"/>
                 <PrimaryButton selected={transportationCategory} onClick={()=>setTransportation(transportationCategory => !transportationCategory)} text="Transportation" />
                 <div style={{padding:30}}>

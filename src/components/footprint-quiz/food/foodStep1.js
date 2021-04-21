@@ -1,5 +1,5 @@
 import {useState, useEffect} from 'react';
-import {Container, Typography} from '@material-ui/core/';
+import {Container, Box} from '@material-ui/core/';
 import PrimaryButton from '../../reusable/PrimaryButton'
 
 function FoodStep1(props){
@@ -102,9 +102,9 @@ function FoodStep1(props){
     }
     return (
         <Container maxWidth="sm">
-            <Typography variant="h5" style={{color:'white', padding:30}}>
+            <Box fontWeight="fontWeightBold" fontSize="h6.fontSize" letterSpacing={2} style={{color:'#2E4089', padding:30}}>
                 What did you eat?
-            </Typography>
+            </Box>
             <PrimaryButton selected={lamb} onClick={()=>setLamb(lamb=> !lamb)} text="Lamb"/>
             <PrimaryButton selected={beef} onClick={()=>setBeef(beef=> !beef)} text="Beef"/>
             <PrimaryButton selected={redMeat} onClick={()=>setRedMeat(redMeat=> !redMeat)} text="Red Meat"/>

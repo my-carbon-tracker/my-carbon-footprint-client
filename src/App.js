@@ -21,16 +21,41 @@ const theme = createMuiTheme({
   
   palette:{
     primary: {
-      main: '#41B898',
-      contrastText: "#fff"
+      main: '#DFB593',
+      contrastText: "#2E4089"
       //mainGradient: "linear-gradient(#157A42,#25DB77)"
       //background: 'linear gradient(#157A42,#25DB77)',
     },
     secondary: {
-      main: '#2E4089',
-      contrastText: "#fff"
+      main: '#96C3BE',
+      contrastText: "#2E4089"
     },
     background: {default:'#41B898'}
+  },
+  overrides:{
+    MuiOutlinedInput: {
+      root: {
+        "&:hover:not($disabled):not($focused):not($error) $notchedOutline": {
+          borderColor: "#DF7C78",
+          // Reset on touch devices, it doesn't add specificity
+          "@media (hover: none)": {
+            borderColor: "#DF7C78"
+          }
+        },
+        "&$focused $notchedOutline": {
+          borderColor: "#DF7C78",
+          borderWidth: 1
+        }
+      }
+    },
+    MuiFormLabel: {
+      root: {
+         "&$focused": {
+            color: "#2E4089"
+         },
+         color: "#2E4089"
+      }
+    }
   }
 })
 //style={{ background: theme.palette.primary.mainGradient }}
