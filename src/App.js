@@ -5,7 +5,7 @@ import Home from './components/Home';
 import FootprintQuiz from "./components/footprint-quiz/footprint-quiz";
 import Login from "./components/Login"
 import Signup from "./components/Signup"
-import GetUserInfo from "./components/carbonEstimation";
+import GetUserInfo from "./components/estimation-quiz/carbonEstimation";
 import Header from "./components/Header";
 import MainPage from "./components/main";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -20,7 +20,7 @@ import { EmissionProvider } from './contexts/emissionContext';
 import { UserNameProvider } from './contexts/usernameContext';
 
 const theme = createMuiTheme({
-  
+  //#DFB593 dark pinkish
   palette:{
     primary: {
       main: '#DFB593',
@@ -32,7 +32,7 @@ const theme = createMuiTheme({
       main: '#96C3BE',
       contrastText: "#2E4089"
     },
-    background: {default:'#41B898'}
+    background: {default:'#DFB593'}
   },
   overrides:{
     MuiOutlinedInput: {
@@ -56,6 +56,22 @@ const theme = createMuiTheme({
             color: "#2E4089"
          },
          color: "#2E4089"
+      }
+    },
+    MuiMenuItem: { // For ListItem, change this to MuiListItem
+      root: {
+        "&$selected": {       // this is to refer to the prop provided by M-UI
+          backgroundColor: '#83bcc4', // updated backgroundColor
+        },
+        "&:hover":{
+          backgroundColor: '#83bcc43',
+        },
+        color:"#2E4089"
+      },
+    },
+    MuiPaper: {
+      root: {
+        backgroundColor: '#96C3BE'
       }
     }
   }
@@ -94,7 +110,7 @@ function App() {
             <Home token={token}/>
           </Route>
           <Route path="/carbon-estimation">
-          <GetUserInfo token={token}/>
+            <GetUserInfo token={token}/>
           </Route>
           <Route path="/quiz">
             <FootprintQuiz token={token}/>
