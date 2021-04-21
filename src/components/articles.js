@@ -1,4 +1,4 @@
-// import ClimateNews from "./getArticles";
+import { getArticles } from "./getArticles";
 import React from 'react';
 import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
@@ -75,14 +75,11 @@ export default function Articles() {
   const [sixUrl, setSixUrl] = React.useState();
   const [sixImage, setSixImage] = React.useState();
 
-    fetch(`https://api.nytimes.com/svc/search/v2/articlesearch.json?q=climate&api-key=6OkBeVyUZAriSTuQI8y3Ls8ZAJJhTVGw`,{
-      method:'GET',
-      headers:{
-        "Accept": "application/json",
-      }
-   })
-    .then(response => response.json())
+  React.useEffect(() => { 
+    let mounted = true;
+    getArticles()
     .then((article) => {
+      if(mounted) {
       setFirstAbstract(article.response.docs[0].abstract);
       setFirstHeadline(article.response.docs[0].headline.main);
       setFirstUrl(article.response.docs[0].web_url);
@@ -93,10 +90,10 @@ export default function Articles() {
       setSecondHeadline(article.response.docs[1].headline.main);
       setSecondUrl(article.response.docs[1].web_url);
       setSecondImage(tag+article.response.docs[1].multimedia[0].url);
-      setThirdAbstract(article.response.docs[3].abstract);
-      setThirdHeadline(article.response.docs[3].headline.main);
-      setThirdUrl(article.response.docs[3].web_url);
-      setThirdImage(tag+article.response.docs[3].multimedia[0].url);
+      setThirdAbstract(article.response.docs[2].abstract);
+      setThirdHeadline(article.response.docs[2].headline.main);
+      setThirdUrl(article.response.docs[2].web_url);
+      setThirdImage(tag+article.response.docs[2].multimedia[0].url);
       setFourthAbstract(article.response.docs[4].abstract);
       setFourthHeadline(article.response.docs[4].headline.main);
       setFourthUrl(article.response.docs[4].web_url);
@@ -109,8 +106,19 @@ export default function Articles() {
       setSixHeadline(article.response.docs[6].headline.main);
       setSixUrl(article.response.docs[6].web_url);
       setSixImage(tag+article.response.docs[6].multimedia[0].url);
+      }
     })
-    .catch((err) => console.log("error"))
+    return () => mounted = false;
+  }, [])
+  //   fetch(`https://api.nytimes.com/svc/search/v2/articlesearch.json?q=climate&api-key=6OkBeVyUZAriSTuQI8y3Ls8ZAJJhTVGw`,{
+  //     method:'GET',
+  //     headers:{
+  //       "Accept": "application/json",
+  //     }
+  //  })
+  //   .then(response => response.json())
+    
+    // .catch((err) => console.log("error"))
 
   return (
     <React.Fragment>
