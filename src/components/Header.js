@@ -1,4 +1,3 @@
-// import earthIcon from '../images/earth.svg'
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar';
@@ -9,6 +8,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import React from 'react';
+import Image from '../images/Logo.png';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -51,6 +51,9 @@ function Header(props){
                     <Button color="inherit" href="/climate-news">Climate News</Button>
                     </Menu>
                     </IconButton> 
+                    <Typography> 
+                    <img src={Image} height="50" width="50" align="center" />
+                    </Typography>
                     <Typography variant="h6" className={classes.title}>
                         My Carbon Tracker
                     </Typography>
