@@ -32,16 +32,14 @@ function FootprintQuiz(props) {
 
 
     const submitFoodEmissions = () => {
-        let totalFoodEmissions = arrFoodServings.reduce((accum, curr)=>{
+        let filteredFoodArr = arrFoodServings.filter((item)=>item.servings)
+        let totalFoodEmissions = filteredFoodArr.reduce((accum, curr)=>{
             const {name, servings} = curr
             const itemEmissions = food[name].emissionsPerServing * servings
+            curr.emissions = itemEmissions
             return accum + itemEmissions
         },0)
 
-        let filteredFoodArr = arrFoodServings.filter((item)=>item.servings)
-        console.log(JSON.stringify(filteredFoodArr))
-        //rounding to integer for now because database needs to be changed to take in a float/decimal
-        //totalFoodEmissions = Math.round(totalFoodEmissions)
         fetch(`http://localhost:3000/food/logFood`,{
             method:'POST',
             headers:{
@@ -63,7 +61,7 @@ function FootprintQuiz(props) {
     const submitTransportationEmissions = () => {
         let totalTransportEmissions = distances.reduce((accum,curr)=>{
             const {type,distance} = curr
-            const tripEmissions = transport[type]*distance
+            const tripEmissions = transport[type]*distance*1609.34
             return accum + tripEmissions
         },0)
         //totalTransportEmissions = Math.round(totalTransportEmissions)
@@ -95,7 +93,8 @@ function FootprintQuiz(props) {
     }
 
     return (
-        <div style={{background: 'linear-gradient(#41B898, #84C57F)', height:'100vh'}}>
+        // <div style={{background: 'linear-gradient(#41B898, #84C57F)', height:'100vh'}}>
+        <div style={{background: 'linear-gradient(#DFB593, #DF7B7D)', height:'100vh'}}>
             <form onSubmit={submitEmissions} style={{textAlign:'center', color:'white'}}> 
                 <Step1 currentStep={currentStep} setCurrentStep={setCurrentStep} categories={categories} setCategories={setCategories}/>
                 <FoodStep1 currentStep={currentStep} setCurrentStep={setCurrentStep} setFoodItems={setFoodItems}/>

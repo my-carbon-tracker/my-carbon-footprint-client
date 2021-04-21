@@ -1,4 +1,4 @@
-import { Container, Typography } from "@material-ui/core/";
+import { Container, Box } from "@material-ui/core/";
 
 function TotalEmissions(props){
     const {totalEmissions, currentStep} = props
@@ -7,9 +7,12 @@ function TotalEmissions(props){
     }
     return(
         <Container maxWidth="sm">
-            <Typography variant="h5" style={{color:'white', padding:50}}>
-                Your Total Emissions: {totalEmissions} kilos of CO2 
-            </Typography>
+            <Box fontWeight="fontWeightBold" fontSize="h6.fontSize" letterSpacing={2} style={{color:'#2E4089', padding:30}}>
+                Your Total Emissions: 
+                <div>
+                {totalEmissions} kilos of CO2 
+                </div>
+            </Box>
         </Container>
     )
 }

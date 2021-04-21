@@ -1,5 +1,5 @@
 import {useState, useEffect} from 'react';
-import {Container, Typography, Grid, TextField} from '@material-ui/core/';
+import {Container, Grid, TextField, Box} from '@material-ui/core/';
 import PrimaryButton from '../../reusable/PrimaryButton'
 import { makeStyles, createStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles(theme =>
@@ -11,7 +11,7 @@ const useStyles = makeStyles(theme =>
   );
 
 function FoodStep2(props){
-    const classes = useStyles();
+    //const classes = useStyles();
 
     const {currentStep, setCurrentStep, setArrFoodServings, categories, foodItems} = props
     const [lambServings, setLambServings] = useState(0)
@@ -105,7 +105,7 @@ function FoodStep2(props){
                                 shrink: true,
                             }}
                             variant="outlined"
-                            color="secondary"
+                            
                             //this would work if values and onChange can be customized somehow
                             //value={item.servings} 
                             //onChange={(e)=>{item.setServings(e.target.value)}}
@@ -118,34 +118,34 @@ function FoodStep2(props){
     }
     return(
         <Container maxWidth="sm">
-                    <Typography variant="h5" style={{color:'white', padding:30}}>
-                        How many servings did you have?
-                    </Typography>
+                <Box fontWeight="fontWeightBold" fontSize="h6.fontSize" letterSpacing={2} style={{color:'#2E4089', padding:30}}>
+                    How many servings did you have?
+                </Box>
                     {/* display="flex" flexDirection="column" p={1} m={1} */}
                     <Grid container spacing={5}>
                         <Grid item xs>
-                        {foodItems.lamb && <TextField style={{margin:20}} id='lamb' label='Lamb' type="number" InputLabelProps={{shrink: true,}} variant="outlined" color="secondary" value={lambServings} onChange={(e)=>setLambServings(e.target.value)}/>}
-                        {foodItems.beef && <TextField style={{margin:20}} id='beef' label='Beef' type="number" InputLabelProps={{shrink: true,}} variant="outlined" color="secondary" value={beefServings} onChange={(e)=>setBeefServings(e.target.value)}/>}
-                        {foodItems.redMeat && <TextField style={{margin:20}} id='redMeat' label='Red Meat' type="number" InputLabelProps={{shrink: true,}} variant="outlined" color="secondary" value={redMeatServings} onChange={(e)=>setRedMeatServings(e.target.value)}/>}
-                        {foodItems.cheese && <TextField style={{margin:20}} id='cheese' label='Cheese' type="number" InputLabelProps={{shrink: true,}} variant="outlined" color="secondary" value={cheeseServings} onChange={(e)=>setCheeseServings(e.target.value)}/>}
-                        {foodItems.pork && <TextField style={{margin:20}} id='pork' label='Pork' type="number" InputLabelProps={{shrink: true,}} variant="outlined" color="secondary" value={porkServings} onChange={(e)=>setPorkServings(e.target.value)}/>}
-                        {foodItems.tukey && <TextField style={{margin:20}} id='turkey' label='Turkey' type="number" InputLabelProps={{shrink: true,}} variant="outlined" color="secondary" value={turkeyServings} onChange={(e)=>setTurkeyServings(e.target.value)}/>}
-                        {foodItems.chicken && <TextField style={{margin:20}} id='chicken' label='Chicken' type="number" InputLabelProps={{shrink: true,}} variant="outlined" color="secondary" value={chickenServings} onChange={(e)=>setChickenServings(e.target.value)}/>}
-                        {foodItems.whiteMeat && <TextField style={{margin:20}} id='whiteMeat' label='White Meat' type="number" InputLabelProps={{shrink: true,}} variant="outlined" color="secondary" value={whiteMeatServings} onChange={(e)=>setWhiteMeatServings(e.target.value)}/>}
-                        {foodItems.tuna && <TextField style={{margin:20}} id='tuna' label='Tuna' type="number" InputLabelProps={{shrink: true,}} variant="outlined" color="secondary" value={tunaServings} onChange={(e)=>setTunaServings(e.target.value)}/>}
-                        {foodItems.fish && <TextField style={{margin:20}} id='fish' label='Fish' type="number" InputLabelProps={{shrink: true,}} variant="outlined" color="secondary" value={fishServings} onChange={(e)=>setFishServings(e.target.value)}/>}
-                        {foodItems.eggs && <TextField style={{margin:20}} id='eggs' label='Eggs' type="number" InputLabelProps={{shrink: true,}} variant="outlined" color="secondary" value={eggsServings} onChange={(e)=>setEggsServings(e.target.value)}/>}
-                        {foodItems.potatoes && <TextField style={{margin:20}} id='potatoes' label='Potatoes' type="number" InputLabelProps={{shrink: true,}} variant="outlined" color="secondary" value={potatoesServings} onChange={(e)=>setPotatoesServings(e.target.value)}/>}
-                        {foodItems.rice && <TextField style={{margin:20}} id='rice' label='Rice' type="number" InputLabelProps={{shrink: true,}} variant="outlined" color="secondary" value={riceServings} onChange={(e)=>setRiceServings(e.target.value)}/>}
-                        {foodItems.nuts && <TextField style={{margin:20}} id='nuts' label='Nuts' type="number" InputLabelProps={{shrink: true,}} variant="outlined" color="secondary" value={nutsServings} onChange={(e)=>setNutsServings(e.target.value)}/>}
-                        {foodItems.beans && <TextField style={{margin:20}} id='beans' label='Beans' type="number" InputLabelProps={{shrink: true,}} variant="outlined" color="secondary" value={beansServings} onChange={(e)=>setBeansServings(e.target.value)}/>}
-                        {foodItems.tofu && <TextField style={{margin:20}} id='tofu' label='Tofu' type="number" InputLabelProps={{shrink: true,}} variant="outlined" color="secondary" value={tofuServings} onChange={(e)=>setTofuServings(e.target.value)}/>}
-                        {foodItems.vegetables && <TextField style={{margin:20}} id='vegetables' label='Vegetables' type="number" InputLabelProps={{shrink: true,}} variant="outlined" color="secondary" value={vegetablesServings} onChange={(e)=>setVegetablesServings(e.target.value)}/>}
-                        {foodItems.milk && <TextField style={{margin:20}} id='milk' label='Milk' type="number" InputLabelProps={{shrink: true,}} variant="outlined" color="secondary" value={milkServings} onChange={(e)=>setMilkServings(e.target.value)}/>}
-                        {foodItems.fruit && <TextField style={{margin:20}} id='fruit' label='Fruit' type="number" InputLabelProps={{shrink: true,}} variant="outlined" color="secondary" value={fruitServings} onChange={(e)=>setFruitServings(e.target.value)}/>}
-                        {foodItems.lentils && <TextField style={{margin:20}} id='lentils' label='Lentils' type="number" InputLabelProps={{shrink: true,}} variant="outlined" color="secondary" value={lentilsServings} onChange={(e)=>setLentilsServings(e.target.value)}/>}
-                        {foodItems.coffee && <TextField style={{margin:20}} id='coffee' label='Coffee' type="number" InputLabelProps={{shrink: true,}} variant="outlined" color="secondary" value={coffeeServings} onChange={(e)=>setCoffeeServings(e.target.value)}/>}
-                        {foodItems.chocolate && <TextField style={{margin:20}} id='chocolate' label='Chocolate' type="number" InputLabelProps={{shrink: true,}} variant="outlined" color="secondary" value={chocolateServings} onChange={(e)=>setChocolateServings(e.target.value)}/>}
+                        {foodItems.lamb && <TextField style={{margin:20}} id='lamb' label='Lamb' type="number" InputLabelProps={{shrink: true}} variant="outlined" value={lambServings} onChange={(e)=>setLambServings(e.target.value)}/>}
+                        {foodItems.beef && <TextField style={{margin:20}} id='beef' label='Beef' type="number" InputLabelProps={{shrink: true,}} variant="outlined" value={beefServings} onChange={(e)=>setBeefServings(e.target.value)}/>}
+                        {foodItems.redMeat && <TextField style={{margin:20}} id='redMeat' label='Red Meat' type="number" InputLabelProps={{shrink: true,}} variant="outlined" value={redMeatServings} onChange={(e)=>setRedMeatServings(e.target.value)}/>}
+                        {foodItems.cheese && <TextField style={{margin:20}} id='cheese' label='Cheese' type="number" InputLabelProps={{shrink: true,}} variant="outlined" value={cheeseServings} onChange={(e)=>setCheeseServings(e.target.value)}/>}
+                        {foodItems.pork && <TextField style={{margin:20}} id='pork' label='Pork' type="number" InputLabelProps={{shrink: true,}} variant="outlined" value={porkServings} onChange={(e)=>setPorkServings(e.target.value)}/>}
+                        {foodItems.tukey && <TextField style={{margin:20}} id='turkey' label='Turkey' type="number" InputLabelProps={{shrink: true,}} variant="outlined"  value={turkeyServings} onChange={(e)=>setTurkeyServings(e.target.value)}/>}
+                        {foodItems.chicken && <TextField style={{margin:20}} id='chicken' label='Chicken' type="number" InputLabelProps={{shrink: true,}} variant="outlined"  value={chickenServings} onChange={(e)=>setChickenServings(e.target.value)}/>}
+                        {foodItems.whiteMeat && <TextField style={{margin:20}} id='whiteMeat' label='White Meat' type="number" InputLabelProps={{shrink: true,}} variant="outlined"  value={whiteMeatServings} onChange={(e)=>setWhiteMeatServings(e.target.value)}/>}
+                        {foodItems.tuna && <TextField style={{margin:20}} id='tuna' label='Tuna' type="number" InputLabelProps={{shrink: true,}} variant="outlined"  value={tunaServings} onChange={(e)=>setTunaServings(e.target.value)}/>}
+                        {foodItems.fish && <TextField style={{margin:20}} id='fish' label='Fish' type="number" InputLabelProps={{shrink: true,}} variant="outlined"  value={fishServings} onChange={(e)=>setFishServings(e.target.value)}/>}
+                        {foodItems.eggs && <TextField style={{margin:20}} id='eggs' label='Eggs' type="number" InputLabelProps={{shrink: true,}} variant="outlined"  value={eggsServings} onChange={(e)=>setEggsServings(e.target.value)}/>}
+                        {foodItems.potatoes && <TextField style={{margin:20}} id='potatoes' label='Potatoes' type="number" InputLabelProps={{shrink: true,}} variant="outlined"  value={potatoesServings} onChange={(e)=>setPotatoesServings(e.target.value)}/>}
+                        {foodItems.rice && <TextField style={{margin:20}}  id='rice' label='Rice' type="number" InputLabelProps={{shrink: true,}} variant="outlined"  value={riceServings} onChange={(e)=>setRiceServings(e.target.value)}/>}
+                        {foodItems.nuts && <TextField style={{margin:20}} id='nuts' label='Nuts' type="number" InputLabelProps={{shrink: true,}} variant="outlined"  value={nutsServings} onChange={(e)=>setNutsServings(e.target.value)}/>}
+                        {foodItems.beans && <TextField style={{margin:20}} id='beans' label='Beans' type="number" InputLabelProps={{shrink: true,}} variant="outlined"  value={beansServings} onChange={(e)=>setBeansServings(e.target.value)}/>}
+                        {foodItems.tofu && <TextField style={{margin:20}} id='tofu' label='Tofu' type="number" InputLabelProps={{shrink: true,}} variant="outlined"  value={tofuServings} onChange={(e)=>setTofuServings(e.target.value)}/>}
+                        {foodItems.vegetables && <TextField style={{margin:20}} id='vegetables' label='Vegetables' type="number" InputLabelProps={{shrink: true,}} variant="outlined"  value={vegetablesServings} onChange={(e)=>setVegetablesServings(e.target.value)}/>}
+                        {foodItems.milk && <TextField style={{margin:20}} id='milk' label='Milk' type="number" InputLabelProps={{shrink: true,}} variant="outlined"  value={milkServings} onChange={(e)=>setMilkServings(e.target.value)}/>}
+                        {foodItems.fruit && <TextField style={{margin:20}} id='fruit' label='Fruit' type="number" InputLabelProps={{shrink: true,}} variant="outlined"  value={fruitServings} onChange={(e)=>setFruitServings(e.target.value)}/>}
+                        {foodItems.lentils && <TextField style={{margin:20}} id='lentils' label='Lentils' type="number" InputLabelProps={{shrink: true,}} variant="outlined"  value={lentilsServings} onChange={(e)=>setLentilsServings(e.target.value)}/>}
+                        {foodItems.coffee && <TextField style={{margin:20}} id='coffee' label='Coffee' type="number" InputLabelProps={{shrink: true,}} variant="outlined"  value={coffeeServings} onChange={(e)=>setCoffeeServings(e.target.value)}/>}
+                        {foodItems.chocolate && <TextField style={{margin:20}} id='chocolate' label='Chocolate' type="number" InputLabelProps={{shrink: true,}} variant="outlined"  value={chocolateServings} onChange={(e)=>setChocolateServings(e.target.value)}/>}
                         </Grid>
                     </Grid>
                     <div style={{padding:30}}>

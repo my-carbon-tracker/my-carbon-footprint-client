@@ -8,7 +8,7 @@ import Image from '../images/earth.png';
 
 const useStyles = makeStyles((theme) => ({
   heroContent: {
-    padding: theme.spacing(8, 10, 15),
+    padding: theme.spacing(8, 10, 30),
     backgroundImage: `url(${Image})`,
     backgroundRepeat: "no-repeat",
     backgroundPosition: "center center",
