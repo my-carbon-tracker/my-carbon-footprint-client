@@ -10,13 +10,12 @@ import Logo from '../images/Logo.png';
 const useStyles = makeStyles((theme) => ({
   heroContent: {
     padding: theme.spacing(8, 10, 30),
-    backgroundImage: `url(${Logo})`,
+    backgroundImage: `url(https://res.cloudinary.com/dd6dpafkm/image/upload/v1618611186/ice_signin_gheuo2.jpg)`,
     backgroundRepeat: "no-repeat",
     backgroundPosition: "center center",
+    backgroungSize: "cover",
     backgroundAttachment: "fixed",
-    backgroundSize: '450px',
-    background: 'linear-gradient(#DFB593, #DF7B7D 50%)',
-    
+    background: 'linear-gradient(#DFB593, #DF7B7D 50%)',  
   },
   heroButtons: {
     marginTop: theme.spacing(5),
