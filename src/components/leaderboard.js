@@ -1,6 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import Table from '@material-ui/core/Table';
+import {Table, Box} from '@material-ui/core/';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
@@ -62,7 +62,9 @@ export default function LeaderBoard() {
 
   return (
     <React.Fragment>
-      <h1>Leader Board</h1>
+      <Box fontWeight="fontWeightBold" fontSize="h6.fontSize" letterSpacing={2} style={{color:'#2E4089', paddingTop:20}}>
+        Leader Board
+      </Box>
       <Table size="small" style={{backgroundColor: "#B4E6CD"}}>
         <TableHead>
           <TableRow>

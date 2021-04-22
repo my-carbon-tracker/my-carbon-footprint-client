@@ -1,4 +1,5 @@
 import React from "react";
+import { Box, Grid, Paper } from '@material-ui/core';
 import { AiFillCar, AiOutlineSkin} from "react-icons/ai";
 import { GiTreeGrowth, GiSolarPower, GiElectric, GiMilkCarton, GiCow } from "react-icons/gi";
 import { FaShower, FaCarrot, FaAward } from "react-icons/fa";
@@ -77,8 +78,10 @@ const handleLED = (e) => {
 
     return (
         <div style={{maxHeight: "300px", overflow:"hidden auto"}}>
-            <h1>Total CO2 Emission saved: {totalOffset}</h1>
-            <table className="take-action" style={{backgroundColor: "#B4E6CD"}}>
+            <Box fontWeight="fontWeightBold" fontSize="h6.fontSize" letterSpacing={2} style={{color:'#2E4089', paddingTop:20}}>
+                Total CO2 Emissions saved: {totalOffset}
+            </Box>
+            <table className="take-action" style={{backgroundColor: "#B4E6CD", width:'100%'}}>
                 <thead>
                     <tr>
                         <th>

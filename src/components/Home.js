@@ -97,8 +97,7 @@ function Home (props) {
                 <Pledges />
               </Grid>
 
-              <Grid item lg={12} md={12} xl={12} xs={12} >
-                {/* Leardboard*/}
+              <Grid item lg={6} md={6} xl={12} xs={12} >
                 <LeaderBoard />
               </Grid>
 
