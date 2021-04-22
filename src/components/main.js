@@ -51,9 +51,9 @@ export default function MainPage() {
               My Carbon Footprint
             </Typography>
             <Typography spacing= "10px" >
-            <strong>What is carbon footprint? </strong>
+            <strong>What is A Carbon Footprint? </strong>
             <div></div>
-            Carbon footprint is a form of measurement that expresses the amount of carbon dioxide generated through the burring of fossil fuels as the result of human activities.
+            A carbon footprint is a form of measurement that expresses the amount of carbon dioxide generated through the burring of fossil fuels as the result of human activities.
             The average American produces 20 tons of CO2, three times higher than the World's average. Here's your chance to put some of that carbon back in the ground.
             </Typography>
             <div className={classes.heroButtons}> 
