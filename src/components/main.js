@@ -37,7 +37,6 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor:"rgba(196,196,196,.3)",
     borderRadius: 20,
     padding: '10px 10px 15px',
-    textAlign:'center'
   }
 }));
 
@@ -48,13 +47,14 @@ export default function MainPage() {
     <div>
         <div className={classes.heroContent}>
           <Container maxWidth="lg" className = {classes.textBox}>
-            <Typography component="h1" variant="h2" align="center" color="white" gutterBottom>
+            <Typography component="h1" variant="h2" align="center" gutterBottom>
               My Carbon Footprint
             </Typography>
             <Typography spacing= "10px" >
-            What is carbon footprint?
-            Carbon footprint is the amount of carbon dioxide emissions directly or indirectly is generated from a person's activity. 
-            The average American produces 20 tons of CO2—three times higher than the world average. Here's your chance to put some of that carbon back in the ground.
+            <strong>What is carbon footprint? </strong>
+            <div></div>
+            Carbon footprint is a form of measurement that expresses the amount of carbon dioxide generated through the burring of fossil fuels as the result of human activities.
+            The average American produces 20 tons of CO2, three times higher than the World's average. Here's your chance to put some of that carbon back in the ground.
             </Typography>
             <div className={classes.heroButtons}> 
               <Grid container spacing={2} justify="center">
@@ -89,13 +89,13 @@ export default function MainPage() {
       <img src={Logo} height="10%" width="10%"/>
       <Container style= {{color:"white", wordSpacing: 3, marginTop: 8, textAlign:'left'}} >
         The Climate Clock shows two numbers. The first, in red, is our deadline, the time we have left to take decisive action to keep warming under the 1.5°C threshold, 
-        a count down of how long it will take, at current rates of emissions, to burn through our carbon budget. 
-        The second number, in green, is the growing % of the world’s energy currently supplied from renewable sources. 
-        Our lifeline. The goal is to get our lifeline to 100% before our deadline reaches 0.
+        a count down of how long it will take, at our current rates of emissions, to burn through our carbon budget. 
+        The second number, in green, is the growing percentage of the world’s energy currently supplied by renewable sources,
+        our lifeline. The goal is to get our lifeline to 100% before our deadline reaches 0.
       </Container>
       <Container style= {{color:"white", wordSpacing: 3, marginTop: 8,textAlign:'left',}}>
-      Founded with the mission of helping us reach our lifeline before the dealine by showing that there is great potential for the collective actions of many individuals worldwide 
-      to reduce global warming by making changes in their daily and annual activities.
+     Founded by our mission of helping us reach our lifeline before the deadline by demonstrating that there exist great potential for 
+     the collective actions of individuals worldwide to make an impact and reduce global warming by making changes in our daily life
       </Container>
       </div>
         <footer>
