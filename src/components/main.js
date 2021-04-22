@@ -9,13 +9,14 @@ import Logo from '../images/Logo.png';
 
 const useStyles = makeStyles((theme) => ({
   heroContent: {
-    padding: theme.spacing(8, 10, 30),
+    padding: theme.spacing(8, 8, 16),
     backgroundImage: `url(https://res.cloudinary.com/dd6dpafkm/image/upload/v1618611186/ice_signin_gheuo2.jpg)`,
     backgroundRepeat: "no-repeat",
     backgroundPosition: "center center",
     backgroungSize: "cover",
     backgroundAttachment: "fixed",
-    background: 'linear-gradient(#DFB593, #DF7B7D 50%)',  
+    background: 'linear-gradient(#DFB593, #DF7B7D 50%)',
+    color:'white',
   },
   heroButtons: {
     marginTop: theme.spacing(5),
@@ -33,8 +34,10 @@ const useStyles = makeStyles((theme) => ({
    boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
   },
   textBox: {
-    backgroundColor:"rgba(196,196,196,.4)",
+    backgroundColor:"rgba(196,196,196,.3)",
     borderRadius: 20,
+    padding: '10px 10px 15px',
+    textAlign:'center'
   }
 }));
 
@@ -48,7 +51,7 @@ export default function MainPage() {
             <Typography component="h1" variant="h2" align="center" color="white" gutterBottom>
               My Carbon Footprint
             </Typography>
-            <Typography spacing= "10px" b>
+            <Typography spacing= "10px" >
             What is carbon footprint?
             Carbon footprint is the amount of carbon dioxide emissions directly or indirectly is generated from a person's activity. 
             The average American produces 20 tons of CO2—three times higher than the world average. Here's your chance to put some of that carbon back in the ground.
@@ -79,17 +82,18 @@ export default function MainPage() {
               </div>
           </Container>
     </div> 
-    <div className={classes.spacing}>
-      <Typography component="h1" variant="h2" align="center" gutterBottom style= {{color: "white"}}>
+    <div className={classes.spacing} align="center">
+      <Typography component="h1" variant="h2"  gutterBottom style= {{color: "white"}}>
          Our Mission
       </Typography>
-      <Container style= {{color:"white", wordSpacing: 3, marginTop: 8}} >
+      <img src={Logo} height="10%" width="10%"/>
+      <Container style= {{color:"white", wordSpacing: 3, marginTop: 8, textAlign:'left'}} >
         The Climate Clock shows two numbers. The first, in red, is our deadline, the time we have left to take decisive action to keep warming under the 1.5°C threshold, 
         a count down of how long it will take, at current rates of emissions, to burn through our carbon budget. 
         The second number, in green, is the growing % of the world’s energy currently supplied from renewable sources. 
         Our lifeline. The goal is to get our lifeline to 100% before our deadline reaches 0.
       </Container>
-      <Container style= {{color:"white", wordSpacing: 3, marginTop: 8}}>
+      <Container style= {{color:"white", wordSpacing: 3, marginTop: 8,textAlign:'left',}}>
       Founded with the mission of helping us reach our lifeline before the dealine by showing that there is great potential for the collective actions of many individuals worldwide 
       to reduce global warming by making changes in their daily and annual activities.
       </Container>
