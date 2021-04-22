@@ -1,14 +1,8 @@
 import React from "react";
 import XMLParser from 'react-xml-parser';
-import {Pie} from 'react-chartjs-2'; 
 import {Box, TextField, Select, MenuItem} from '@material-ui/core/';
-import { useContext } from 'react';
 import PrimaryButton from '../reusable/PrimaryButton';
 import CarbonEstimationResults from './carbonEstimationResults';
-
-// import { useAverageEmissionContext } from "../contexts/averageEmissionContext";
-//Feature 1: user is presented with a form with 3 values that they must input: location, income and houshold size
-//send data to database:
 
 function GetUserInfo(props){
     //save to db and render in home page 
