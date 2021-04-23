@@ -102,14 +102,8 @@ function Home (props) {
 
             </Grid>
           </Container>
-          <div style={{position:'fixed', bottom:0}}>
-              
+          <div style={{position:'fixed', bottom:0}}>              
           </div>
-          <footer style={{marginTop: 8}}>
-              {/* <div style={{position:'fixed', bottom:0}}> */}
-                  <climate-clock />
-              {/* </div> */}
-              </footer>
         </Box>
         </div>
        
