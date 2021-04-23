@@ -1,10 +1,12 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import Table from '@material-ui/core/Table';
+import {Table, Box} from '@material-ui/core/';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
+import { GiMedallist, GiRibbon } from 'react-icons/gi';
+import { FaMedal } from 'react-icons/fa';
 
 const useStyles = makeStyles((theme) => ({
   seeMore: {
@@ -62,7 +64,9 @@ export default function LeaderBoard() {
 
   return (
     <React.Fragment>
-      <h1>Leader Board</h1>
+      <Box fontWeight="fontWeightBold" fontSize="h6.fontSize" letterSpacing={2} style={{color:'#2E4089', paddingTop:20}}>
+        Leader Board
+      </Box>
       <Table size="small" style={{backgroundColor: "#B4E6CD"}}>
         <TableHead>
           <TableRow>
@@ -74,31 +78,31 @@ export default function LeaderBoard() {
         </TableHead>
         <TableBody>
             <TableRow>
-              <TableCell>1</TableCell>
+              <TableCell><GiMedallist /> 1</TableCell>
               <TableCell>{firstPlaceName}</TableCell>
               <TableCell>{firstPlaceEmissions}</TableCell>
               <TableCell>{firstPlaceGoal}</TableCell>
             </TableRow>
             <TableRow>
-              <TableCell>2</TableCell>
+              <TableCell><FaMedal /> 2</TableCell>
               <TableCell>{secondPlaceName}</TableCell>
               <TableCell>{secondPlaceEmissions}</TableCell>
               <TableCell>{secondPlaceGoal}</TableCell>
             </TableRow>
             <TableRow>
-              <TableCell>3</TableCell>
+              <TableCell><FaMedal /> 3</TableCell>
               <TableCell>{thirdPlaceName}</TableCell>
               <TableCell>{thirdPlaceEmissions}</TableCell>
               <TableCell>{thirdPlaceGoal}</TableCell>
             </TableRow>
             <TableRow>
-              <TableCell>4</TableCell>
+              <TableCell><GiRibbon /> 4</TableCell>
               <TableCell>{fourthPlaceName}</TableCell>
               <TableCell>{fourthPlaceEmissions}</TableCell>
               <TableCell>{fourthPlaceGoal}</TableCell>
             </TableRow>
             <TableRow>
-              <TableCell>5</TableCell>
+              <TableCell><GiRibbon /> 5</TableCell>
               <TableCell>{fifthPlaceName}</TableCell>
               <TableCell>{fifthPlaceEmissions}</TableCell>
               <TableCell>{fifthPlaceGoal}</TableCell>

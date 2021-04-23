@@ -37,11 +37,9 @@ export default function CarbonEstimationResults (props) {
                 </Box>                  
                 <Pie data={chartData}/>
             </div>
-            {/* 
-            Commented out until 500 server err is resolved
             <div style={{margin:20}}>
                 <PrimaryButton type="save" text="Save Results" value="Save" id="savebtn" onClick={handleSave}/>
-            </div> */}
+            </div> 
         </div>
     )
 }

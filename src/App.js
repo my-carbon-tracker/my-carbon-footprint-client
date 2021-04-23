@@ -13,12 +13,12 @@ import FoodEmission from './components/Emissions/foodTable'
 import MapBox from './components/footprint-quiz/transportation/map'
 import { createMuiTheme, ThemeProvider, MuiThemeProvider } from "@material-ui/core/styles";
 import { OffsetProvider } from './contexts/pledgeContext'
-// import ClimateNews from "./components/getArticles";
 import Articles from "./components/articles"
 import { AverageEmissionProvider } from './contexts/averageEmissionContext';
 import { LocationProvider } from './contexts/locationContext';
 import { EmissionProvider } from './contexts/emissionContext';
 import { UserNameProvider } from './contexts/usernameContext';
+import GetMap from './components/map';
 
 const theme = createMuiTheme({
   //#DFB593 dark pinkish
