@@ -8,11 +8,12 @@ export default function FoodEmission(props) {
     const [rows, setRows] = useState([])
     const columns = [
         {field: 'id', headerName: 'ID', width: 70},
-        {field: 'meal', headerName: 'Meal #', width: 120},
+        {field: 'meal', headerName: 'Meal #', width: 75},
         {field: 'name', headerName: 'Food Type', width: 120},
-        {field: 'serving', headerName: 'Servings', width: 120},
+        {field: 'serving', headerName: 'Servings', width: 100},
         {field: 'emission', headerName: 'Emissions', width: 120}
     ]
+    console.log(props.token)
     
     useEffect(() => {
         let id = 0
@@ -47,9 +48,13 @@ export default function FoodEmission(props) {
     }, [props.token])
 
     return (
-        <div style={{height:400, width: '100%', backgroundColor:'white'}}>
-            <DataGrid rows={rows} columns={columns} checkboxSelection />
+        <div style={{display: 'flex'}}>
+            <div style={{height:400, width: '50%', backgroundColor:'white'}}>
+                <DataGrid rows={rows} columns={columns} checkboxSelection />
+            </div>
+            <div style={{width: '50%', height:'200px'}}>
             <EmissionGraph data ={rows}/>
+            </div>
         </div>
     )
 }
