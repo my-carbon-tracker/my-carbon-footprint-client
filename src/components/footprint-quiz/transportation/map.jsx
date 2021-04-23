@@ -47,17 +47,6 @@ export default function MapBox(){
                 setMark(mark.push(pnt))
             }
         })
-        
-        //     data2.features.forEach((marker,idx) => {
-        //         const mark = document.createElement('button');
-        //         mark.innerHTML = "B?"
-        //         mark.className = 'marker';
-        //         mark.addEventListener('click', () => calcDistance(marker.geometry))
-        //         mark.setAttribute("id", idx)
-        //         new mapboxgl.Marker(mark)
-        //                     .setLngLat(marker.geometry.coordinates)
-        //                     .addTo(mapContainer.current)
-        //         })
     }
 
     const calcDistance = (geo) => {

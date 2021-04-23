@@ -45,7 +45,7 @@ export default function(props){
             {modesOfTransport.boat && <TextField style={{margin:20}} id='boatDistance' label='Boat' type="number" InputLabelProps={{shrink: true,}} variant="outlined"  value={boatDistance} onChange={(e)=>setBoatDistance(e.target.value)}/>}
             {modesOfTransport.plane && <TextField style={{margin:20}} id='planeDistance' label='Plane' type="number" InputLabelProps={{shrink: true,}} variant="outlined"  value={planeDistance} onChange={(e)=>setPlaneDistance(e.target.value)}/>}
             <div style={{padding:30}}>
-            <MapBox/>
+            {/* <MapBox/> */}
                 <PrimaryButton onClick={()=>setCurrentStep('TransportationStep1')} text="Previous"/>
                 <PrimaryButton type="submit" text="Submit"/>
             </div>
