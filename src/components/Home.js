@@ -74,7 +74,7 @@ function Home (props) {
               <Divider orientation="vertical" flexItem style={{marginRight:"-1px"}} />
               <Grid item lg={4} sm={4} xl={4} xs={4}>
                 <Box className={classes.text} fontWeight="fontWeightMedium" fontSize={16} letterSpacing={2} style={{color:'#2E4089'}}>
-                {totalEmission} CO2 Tons/Year
+                {totalEmission} kg CO2/Week
                 </Box>
                 <Box className={classes.text} fontWeight="fontWeightBold" fontSize={16} letterSpacing={2} style={{color:'#2E4089', paddingTop:10, paddingBottom:10}}>
                   Emissions Goal

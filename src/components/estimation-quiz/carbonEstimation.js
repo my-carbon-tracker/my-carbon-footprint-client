@@ -38,8 +38,6 @@ function GetUserInfo(props){
         .then(res => res.text())
         .then(results => {
             var xml = new XMLParser().parseFromString(results); 
-            console.log(xml)
-            //get data objs
             let foodEmission = xml.children[264]['value'];
             let housingEmission = xml.children[263]['value'];
             let transportationEmission = xml.children[262]['value'];
@@ -52,7 +50,7 @@ function GetUserInfo(props){
                 labels: ["Food","Housing","Transportation", "Goods/Products", "Services"],
                 datasets: [{
                     data: [foodEmission, housingEmission, transportationEmission, goodsEmission, serviceEmission],
-                    backgroundColor: ['red','blue','green','yellow','pink']
+                    backgroundColor: ['#7D9ECA','#A8CBF0','#5CABFF','#467EAF','#334D84']
                 }]
             })
         })

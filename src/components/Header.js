@@ -8,7 +8,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import React from 'react';
-import Image from '../images/Logo.png';
+import Image from '../images/pinkLogo.png';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -53,7 +53,7 @@ function Header(props){
                     </Menu>
                     </IconButton> 
                     <Typography> 
-                    <img src={Image} height="50" width="50" align="center" />
+                    <p><a href="/"><img src={Image} height="50" width="50" align="center" /></a></p>
                     </Typography>
                     <Typography variant="h6" className={classes.title}>
                         My Carbon Tracker

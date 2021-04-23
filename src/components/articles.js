@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
     marginRight: theme.spacing(2),
   },
   heroContent: {
-    backgroundColor: theme.palette.background.paper,
+    backgroundColor: "#95C2BD",
     padding: theme.spacing(8, 0, 6),
   },
   heroButtons: {
@@ -27,6 +27,7 @@ const useStyles = makeStyles((theme) => ({
     paddingBottom: theme.spacing(8),
   },
   card: {
+    backgroundColor: "#95C2BD",
     height: '100%',
     display: 'flex',
     flexDirection: 'column',
@@ -92,10 +93,10 @@ export default function Articles() {
       setThirdHeadline(article.response.docs[2].headline.main);
       setThirdUrl(article.response.docs[2].web_url);
       setThirdImage(tag+article.response.docs[2].multimedia[0].url);
-      setFourthAbstract(article.response.docs[4].abstract);
-      setFourthHeadline(article.response.docs[4].headline.main);
-      setFourthUrl(article.response.docs[4].web_url);
-      setFourthImage(tag+article.response.docs[4].multimedia[0].url);
+      setFourthAbstract(article.response.docs[3].abstract);
+      setFourthHeadline(article.response.docs[3].headline.main);
+      setFourthUrl(article.response.docs[3].web_url);
+      setFourthImage(tag+article.response.docs[3].multimedia[0].url);
       setFifthAbstract(article.response.docs[5].abstract);
       setFifthHeadline(article.response.docs[5].headline.main);
       setFifthUrl(article.response.docs[5].web_url);
@@ -108,22 +109,13 @@ export default function Articles() {
     })
     return () => mounted = false;
   }, [])
-  //   fetch(`https://api.nytimes.com/svc/search/v2/articlesearch.json?q=climate&api-key=6OkBeVyUZAriSTuQI8y3Ls8ZAJJhTVGw`,{
-  //     method:'GET',
-  //     headers:{
-  //       "Accept": "application/json",
-  //     }
-  //  })
-  //   .then(response => response.json())
-    
-    // .catch((err) => console.log("error"))
 
   return (
     <React.Fragment>
       <CssBaseline />
       <main>
         <div className={classes.heroContent}>
-          <Container maxWidth="sm">
+          <Container maxWidth="sm" >
             <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
               Climate News
             </Typography>
@@ -259,11 +251,7 @@ export default function Articles() {
           </Grid>
         </Container>
       </main>
-      {/* Footer */}
-      <footer>
-        <climate-clock />
-      </footer>
-      {/* End footer */}
+
     </React.Fragment>
   );
 }

@@ -4,8 +4,8 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-// import Image from '../images/earth.png';
-import Logo from '../images/Logo.png';
+import Team from './team';
+import Logo from '../images/pinkLogo.png';
 
 const useStyles = makeStyles((theme) => ({
   heroContent: {
@@ -65,7 +65,7 @@ export default function MainPage() {
                   </Grid>
                 <Grid item>
                   <Button variant="contained" className = {classes.btn} href="/carbon-estimation">
-                    Assestment
+                    General Assestment
                   </Button>
                 </Grid>
                 <Grid item>
@@ -96,6 +96,10 @@ export default function MainPage() {
       <Container style= {{color:"white", wordSpacing: 3, marginTop: 8,textAlign:'left',}}>
      Founded by our mission of helping us reach our lifeline before the deadline by demonstrating that there exist great potential for 
      the collective actions of individuals worldwide to make an impact and reduce global warming by making changes in our daily life
+      </Container>
+
+      <Container style= {{color:"white", wordSpacing: 3, marginTop: 8,textAlign:'left',}}>
+        <Team />
       </Container>
       </div>
         <footer>
