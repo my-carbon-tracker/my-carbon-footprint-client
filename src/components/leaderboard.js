@@ -5,6 +5,8 @@ import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
+import { GiMedallist, GiRibbon } from 'react-icons/gi';
+import { FaMedal } from 'react-icons/fa';
 
 const useStyles = makeStyles((theme) => ({
   seeMore: {
@@ -76,31 +78,31 @@ export default function LeaderBoard() {
         </TableHead>
         <TableBody>
             <TableRow>
-              <TableCell>1</TableCell>
+              <TableCell><GiMedallist /> 1</TableCell>
               <TableCell>{firstPlaceName}</TableCell>
               <TableCell>{firstPlaceEmissions}</TableCell>
               <TableCell>{firstPlaceGoal}</TableCell>
             </TableRow>
             <TableRow>
-              <TableCell>2</TableCell>
+              <TableCell><FaMedal /> 2</TableCell>
               <TableCell>{secondPlaceName}</TableCell>
               <TableCell>{secondPlaceEmissions}</TableCell>
               <TableCell>{secondPlaceGoal}</TableCell>
             </TableRow>
             <TableRow>
-              <TableCell>3</TableCell>
+              <TableCell><FaMedal /> 3</TableCell>
               <TableCell>{thirdPlaceName}</TableCell>
               <TableCell>{thirdPlaceEmissions}</TableCell>
               <TableCell>{thirdPlaceGoal}</TableCell>
             </TableRow>
             <TableRow>
-              <TableCell>4</TableCell>
+              <TableCell><GiRibbon /> 4</TableCell>
               <TableCell>{fourthPlaceName}</TableCell>
               <TableCell>{fourthPlaceEmissions}</TableCell>
               <TableCell>{fourthPlaceGoal}</TableCell>
             </TableRow>
             <TableRow>
-              <TableCell>5</TableCell>
+              <TableCell><GiRibbon /> 5</TableCell>
               <TableCell>{fifthPlaceName}</TableCell>
               <TableCell>{fifthPlaceEmissions}</TableCell>
               <TableCell>{fifthPlaceGoal}</TableCell>

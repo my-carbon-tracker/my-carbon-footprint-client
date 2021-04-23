@@ -6,8 +6,9 @@ import { FaShower, FaCarrot, FaAward } from "react-icons/fa";
 import { RiLightbulbLine } from "react-icons/ri";
 import { ImSwitch } from "react-icons/im";
 import { useOffsetContext } from "../contexts/pledgeContext";
+import { useEmissionContext } from "../contexts/emissionContext";
 
-const Pledges = () => {
+const Pledges = (props) => {
     const [carpool, setCarpool] = React.useState("0");
     const [linedry, setLineDry] = React.useState("0");
     const [plantedTrees, setPlantedTrees] = React.useState("0");
@@ -20,6 +21,9 @@ const Pledges = () => {
     const [showerheads, setShowerheads] = React.useState("0")
     const [led, setLED] = React.useState("0");
     const {totalOffset, setTotalOffset} = useOffsetContext();
+    const { totalEmission, setTotalEmission } = useEmissionContext();
+    const [emissionWithPledge, setEmissionWithPledge] = React.useState();
+    const {token} = props;
     console.log(totalOffset)
 
 const changeCarpoolDays = (e) => {
@@ -43,6 +47,26 @@ const changeMeat = (e) => {
 const changeDairy = (e) => {
     setOrganicDairy(e.target.value)
 };
+
+const updateEmission = (e) => {
+    e.preventDefault();
+    setEmissionWithPledge(totalEmission - totalOffset * 1000)
+
+    fetch(`http://localhost:3000/logEmission/completed-pledge`,{
+        method:'POST',
+        headers:{
+            "Content-Type":"application/json",
+            "Authorization":`Bearer ${token}`
+        },
+        body: JSON.stringify({
+            emission_with_pledges: emissionWithPledge
+        })
+    })
+    .then((res)=>res.json())
+    // console.log(emissionWithPledge)
+    .catch((err)=> console.log(err))
+}
+
 const handlePanels = (e) => {
     setTotalOffset((parseFloat(carpool) + parseFloat(organicProduce) + parseFloat(organicDairy) + parseFloat(organicMeat) + parseFloat(plantedTrees) +
     parseFloat(linedry) + parseFloat(lights) + parseFloat(electricity) + parseFloat(panels) + parseFloat(showerheads) + parseFloat(led)).toFixed(2));
@@ -311,7 +335,9 @@ const handleLED = (e) => {
                 </tbody>
 
             </table>
-            
+            <div>
+            <input align="center" type="button" value="See Effect of Selected Pledges" onClick={updateEmission}/>
+            </div>
         </div>
     )
 }

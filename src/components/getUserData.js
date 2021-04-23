@@ -25,6 +25,7 @@ export default function UserData(props){
             setTotalEmission(result.emission)
             setLocation(result.location)
             setCompareToOthers(result.estimate)
+            console.log(result.estimate)
         })
         .catch((err) => console.log("error"))
         

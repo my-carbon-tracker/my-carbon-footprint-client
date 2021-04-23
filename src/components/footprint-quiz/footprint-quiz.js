@@ -115,7 +115,7 @@ function FootprintQuiz(props) {
                 <FoodStep2 currentStep={currentStep} setCurrentStep={setCurrentStep} setArrFoodServings={setArrFoodServings} categories={categories} foodItems={foodItems}/>
                 <TransportationStep1 currentStep={currentStep} setCurrentStep={setCurrentStep} categories={categories} setModesOfTransport={setModesOfTransport}/>
                 <TransportationStep2 currentStep={currentStep} setCurrentStep={setCurrentStep} modesOfTransport={modesOfTransport} setDistances={setDistances}/>
-                <TotalEmissions currentStep={currentStep} totalEmissions={totalEmissions}/>
+                <TotalEmissions currentStep={currentStep} totalEmissions={totalEmissions} token={token}/>
             </form>
         </div>
     )
