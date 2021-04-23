@@ -52,9 +52,8 @@ function FootprintQuiz(props) {
             })
          })
         .then((res)=>res.json())
-        .then((responseJSON)=>console.log(responseJSON))
-
-        console.log("Food Emissions: " + totalFoodEmissions)
+        //.then((responseJSON)=>console.log(responseJSON))
+        //console.log("Food Emissions: " + totalFoodEmissions)
         return totalFoodEmissions
     }
     
@@ -75,7 +74,7 @@ function FootprintQuiz(props) {
                 result_transport_total:totalTransportEmissions
             })        
         })
-        console.log("Tranport Emissions: " + totalTransportEmissions)
+        //console.log("Tranport Emissions: " + totalTransportEmissions)
         return totalTransportEmissions
     }
 
@@ -89,7 +88,22 @@ function FootprintQuiz(props) {
             let totalTransportEmissions = await submitTransportationEmissions()
             setTotalEmissions(totalEmissions=> totalEmissions+totalTransportEmissions)
         }
-        setCurrentStep('TotalEmissions')   
+        fetch(`http://localhost:3000/auth/adjust/total`,{
+            method:'PATCH',
+            headers:{
+                "Content-Type":"application/json",
+                "Authorization":`Bearer ${token}`
+            },
+            body: JSON.stringify({
+                result_grand_total:totalEmissions
+            })
+        })
+        .then((res)=>res.json())
+        .then((resJSON)=>{
+            console.log(resJSON)
+            setCurrentStep('TotalEmissions') 
+        })
+        .catch(err=>console.log(err))
     }
 
     return (
