@@ -39,7 +39,6 @@ function Home (props) {
   const { location, setLocation } = useLocationContext()
   const { totalEmission, setTotalEmission } = useEmissionContext();
   let carbonFootprint  = totalEmission - (totalOffset * 1000);
- 
 
   return(
     <div style={{textAlign: "center", background: 'linear-gradient(#DFB593, #DF7B7D 50%)', height:'175vh'}}>
