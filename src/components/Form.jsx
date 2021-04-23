@@ -44,7 +44,7 @@ export default function Form(props) {
                     <TextField variant="outlined" label="Username" onChange={(e) =>setName(e.target.value)} />
                 </Box>
                 <Box className={classes.text} m={1}>
-                    <TextField variant="outlined" label="Password" onChange={(e) =>setPass(e.target.value)} />
+                    <TextField type="password" variant="outlined" label="Password" onChange={(e) =>setPass(e.target.value)} />
                 </Box>
                 <Box className={classes.text} mt={1} >
                     <Button variant='contained' color='primary' type='submit' >Submit</Button>
