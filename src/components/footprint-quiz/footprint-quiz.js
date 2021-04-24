@@ -8,12 +8,18 @@ import FoodStep2 from './food/foodStep2';
 import TransportationStep1 from './transportation/transportationStep1';
 import TransportationStep2 from './transportation/transportationStep2';
 import TotalEmissions from './TotalEmissions';
+import {Paper, Container, Box} from '@material-ui/core';
+import { fade } from '@material-ui/core/styles/colorManipulator';
 
 const useStyles = makeStyles({
     background: 'linear-gradient(#41B898 50%, #84C57F 50%)',
+    paper:{
+        backgroundColor:fade('#FFFF', 0.5),
+    }
 })
 
 function FootprintQuiz(props) {
+    const classes = useStyles();
     const {token} = props
     const [currentStep, setCurrentStep] = useState(1)
     const [categories, setCategories] = useState({food:false, transportation:false})
@@ -110,15 +116,20 @@ function FootprintQuiz(props) {
 
     return (
         // <div style={{background: 'linear-gradient(#41B898, #84C57F)', height:'100vh'}}>
-        <div style={{background: 'linear-gradient(#DFB593, #DF7B7D)', height:'100vh'}}>
-            <form onSubmit={submitEmissions} style={{textAlign:'center', color:'white'}}> 
+        //<div style={{background: 'linear-gradient(#DFB593, #DF7B7D)', height:'100vh'}}>
+        <div style={{background: 'linear-gradient(#D3B3A4 30%, #DE7A7A)', height:'100vh'}}>
+            <Box alignItems="center" pr={10} pl={10} pt={5}>
+            <Paper className={classes.paper}>
+            <form onSubmit={submitEmissions} style={{textAlign:'center', color:'white', opacity:'100%'}}> 
                 <Step1 currentStep={currentStep} setCurrentStep={setCurrentStep} categories={categories} setCategories={setCategories}/>
                 <FoodStep1 currentStep={currentStep} setCurrentStep={setCurrentStep} setFoodItems={setFoodItems}/>
                 <FoodStep2 currentStep={currentStep} setCurrentStep={setCurrentStep} setArrFoodServings={setArrFoodServings} categories={categories} foodItems={foodItems}/>
                 <TransportationStep1 currentStep={currentStep} setCurrentStep={setCurrentStep} categories={categories} setModesOfTransport={setModesOfTransport}/>
                 <TransportationStep2 currentStep={currentStep} setCurrentStep={setCurrentStep} modesOfTransport={modesOfTransport} setDistances={setDistances}/>
                 <TotalEmissions currentStep={currentStep} totalEmissions={totalEmissions} token={token}/>
-            </form>
+            </form>                
+            </Paper>
+            </Box>
         </div>
     )
 }
