@@ -19,12 +19,14 @@ import { LocationProvider } from './contexts/locationContext';
 import { EmissionProvider } from './contexts/emissionContext';
 import { UserNameProvider } from './contexts/usernameContext';
 import GetMap from './components/map';
+import { fade } from '@material-ui/core/styles/colorManipulator';
 
 const theme = createMuiTheme({
   //#DFB593 dark pinkish
+  //#DFB593 light pinkish still vibrant, old primary
   palette:{
     primary: {
-      main: '#DFB593',
+      main: '#D3B3A4',
       contrastText: "#2E4089"
       //mainGradient: "linear-gradient(#157A42,#25DB77)"
       //background: 'linear gradient(#157A42,#25DB77)',
@@ -72,8 +74,30 @@ const theme = createMuiTheme({
     },
     MuiPaper: {
       root: {
-        backgroundColor: '#96C3BE'
+        backgroundColor: fade('#FFFF', 0.75)
       }
+    },
+    MuiTable:{
+      root:{
+        //backgroundColor:fade('#FFFF', 0.2),
+        borderTopLeftRadius: 10,
+        borderTopRightRadius: 10
+      }
+    },
+    MuiTableHead:{
+      root:{
+        //backgroundColor: fade('#FFFF', 0.2),
+        borderTopLeftRadius: 10,
+        borderTopRightRadius: 10
+      }
+    },
+    MuiTableCell: {
+      stickyHeader:{
+        backgroundColor: 'none',
+      }
+    },
+    MuiTableRow:{
+      backgroundColor:'#FFF',
     }
   }
 })
