@@ -56,6 +56,12 @@ function Header(props) {
             keepMounted
             open={Boolean(anchorEl)}
             onClose={handleClose}
+            elevation={0}
+            getContentAnchorEl={null}
+            anchorOrigin={{
+              vertical: "bottom",
+              horizontal: "left",
+            }}
           >
             <div>
               <Button color="inherit" href="/home">
