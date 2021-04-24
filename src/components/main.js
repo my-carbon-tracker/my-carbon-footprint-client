@@ -5,7 +5,8 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Team from './team';
-import Logo from '../images/pinkLogo.png';
+import Logo from '../images/darkLogo.png';
+import Footer from './footer';
 
 const useStyles = makeStyles((theme) => ({
   heroContent: {
@@ -87,6 +88,7 @@ export default function MainPage() {
          Our Mission
       </Typography>
       <img src={Logo} height="10%" width="10%"/>
+
       <Container style= {{color:"white", wordSpacing: 3, marginTop: 8, textAlign:'left'}} >
         The Climate Clock shows two numbers. The first, in red, is our deadline, the time we have left to take decisive action to keep warming under the 1.5°C threshold, 
         a count down of how long it will take, at our current rates of emissions, to burn through our carbon budget. 
@@ -102,9 +104,8 @@ export default function MainPage() {
         <Team />
       </Container>
       </div>
-        <footer>
            <climate-clock />
-        </footer>
+           <Footer />
     </div>
   );
 }
