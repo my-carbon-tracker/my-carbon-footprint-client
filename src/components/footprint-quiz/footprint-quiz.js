@@ -1,4 +1,4 @@
-import {React, useState} from 'react';
+import {React, useState, useEffect} from 'react';
 import {makeStyles} from '@material-ui/styles';
 import { transport } from 'carbon-footprint';
 import food from './food/food'
@@ -14,10 +14,6 @@ const useStyles = makeStyles({
 })
 
 function FootprintQuiz(props) {
-    /*
-    calculates greenhouse gas emissions produced by one kilo of each food
-    1 kilo = 2.2 lbs
-    */
     const {token} = props
     const [currentStep, setCurrentStep] = useState(1)
     const [categories, setCategories] = useState({food:false, transportation:false})
@@ -52,9 +48,8 @@ function FootprintQuiz(props) {
             })
          })
         .then((res)=>res.json())
-        .then((responseJSON)=>console.log(responseJSON))
-
-        console.log("Food Emissions: " + totalFoodEmissions)
+        //.then((responseJSON)=>console.log(responseJSON))
+        //console.log("Food Emissions: " + totalFoodEmissions)
         return totalFoodEmissions
     }
     
@@ -75,22 +70,43 @@ function FootprintQuiz(props) {
                 result_transport_total:totalTransportEmissions
             })        
         })
-        console.log("Tranport Emissions: " + totalTransportEmissions)
+        //console.log("Tranport Emissions: " + totalTransportEmissions)
         return totalTransportEmissions
     }
 
     const submitEmissions = async(e) => {
         e.preventDefault()
+        let totalFoodEmissions = 0
+        let totalTransportEmissions = 0
         if(categories.food){
-            let totalFoodEmissions = await submitFoodEmissions()
-            setTotalEmissions(totalEmissions=> totalEmissions+totalFoodEmissions)
+            totalFoodEmissions = await submitFoodEmissions()
         }
         if(categories.transportation){
-            let totalTransportEmissions = await submitTransportationEmissions()
-            setTotalEmissions(totalEmissions=> totalEmissions+totalTransportEmissions)
+            totalTransportEmissions = await submitTransportationEmissions()
         }
-        setCurrentStep('TotalEmissions')   
+        setTotalEmissions(totalEmissions => totalEmissions+totalFoodEmissions+totalTransportEmissions)
     }
+
+    useEffect(() => {
+        if(totalEmissions){
+            fetch(`http://localhost:3000/auth/adjust/total`,{
+                method:'PATCH',
+                headers:{
+                    "Content-Type":"application/json",
+                    "Authorization":`Bearer ${token}`
+                },
+                body: JSON.stringify({
+                    result_grand_total:totalEmissions
+                })
+            })
+            .then((res)=>res.json())
+            .then((resJSON)=>{
+                console.log(resJSON)
+                setCurrentStep('TotalEmissions') 
+            })
+            .catch(err=>console.log(err))
+        }
+    },[totalEmissions])
 
     return (
         // <div style={{background: 'linear-gradient(#41B898, #84C57F)', height:'100vh'}}>

@@ -39,7 +39,6 @@ function Home (props) {
   const { location, setLocation } = useLocationContext()
   const { totalEmission, setTotalEmission } = useEmissionContext();
   let carbonFootprint  = totalEmission - (totalOffset * 1000);
- 
 
   return(
     <div style={{textAlign: "center", background: 'linear-gradient(#DFB593, #DF7B7D 50%)', height:'175vh'}}>
@@ -103,14 +102,8 @@ function Home (props) {
 
             </Grid>
           </Container>
-          <div style={{position:'fixed', bottom:0}}>
-              
+          <div style={{position:'fixed', bottom:0}}>              
           </div>
-          <footer style={{marginTop: 8}}>
-              {/* <div style={{position:'fixed', bottom:0}}> */}
-                  <climate-clock />
-              {/* </div> */}
-              </footer>
         </Box>
         </div>
        
