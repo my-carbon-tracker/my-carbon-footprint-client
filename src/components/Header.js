@@ -8,7 +8,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import React from 'react';
-import Image from '../images/pinkLogo.png';
+import Image from '../images/darkLogo.png';
 
 const useStyles = makeStyles((theme) => ({
     root: {

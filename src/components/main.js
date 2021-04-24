@@ -5,8 +5,9 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import Team from "./team";
-import Logo from "../images/pinkLogo.png";
+import Logo from "../images/darkLogo.png";
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
+import Footer from "./footer";
 
 const useStyles = makeStyles((theme) => ({
   heroContent: {
@@ -175,7 +176,7 @@ export default function MainPage() {
         </Container>
       </div>
       <footer>
-        <climate-clock />
+        <Footer />
       </footer>
     </div>
   );

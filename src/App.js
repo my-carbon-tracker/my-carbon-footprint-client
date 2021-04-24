@@ -125,6 +125,9 @@ function App() {
           <Route path="/map">
             <MapBox />
           </Route>
+          <Route path="/carbon-map">
+            <GetMap />
+          </Route>
           </UserNameProvider>
           </EmissionProvider>
           </LocationProvider>
