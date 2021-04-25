@@ -10,6 +10,7 @@ import { useEmissionContext } from "../contexts/emissionContext";
 import { makeStyles, createMuiTheme } from "@material-ui/core/styles";
 import PrimaryButton from "./reusable/PrimaryButton";
 import { fade } from '@material-ui/core/styles/colorManipulator';
+import { useConfettiContext } from "../contexts/confettiContext";
 
 const useStyles = makeStyles({
     root: {
@@ -106,47 +107,54 @@ const Pledges = (props) => {
     };
   
     const {token} = props;
-    console.log(totalOffset)
+    console.log(totalOffset);
 
-const changeCarpoolDays = (e) => {
-    setCarpool(e.target.value)
-};
-const changeLineDry = (e) => {
-    setLineDry(e.target.value)
-};
-const changeTrees = (e) => {
-    setPlantedTrees(e.target.value)
-};
-const changeLights = (e) => {
-    setLights(e.target.value)
-};
-const changeProduce = (e) => {
-    setOrganicProduce(e.target.value)
-};
-const changeMeat = (e) => {
-    setOrganicMeat(e.target.value)
-};
-const changeDairy = (e) => {
-    setOrganicDairy(e.target.value)
-};
+    //confetti
+    const { party, setParty } = useConfettiContext();
 
-const updateEmission = (e) => {
-    e.preventDefault();
-    setEmissionWithPledge(totalEmission - totalOffset * 1000)
+    const changeCarpoolDays = (e) => {
+        setCarpool(e.target.value)
+    };
+    const changeLineDry = (e) => {
+        setLineDry(e.target.value)
+    };
+    const changeTrees = (e) => {
+        setPlantedTrees(e.target.value)
+    };
+    const changeLights = (e) => {
+        setLights(e.target.value)
+    };
+    const changeProduce = (e) => {
+        setOrganicProduce(e.target.value)
+    };
+    const changeMeat = (e) => {
+        setOrganicMeat(e.target.value)
+    };
+    const changeDairy = (e) => {
+        setOrganicDairy(e.target.value)
+    };
 
-    fetch(`http://localhost:3000/logEmission/completed-pledge`,{
-        method:'POST',
-        headers:{
-            "Content-Type":"application/json",
-            "Authorization":`Bearer ${token}`
-        },
-        body: JSON.stringify({
-            emission_with_pledges: emissionWithPledge
+    const updateEmission = (e) => {
+        e.preventDefault();
+        setParty(true);
+        setEmissionWithPledge(totalEmission - totalOffset * 1000)
+
+        fetch(`http://localhost:3000/logEmission/completed-pledge`,{
+            method:'POST',
+            headers:{
+                "Content-Type":"application/json",
+                "Authorization":`Bearer ${token}`
+            },
+            body: JSON.stringify({
+                emission_with_pledges: emissionWithPledge
+            })
         })
-    })
-    .then((res)=>res.json())
-    // console.log(emissionWithPledge)
-    .catch((err)=> console.log(err))
+        .then((res)=>res.json())
+        .then((resJSON)=>{
+            console.log(emissionWithPledge)
+            console.log(resJSON)
+        })
+        .catch((err)=> console.log(err))
     }
 
     const handlePanels = (e) => {
@@ -461,7 +469,14 @@ const updateEmission = (e) => {
         {/* Commenting out bc button seems to do nothing, get 404 err
         <div>
             <input align="center" type="button" value="See Effect of Selected Pledges" onClick={updateEmission}/>
-        </div> */}
+        </div> 
+        <div>
+            <input align="center" type="button" value="Completed Pledges" onClick={updateEmission}/>
+        </div>
+        */}
+        <div>
+            <input align="center" type="button" value="Completed Pledges" onClick={updateEmission}/>
+        </div>
         </div>
     )
 }
