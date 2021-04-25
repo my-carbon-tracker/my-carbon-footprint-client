@@ -1,13 +1,26 @@
 import React from "react";
 import XMLParser from 'react-xml-parser';
-import {Box, TextField, Select, MenuItem} from '@material-ui/core/';
+import {Box, TextField, Select, MenuItem, Paper} from '@material-ui/core/';
 import PrimaryButton from '../reusable/PrimaryButton';
 import CarbonEstimationResults from './carbonEstimationResults';
 /* eslint-disable react/prop-types */
 /* eslint-disable react/no-unescaped-entities */
 
+import {makeStyles} from '@material-ui/styles';
+import { fade } from '@material-ui/core/styles/colorManipulator';
+
+const useStyles = makeStyles({
+    background: 'linear-gradient(#41B898 50%, #84C57F 50%)',
+    paper:{
+        backgroundColor:fade('#FFFF', 0.5),
+        paddingTop:5,
+        paddingBottom:5
+    }
+})
+
 function GetUserInfo(props){
     //save to db and render in home page 
+    const classes = useStyles();
     const [currentPage, setCurrentPage] = React.useState('GetUserInfo')
     const [totalEmissions, setTotalEmissions] = React.useState()
     const [place, setPlace] = React.useState(); //save to render in home page too
@@ -62,13 +75,15 @@ function GetUserInfo(props){
 
     if(currentPage=='CarbonEstimationResults'){
         return (
-            <div style={{textAlign: "center", background: 'linear-gradient(#DFB593, #DF7B7D 50%)', height:'175vh'}}>
+            <div style={{textAlign: "center", background: 'linear-gradient(#D3B3A4 30%, #DF7B7D 50%)', height:'175vh'}}>
                 <CarbonEstimationResults token={token} place={place} totalEmissions={totalEmissions} chartData={chartData}/>
             </div>
         )
     }
     return (
         <div style={{textAlign: "center", background: 'linear-gradient(#D3B3A4, #DF7B7D 50%)', height:'175vh'}}>
+            <Box alignItems="center" pr={10} pl={10} pt={5}>
+            <Paper className={classes.paper}>
             <Box fontWeight="fontWeightBold" fontSize="h6.fontSize" letterSpacing={2} style={{color:'#2E4089', paddingTop:30, paddingBottom:10}}>
                 Let's get started with a quick carbon footprint estimate
             </Box>            
@@ -108,7 +123,8 @@ function GetUserInfo(props){
                     <PrimaryButton type="submit" text="See Results" value="Submit" id="submitbtn"/>
                 </div>                
             </form>
-            
+            </Paper>
+            </Box>
         </div>
     )
 }
