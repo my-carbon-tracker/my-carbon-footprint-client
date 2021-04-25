@@ -66,7 +66,7 @@ function GetUserInfo(props){
         )
     }
     return (
-        <div style={{textAlign: "center", background: 'linear-gradient(#DFB593, #DF7B7D 50%)', height:'175vh'}}>
+        <div style={{textAlign: "center", background: 'linear-gradient(#D3B3A4, #DF7B7D 50%)', height:'175vh'}}>
             <Box fontWeight="fontWeightBold" fontSize="h6.fontSize" letterSpacing={2} style={{color:'#2E4089', paddingTop:30, paddingBottom:10}}>
                 Let's get started with a quick carbon footprint estimate
             </Box>            

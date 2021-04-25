@@ -108,17 +108,14 @@ function Home (props) {
                 </Box>
                 {/* add graph  */}
               </Grid>
-            </Paper>
-
+            </Paper> 
+              <Grid item lg={6} md={6} xl={12} xs={12} >
+                <LeaderBoard />
+              </Grid>
               <Grid item lg={6} md={6} xl={12} xs={12} >
                 {/* list of pledges you can take */}
                 <Pledges />
               </Grid>
-
-              <Grid item lg={6} md={6} xl={12} xs={12} >
-                <LeaderBoard />
-              </Grid>
-
             </Grid>
           </Container>
           <div style={{position:'fixed', bottom:0}}>              
