@@ -124,7 +124,10 @@ export default function MainPage() {
           component="h1"
           variant="h2"
           gutterBottom
-          style={{ color: "white" }}
+          style={{
+            color: "white",
+            paddingTop: theme.spacing(3),
+          }}
         >
           Our Mission
         </Typography>
