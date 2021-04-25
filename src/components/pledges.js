@@ -12,6 +12,7 @@ import PrimaryButton from "./reusable/PrimaryButton";
 import { fade } from '@material-ui/core/styles/colorManipulator';
 import { useConfettiContext } from "../contexts/confettiContext";
 import getServerURL from '../serverConfig';
+/* eslint-disable react/prop-types */
 
 const useStyles = makeStyles({
     root: {

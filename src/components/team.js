@@ -69,7 +69,7 @@ export default function Team() {
               color="textSecondary"
               paragraph
             >
-              “Saving the planet, one line of code at a time” - Climate Developers
+              “Saving the planet one line of code at a time” - Climate Developers
             </Typography>
           </Container>
         </div>
