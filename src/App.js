@@ -19,7 +19,6 @@ import { LocationProvider } from './contexts/locationContext';
 import { EmissionProvider } from './contexts/emissionContext';
 import { UserNameProvider } from './contexts/usernameContext';
 import GetMap from './components/map';
-import { fade } from '@material-ui/core/styles/colorManipulator';
 
 const theme = createMuiTheme({
   //#DFB593 dark pinkish
@@ -61,44 +60,6 @@ const theme = createMuiTheme({
          color: "#2E4089"
       }
     },
-    MuiMenuItem: { // For ListItem, change this to MuiListItem
-      root: {
-        "&$selected": {       // this is to refer to the prop provided by M-UI
-          backgroundColor: '#83bcc4', // updated backgroundColor
-        },
-        "&:hover":{
-          backgroundColor: '#83bcc43',
-        },
-        color:"#2E4089"
-      },
-    },
-    MuiPaper: {
-      root: {
-        backgroundColor: fade('#FFFF', 0.75)
-      }
-    },
-    MuiTable:{
-      root:{
-        //backgroundColor:fade('#FFFF', 0.2),
-        borderTopLeftRadius: 10,
-        borderTopRightRadius: 10
-      }
-    },
-    MuiTableHead:{
-      root:{
-        //backgroundColor: fade('#FFFF', 0.2),
-        borderTopLeftRadius: 10,
-        borderTopRightRadius: 10
-      }
-    },
-    MuiTableCell: {
-      stickyHeader:{
-        backgroundColor: 'none',
-      }
-    },
-    MuiTableRow:{
-      backgroundColor:'#FFF',
-    }
   }
 })
 //style={{ background: theme.palette.primary.mainGradient }}

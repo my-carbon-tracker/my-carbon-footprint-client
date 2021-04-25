@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Grid, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow, InputLabel, Select, MenuItem } from '@material-ui/core';
+import { Box, Grid, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow, InputLabel, Select, MenuItem, ThemeProvider } from '@material-ui/core';
 import { AiFillCar, AiOutlineSkin} from "react-icons/ai";
 import { GiTreeGrowth, GiSolarPower, GiElectric, GiMilkCarton, GiCow } from "react-icons/gi";
 import { FaShower, FaCarrot, FaAward } from "react-icons/fa";
@@ -7,8 +7,9 @@ import { RiLightbulbLine } from "react-icons/ri";
 import { ImSwitch } from "react-icons/im";
 import { useOffsetContext } from "../contexts/pledgeContext";
 import { useEmissionContext } from "../contexts/emissionContext";
-import { makeStyles } from "@material-ui/styles";
+import { makeStyles, createMuiTheme } from "@material-ui/core/styles";
 import PrimaryButton from "./reusable/PrimaryButton";
+import { fade } from '@material-ui/core/styles/colorManipulator';
 
 const useStyles = makeStyles({
     root: {
@@ -19,36 +20,61 @@ const useStyles = makeStyles({
     },
 })
 
+const tableTheme = createMuiTheme({
+    overrides:{
+      MuiMenuItem: { // For ListItem, change this to MuiListItem
+        root: {
+          "&$selected": {       // this is to refer to the prop provided by M-UI
+            backgroundColor: '#83bcc4', // updated backgroundColor
+          },
+          "&:hover":{
+            backgroundColor: '#83bcc43',
+          },
+          color:"#2E4089"
+        },
+      },
+      MuiPaper: {
+        root: {
+          backgroundColor: fade('#FFFF', 0.75)
+        }
+      },
+      MuiTable:{
+        root:{
+          //backgroundColor:fade('#FFFF', 0.2),
+          borderTopLeftRadius: 10,
+          borderTopRightRadius: 10
+        }
+      },
+      MuiTableHead:{
+        root:{
+          backgroundColor: '#FFF',
+          borderTopLeftRadius: 20,
+          borderTopRightRadius: 20 
+        }
+      },
+      MuiTableCell: {
+        stickyHeader:{
+          backgroundColor: '#FFF',
+        },
+      },
+      MuiTableRow:{
+        backgroundColor:'#FFF',
+      }
+    }
+})
+
 const columns = [
     { id: 'name', label: 'Pledges', minWidth: 170 },
     { id: 'code', label: 'Select', minWidth: 100 },
-    { id: 'population', label: 'Tons Saved Per Year', minWidth: 170, align: 'right', format: (value) => value.toLocaleString('en-US') },
-    { id: 'size', label: 'Incentives', minWidth: 170, align: 'right', format: (value) => value.toLocaleString('en-US') },
-    { id: 'density', label: 'Status', minWidth: 170, align: 'right', format: (value) => value.toFixed(2)},
+    { id: 'population', label: 'Tons Saved Per Year', minWidth: 120, align: 'right', format: (value) => value.toLocaleString('en-US') },
+    { id: 'size', label: 'Status', minWidth: 170, align: 'right', format: (value) => value.toLocaleString('en-US') },
+    { id: 'density', label: 'Incentives', minWidth: 170, align: 'right', format: (value) => value.toFixed(2)},
   ];
 
 function createData(name, code, population, size) {
     const density = population / size;
     return { name, code, population, size, density };
 }
-
-const rows = [
-    createData('Carpool to Work', 'IN', 1324171354, 3287263),
-    createData('China', 'CN', 1403500365, 9596961),
-    createData('Italy', 'IT', 60483973, 301340),
-    createData('United States', 'US', 327167434, 9833520),
-    createData('Canada', 'CA', 37602103, 9984670),
-    createData('Australia', 'AU', 25475400, 7692024),
-    createData('Germany', 'DE', 83019200, 357578),
-    createData('Ireland', 'IE', 4857000, 70273),
-    createData('Mexico', 'MX', 126577691, 1972550),
-    createData('Japan', 'JP', 126317000, 377973),
-    createData('France', 'FR', 67022000, 640679),
-    createData('United Kingdom', 'GB', 67545757, 242495),
-    createData('Russia', 'RU', 146793744, 17098246),
-    createData('Nigeria', 'NG', 200962417, 923768),
-    createData('Brazil', 'BR', 210147125, 8515767),
-  ];
 
 const Pledges = (props) => {
     const classes = makeStyles();
@@ -67,14 +93,15 @@ const Pledges = (props) => {
     const { totalEmission, setTotalEmission } = useEmissionContext();
     const [emissionWithPledge, setEmissionWithPledge] = React.useState();
     const [page, setPage] = React.useState(0);
-    const [rowsPerPage, setRowsPerPage] = React.useState(10);
+    const [rowsPerPage, setRowsPerPage] = React.useState(5);
   
     const handleChangePage = (event, newPage) => {
       setPage(newPage);
     };
   
     const handleChangeRowsPerPage = (event) => {
-      setRowsPerPage(+event.target.value);
+      //setRowsPerPage(+event.target.value);
+        setRowsPerPage(event.target.value);
       setPage(0);
     };
   
@@ -120,46 +147,52 @@ const updateEmission = (e) => {
     .then((res)=>res.json())
     // console.log(emissionWithPledge)
     .catch((err)=> console.log(err))
-}
+    }
 
-const handlePanels = (e) => {
-    setTotalOffset((parseFloat(carpool) + parseFloat(organicProduce) + parseFloat(organicDairy) + parseFloat(organicMeat) + parseFloat(plantedTrees) +
-    parseFloat(linedry) + parseFloat(lights) + parseFloat(electricity) + parseFloat(panels) + parseFloat(showerheads) + parseFloat(led)).toFixed(2));
-    
-    const pvPledge = document.getElementById("pv-pledge");
-    pvPledge.style.display = "none";
-    e.target.style.display = "none";
-};
-const handleShowerheads = (e) => {
-    setTotalOffset((parseFloat(carpool) + parseFloat(organicProduce) + parseFloat(organicDairy) + parseFloat(organicMeat) + parseFloat(plantedTrees) +
-    parseFloat(linedry) + parseFloat(lights) + parseFloat(electricity) + parseFloat(panels) + parseFloat(showerheads) + parseFloat(led)).toFixed(2));
-    
-    const showerPledge = document.getElementById("shower-pledge");
-    showerPledge.style.display = "none";
-    e.target.style.display = "none";
-};
-const handleElectricity = (e) => {
-    setTotalOffset((parseFloat(carpool) + parseFloat(organicProduce) + parseFloat(organicDairy) + parseFloat(organicMeat) + parseFloat(plantedTrees) +
-    parseFloat(linedry) + parseFloat(lights) + parseFloat(electricity) + parseFloat(panels) + parseFloat(showerheads) + parseFloat(led)).toFixed(2));
-    
-    const electPledge = document.getElementById("electricity-pledge");
-    electPledge.style.display = "none";
-    e.target.style.display = "none";
-};
-const handleLED = (e) => {
-    setTotalOffset((parseFloat(carpool) + parseFloat(organicProduce) + parseFloat(organicDairy) + parseFloat(organicMeat) + parseFloat(plantedTrees) +
-    parseFloat(linedry) + parseFloat(lights) + parseFloat(electricity) + parseFloat(panels) + parseFloat(showerheads) + parseFloat(led)).toFixed(2));
-    
-    const ledPledge = document.getElementById("led-pledge");
-    ledPledge.style.display = "none";
-    e.target.style.display = "none";
-};
+    const handlePanels = (e) => {
+        setTotalOffset((parseFloat(carpool) + parseFloat(organicProduce) + parseFloat(organicDairy) + parseFloat(organicMeat) + parseFloat(plantedTrees) +
+        parseFloat(linedry) + parseFloat(lights) + parseFloat(electricity) + parseFloat(panels) + parseFloat(showerheads) + parseFloat(led)).toFixed(2));
+        
+        const pvPledge = document.getElementById("pv-pledge");
+        pvPledge.style.display = "none";
+        e.target.style.display = "none";
+    };
+    const handleShowerheads = (e) => {
+        setTotalOffset((parseFloat(carpool) + parseFloat(organicProduce) + parseFloat(organicDairy) + parseFloat(organicMeat) + parseFloat(plantedTrees) +
+        parseFloat(linedry) + parseFloat(lights) + parseFloat(electricity) + parseFloat(panels) + parseFloat(showerheads) + parseFloat(led)).toFixed(2));
+        
+        const showerPledge = document.getElementById("shower-pledge");
+        showerPledge.style.display = "none";
+        e.target.style.display = "none";
+    };
+    const handleElectricity = (e) => {
+        setTotalOffset((parseFloat(carpool) + parseFloat(organicProduce) + parseFloat(organicDairy) + parseFloat(organicMeat) + parseFloat(plantedTrees) +
+        parseFloat(linedry) + parseFloat(lights) + parseFloat(electricity) + parseFloat(panels) + parseFloat(showerheads) + parseFloat(led)).toFixed(2));
+        
+        const electPledge = document.getElementById("electricity-pledge");
+        electPledge.style.display = "none";
+        e.target.style.display = "none";
+    };
+    const handleLED = (e) => {
+        setTotalOffset((parseFloat(carpool) + parseFloat(organicProduce) + parseFloat(organicDairy) + parseFloat(organicMeat) + parseFloat(plantedTrees) +
+        parseFloat(linedry) + parseFloat(lights) + parseFloat(electricity) + parseFloat(panels) + parseFloat(showerheads) + parseFloat(led)).toFixed(2));
+        
+        const ledPledge = document.getElementById("led-pledge");
+        ledPledge.style.display = "none";
+        e.target.style.display = "none";
+    };
+
+    const pledge = () => {
+        setTotalOffset((parseFloat(carpool) + parseFloat(organicProduce) + parseFloat(organicDairy) + parseFloat(organicMeat) + parseFloat(plantedTrees) +
+        parseFloat(linedry) + parseFloat(lights) + parseFloat(electricity) + parseFloat(panels) + parseFloat(showerheads) + parseFloat(led)).toFixed(2));
+    }
 
     return (
         <div>
             <Box fontWeight="fontWeightBold" fontSize="h6.fontSize" letterSpacing={2} style={{color:'#2E4089', paddingTop:20}}>
                 Total CO2 Emissions saved: {totalOffset}
             </Box>
+            <ThemeProvider theme={tableTheme}>
             <Paper className={classes.root}>
                 <TableContainer className={classes.container}>
                     <Table stickyHeader aria-label="sticky table">
@@ -177,7 +210,9 @@ const handleLED = (e) => {
                             </TableRow>
                         </TableHead>
                     <TableBody>
-                        <TableRow>
+                    {page===0 && 
+                    <>
+                    <TableRow>
                             <TableCell>
                                 Carpool to work
                             </TableCell>
@@ -188,284 +223,245 @@ const handleLED = (e) => {
                                     <MenuItem value='0.6'>2</MenuItem>
                                     <MenuItem value='0.9'>3</MenuItem>
                                     <MenuItem value='1.2'>4</MenuItem>
+                                    <MenuItem value='1.5'>5</MenuItem>
+                                    <MenuItem value='1.8'>6</MenuItem>
+                                    <MenuItem value='2.1'>7</MenuItem>
                                 </Select>
                             </TableCell>
-                            <TableCell>
+                            <TableCell align="right">
                                 {carpool}   
                             </TableCell>
-                            <TableCell component="a" href="https://fundingwizard.arb.ca.gov/web/#search//%255BZipcode%253D%253D94720%255D%255BCategory%253D%253DTransportation%255D%255BEligible+Applicants%253D%253DIndividual%255D/false/none/false/1/12">
+                            <TableCell align="right">
+                                <PrimaryButton text="Pledge" size="small" onClick={pledge}/>
+                            </TableCell>
+                            <TableCell align="right" component="a" href="https://fundingwizard.arb.ca.gov/web/#search//%255BZipcode%253D%253D94720%255D%255BCategory%253D%253DTransportation%255D%255BEligible+Applicants%253D%253DIndividual%255D/false/none/false/1/12">
                                 Rebates and incentives
                             </TableCell>
+                        </TableRow>
+                        <TableRow>
                             <TableCell>
-                                <PrimaryButton text="Pledge" onClick={(e) => {
-                                    setTotalOffset((parseFloat(carpool) + parseFloat(organicProduce) + parseFloat(organicDairy) + parseFloat(organicMeat) + parseFloat(plantedTrees) +
-                                    parseFloat(linedry) + parseFloat(lights) + parseFloat(electricity) + parseFloat(panels) + parseFloat(showerheads) + parseFloat(led)).toFixed(2));
-                                }}/>
+                                Eat organic produce
+                            </TableCell>
+                            <TableCell>
+                                <InputLabel id="organicProducePercentage">%</InputLabel>
+                                <Select labelId="organicProducePercentage" onChange={changeProduce}>
+                                    <MenuItem value="0.025">25%</MenuItem>
+                                    <MenuItem value="0.05">50%</MenuItem>
+                                    <MenuItem value="0.075">75%</MenuItem>
+                                    <MenuItem value="0.1">100%</MenuItem>
+                                </Select>
+                            </TableCell>
+                            <TableCell align="right">
+                                {organicProduce}
+                            </TableCell>
+                            <TableCell align="right">
+                                <PrimaryButton text="Pledge" size="small" onClick={pledge}/>
+                            </TableCell>
+                            <TableCell />
+                        </TableRow>
+                        <TableRow>
+                            <TableCell>
+                                Eat organic meat
+                            </TableCell>
+                            <TableCell>
+                                <InputLabel id="organicMeatPercentage">%</InputLabel>
+                                <Select labelId="organicMeatPercentage" onChange={changeMeat}>
+                                    <MenuItem value="0.025">25%</MenuItem>
+                                    <MenuItem value="0.05">50%</MenuItem>
+                                    <MenuItem value="0.075">75%</MenuItem>
+                                    <MenuItem value="0.1">100%</MenuItem>
+                                </Select>
+                            </TableCell>
+                            <TableCell align="right">
+                                {organicMeat}
+                            </TableCell>
+                            <TableCell align="right">
+                                <PrimaryButton text="Pledge" size="small" onClick={pledge}/>
                             </TableCell>
                         </TableRow>
-                        {rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => {
-                        return (
-                            <TableRow hover role="checkbox" tabIndex={-1} key={row.code}>
-                            {columns.map((column) => {
-                                const value = row[column.id];
-                                return (
-                                <TableCell key={column.id} align={column.align}>
-                                    {column.format && typeof value === 'number' ? column.format(value) : value}
-                                </TableCell>
-                                );
-                            })}
-                            </TableRow>
-                        );
-                        })}
+                        <TableRow>
+                            <TableCell>
+                                Eat organic dairy
+                            </TableCell>
+                            <TableCell>
+                                <InputLabel id="organicDairyPercentage">%</InputLabel>
+                                <Select labelId="organicDairyPercentage" onChange={changeDairy}>
+                                    <MenuItem value="0.025">25%</MenuItem>
+                                    <MenuItem value="0.05">50%</MenuItem>
+                                    <MenuItem value="0.075">75%</MenuItem>
+                                    <MenuItem value="0.1">100%</MenuItem>
+                                </Select>
+                            </TableCell>
+                            <TableCell align="right">
+                                {organicDairy}
+                            </TableCell>
+                            <TableCell align="right">
+                                <PrimaryButton text="Pledge" size="small" onClick={pledge}/>
+                            </TableCell>
+                        </TableRow>
+                        <TableRow>
+                            <TableCell>
+                                Install PV panels
+                            </TableCell>  
+                            <TableCell>
+                                <Select onChange={ (e) => { setPanels(e.target.value) }}>
+                                    <MenuItem value="0">No</MenuItem>
+                                    <MenuItem value="2.0">Yes</MenuItem>
+                                </Select>
+                            </TableCell>
+                            <TableCell align="right">
+                                {panels}
+                            </TableCell>
+                            <TableCell align="right">
+                                <PrimaryButton text="Pledge" size="small" onClick={pledge}/>
+                            </TableCell>
+                            <TableCell component="a" href="https://www.solar-estimate.org/" align="right">
+                                Get a detailed estimate
+                            </TableCell>
+                        </TableRow>
+                        </>
+                        }
+                        {page===1 && 
+                        <>
+                        <TableRow>
+                            <TableCell>
+                                Install low flow showerheads
+                            </TableCell>
+                            <TableCell>
+                                <Select onChange={(e) => {setShowerheads(e.target.value)}}>
+                                    <MenuItem value="0">No</MenuItem>
+                                    <MenuItem value="0.4">Yes</MenuItem>
+                                </Select>
+                            </TableCell> 
+                            <TableCell align="right">
+                                {showerheads}
+                            </TableCell>
+                            <TableCell align="right">
+                                <PrimaryButton text="Pledge" size="small" onClick={pledge}/>
+                            </TableCell> 
+                        </TableRow>
+                        <TableRow>
+                            <TableCell>
+                                Line dry clothing
+                            </TableCell> 
+                            <TableCell>
+                            <InputLabel id="lineDryClothing">% of Clothing</InputLabel>
+                                <Select labelId="lineDryClothing" onChange={changeLineDry}>
+                                    <MenuItem value="0.1">20%</MenuItem>
+                                    <MenuItem value="0.2">40%</MenuItem>
+                                    <MenuItem value="0.3">60%</MenuItem>
+                                    <MenuItem value="0.4">80%</MenuItem>
+                                    <MenuItem value="0.5">100%</MenuItem>
+                                </Select>
+                            </TableCell>  
+                            <TableCell align="right">
+                                {linedry}
+                            </TableCell> 
+                            <TableCell align="right">
+                                <PrimaryButton text="Pledge" size="small" onClick={pledge}/>
+                            </TableCell>                         
+                        </TableRow>
+                        <TableRow>
+                            <TableCell>
+                                Plant trees
+                            </TableCell>
+                            <TableCell>
+                                <InputLabel id="plantTrees"># of Trees</InputLabel>
+                                <Select labelId="plantTrees" onChange={changeTrees}>
+                                    <MenuItem value="0.1">5 trees</MenuItem>
+                                    <MenuItem value="0.4">20 trees</MenuItem>
+                                    <MenuItem value="1">50 trees</MenuItem>
+                                    <MenuItem value="2">100 trees</MenuItem>
+                                </Select>
+                            </TableCell>  
+                            <TableCell align="right">
+                                {plantedTrees}  
+                            </TableCell>
+                            <TableCell align="right">
+                                <PrimaryButton text="Pledge" size="small" onClick={pledge}/>
+                            </TableCell>
+                            <TableCell component="a" href="https://teamtrees.org/" align="right">
+                                Plant Trees
+                            </TableCell>
+                        </TableRow>
+                        <TableRow>
+                            <TableCell>
+                                Purchase green electricity
+                            </TableCell> 
+                            <TableCell>
+                                <Select onChange={(e) => { setElectricity(e.target.value)}}>
+                                    <MenuItem value="0">No</MenuItem>
+                                    <MenuItem value="2.0">Yes</MenuItem>
+                                </Select>
+                            </TableCell>
+                            <TableCell align="right">
+                                {electricity}
+                            </TableCell>
+                            <TableCell align="right">
+                                <PrimaryButton text="Pledge" size="small" onClick={pledge}/>
+                            </TableCell>
+                        </TableRow>
+                        <TableRow>
+                            <TableCell>
+                                Switch to CFLs or LEDs
+                            </TableCell>
+                            <TableCell>
+                                <Select onChange={(e) => { setLED(e.target.value)}}>
+                                    <MenuItem value="0.4">5 bulbs</MenuItem>
+                                    <MenuItem value="0.8">10 bulbs</MenuItem>
+                                </Select>
+                            </TableCell>
+                            <TableCell align="right">
+                                {led}
+                            </TableCell>
+                            <TableCell align="right">
+                                <PrimaryButton text="Pledge" size="small" onClick={pledge}/>
+                            </TableCell>
+                        </TableRow>
+                        </>
+                        }
+                        {page===2 && 
+                        <>
+                        <TableRow>
+                            <TableCell>
+                                Turn off lights
+                            </TableCell>
+                            <TableCell>
+                                <InputLabel id="lightsOff">Hours Off</InputLabel>
+                                <Select labelId="lightsOff" onChange={changeLights}>
+                                    <MenuItem value="0.2">5</MenuItem>
+                                    <MenuItem value="0.4">11</MenuItem>
+                                    <MenuItem value="0.6">17</MenuItem>
+                                    <MenuItem value="0.8">24</MenuItem>
+                                </Select>
+                            </TableCell>
+                            <TableCell align="right">
+                                {lights}
+                            </TableCell>
+                            <TableCell align="right">
+                                <PrimaryButton text="Pledge" size="small" onClick={pledge}/>
+                            </TableCell>
+                        </TableRow>
+                        </>
+                    }
                     </TableBody>
                     </Table>
                 </TableContainer>
                 <TablePagination
-                    rowsPerPageOptions={[10, 25, 100]}
+                    rowsPerPageOptions={[5, 10]}
                     component="div"
-                    count={rows.length}
+                    count={11}
                     rowsPerPage={rowsPerPage}
                     page={page}
                     onChangePage={handleChangePage}
                     onChangeRowsPerPage={handleChangeRowsPerPage}
                 />
             </Paper>
-
-        <div style={{maxHeight: "300px", overflow:"hidden auto"}}>
-            <table className="take-action" style={{backgroundColor: "#B4E6CD", width:'100%'}}>
-                <thead>
-                    <tr>
-                        <th>
-                            <span>Pledges <FaAward /></span>
-                        </th>
-                        <th>
-                            <span>Select</span>
-                        </th>
-                        <th>
-                            <span>Tons saved per year</span>
-                        </th>
-                        <th>
-                        <span>Incentives</span>
-                        </th>
-                        <th><span>Status</span></th>
-                    </tr>
-                </thead>
-
-                <tbody id="carpool-pledge">
-                    <tr>
-                        <td><AiFillCar /> Carpool to work</td>
-                        <td><select id="carpool" onChange={changeCarpoolDays}>
-                            <option>Days</option>
-                            <option value="0.3">1</option>
-                            <option value="0.6">2</option>
-                            <option value="0.9">3</option>
-                            <option value="1.2">4</option>
-                            <option value="1.5">5</option>
-                            <option value="1.8">6</option>
-                            <option value="2.1">7</option>
-                        </select></td>
-                        <td> {carpool} </td>
-                        <td><p><a href="https://fundingwizard.arb.ca.gov/web/#search//%255BZipcode%253D%253D94720%255D%255BCategory%253D%253DTransportation%255D%255BEligible+Applicants%253D%253DIndividual%255D/false/none/false/1/12">Rebates and incentives</a></p></td>
-                        <td><input type="submit" value="I pledge" onClick={ (e) => {
-                            setTotalOffset((parseFloat(carpool) + parseFloat(organicProduce) + parseFloat(organicDairy) + parseFloat(organicMeat) + parseFloat(plantedTrees) +
-                            parseFloat(linedry) + parseFloat(lights) + parseFloat(electricity) + parseFloat(panels) + parseFloat(showerheads) + parseFloat(led)).toFixed(2));
-                            
-                            const carpoolPledge = document.getElementById("carpool-pledge");
-                            carpoolPledge.style.display = "none";
-                            e.target.style.display = "none";
-                        }}/></td>
-                    </tr>
-                </tbody>
-
-                <tbody id="produce-pledge">
-                    <tr>
-                        <td><FaCarrot /> Eat organic produce</td>
-                        <td><select onChange={changeProduce}>
-                            <option> % </option>
-                            <option value="0.025">25%</option>
-                            <option value="0.05">50%</option>
-                            <option value="0.075">75%</option>
-                            <option value="0.1">100%</option>
-                        </select></td>
-                        <td>{organicProduce}</td><td></td>
-                        <td><input type="button" value="I pledge" 
-                        onClick={ (e) => {
-                            setTotalOffset((parseFloat(carpool) + parseFloat(organicProduce) + parseFloat(organicDairy) + parseFloat(organicMeat) + parseFloat(plantedTrees) +
-                            parseFloat(linedry) + parseFloat(lights) + parseFloat(electricity) + parseFloat(panels) + parseFloat(showerheads) + parseFloat(led)).toFixed(2));
-                            
-                            const producePledge = document.getElementById("produce-pledge");
-                            producePledge.style.display = "none";
-                            e.target.style.display = "none";
-                        }}/></td>
-                    </tr>
-                </tbody>
-                <tbody id="meat-pledge">
-                    <tr>
-                        <td><GiCow /> Eat organic meat</td>
-                        <td><select onChange={changeMeat}>
-                            <option> % </option> 
-                            <option value="0.025">25%</option>
-                            <option value="0.05">50%</option>
-                            <option value="0.075">75%</option>
-                            <option value="0.1">100%</option>
-                            </select>
-                        </td>
-                        <td>{organicMeat}</td><td></td>
-                        <td><input type="button" value="I pledge" 
-                        onClick={ (e) => {
-                            setTotalOffset((parseFloat(carpool) + parseFloat(organicProduce) + parseFloat(organicDairy) + parseFloat(organicMeat) + parseFloat(plantedTrees) +
-                            parseFloat(linedry) + parseFloat(lights) + parseFloat(electricity) + parseFloat(panels) + parseFloat(showerheads) + parseFloat(led)).toFixed(2));
-                            
-                            const meatPledge = document.getElementById("meat-pledge");
-                            meatPledge.style.display = "none";
-                            e.target.style.display = "none";
-                        }}/></td>
-                    </tr>
-                </tbody>
-                <tbody id="dairy-pledge"> 
-                    <tr>
-                        <td><GiMilkCarton /> Eat organic dairy</td>
-                        <td><select onChange={changeDairy}>
-                        <option> % </option> 
-                            <option value="0.025">25%</option>
-                            <option value="0.05">50%</option>
-                            <option value="0.075">75%</option>
-                            <option value="0.1">100%</option>
-                        </select></td>
-                        <td>{organicDairy}</td><td></td>
-                        <td><input type="button" value="I pledge" 
-                        onClick={ (e) => {
-                            setTotalOffset((parseFloat(carpool) + parseFloat(organicProduce) + parseFloat(organicDairy) + parseFloat(organicMeat) + parseFloat(plantedTrees) +
-                            parseFloat(linedry) + parseFloat(lights) + parseFloat(electricity) + parseFloat(panels) + parseFloat(showerheads) + parseFloat(led)).toFixed(2));
-                            
-                            const dairyPledge = document.getElementById("dairy-pledge");
-                            dairyPledge.style.display = "none";
-                            e.target.style.display = "none";
-                        }}/></td>
-                    </tr>
-                </tbody>
-
-                <tbody id="pv-pledge">
-                    <tr>
-                        <td><GiSolarPower /> Install PV panels</td><td><select onChange={ (e) => { setPanels(e.target.value) }}>
-                            <option value="0">No</option>
-                            <option value="2.0">Yes</option>
-                            </select></td>
-                            <td>{panels}</td>
-                        <td><p><a href="https://fundingwizard.arb.ca.gov/web/#search//%255BZipcode%253D%253D94720%255D%255BCategory%253D%253DTransportation%255D%255BEligible+Applicants%253D%253DIndividual%255D/false/none/false/1/12">Incentives</a></p>
-                    <p><a href="https://www.solar-estimate.org/">Get a detailed estimate.</a></p></td>
-                    <td><input type="button" value="I pledge" onClick={handlePanels}/></td>
-                    </tr>
-                </tbody>
-                <tbody id="shower-pledge">
-                    <tr>
-                        <td><FaShower /> Install low flow showerheads</td><td><select onChange={ (e) => {setShowerheads(e.target.value)}}>
-                            <option value="0">No</option>
-                            <option value="0.4">Yes</option>
-                            </select></td><td>{showerheads}</td><td></td>                       
-                        <td><input type="button" value="I pledge" onClick={handleShowerheads}/></td>
-                    </tr>
-                </tbody>
-                <tbody id="dry-pledge">
-                    <tr>
-                        <td><AiOutlineSkin /> Line dry clothing</td>
-                        <td>
-                            <select onChange={changeLineDry}>
-                                <option>% of clothing</option>
-                                <option value="0.1">20%</option>
-                                <option value="0.2">40%</option>
-                                <option value="0.3">60%</option>
-                                <option value="0.4">80%</option>
-                                <option value="0.5">100%</option>
-                            </select>
-                        </td>
-                        <td>{linedry}</td>
-                        <td></td>
-                        <td><input type="button" value="I pledge" 
-                        onClick={ (e) => {
-                            setTotalOffset((parseFloat(carpool) + parseFloat(organicProduce) + parseFloat(organicDairy) + parseFloat(organicMeat) + parseFloat(plantedTrees) +
-                            parseFloat(linedry) + parseFloat(lights) + parseFloat(electricity) + parseFloat(panels) + parseFloat(showerheads) + parseFloat(led)).toFixed(2));
-                            
-                            const dryPledge = document.getElementById("dry-pledge");
-                            dryPledge.style.display = "none";
-                            e.target.style.display = "none";
-                        }}/></td>
-                    </tr>
-                </tbody>
-                <tbody id="tree-pledge">
-                    <tr>
-                        <td><GiTreeGrowth /> Plant trees</td>
-                        <td>
-                            <select onChange={changeTrees}>
-                            <option>Per 5 trees</option>
-                            <option value="0.1">5 trees</option>
-                            <option value="0.4">20 trees</option>
-                            <option value="1">50 trees</option>
-                            <option value="2">100 trees</option>
-                            </select>
-                        </td>
-                        <td>{plantedTrees}</td>
-                        <td><p><a href="https://teamtrees.org/">Plant trees</a></p></td>
-                        <td><input type="button" value="I pledge" 
-                        onClick={ (e) => {
-                            setTotalOffset((parseFloat(carpool) + parseFloat(organicProduce) + parseFloat(organicDairy) + parseFloat(organicMeat) + parseFloat(plantedTrees) +
-                            parseFloat(linedry) + parseFloat(lights) + parseFloat(electricity) + parseFloat(panels) + parseFloat(showerheads) + parseFloat(led)).toFixed(2));
-                            
-                            const treePledge = document.getElementById("tree-pledge");
-                            treePledge.style.display = "none";
-                            e.target.style.display = "none";
-                        }}/></td>
-                    </tr>
-                </tbody>
-                <tbody id="electricity-pledge">
-                    <tr>
-                        <td><GiElectric /> Purchase green electricity</td><td><select onChange= { (e) => { setElectricity(e.target.value)}}>
-                            <option value="0">No</option>
-                            <option value="2.0">Yes</option>
-                            </select></td>
-                        <td>{electricity}</td><td></td>
-                        <td><input type="button" value="I pledge" onClick={handleElectricity}/></td>
-                    </tr>
-                </tbody>
-                <tbody id="led-pledge">
-                    <tr>
-                        <td><RiLightbulbLine /> Switch to CFLs or LEDs</td><td><select onChange= { (e) => { setLED(e.target.value)}}>
-                            <option value="0.4">5 bulbs</option>
-                            <option value="0.8">10 bulbs</option>
-                            </select></td>
-                            <td>{led}</td><td></td>
-                        <td><input type="button" value="I pledge" onClick={handleLED}/></td>
-                    </tr>
-                </tbody>
-                <tbody id="light-pledge"> 
-                    <tr>
-                        <td><ImSwitch />  Turn off lights</td>
-                        <td><select onChange={changeLights}>
-                            <option>Hours off</option>
-                            <option value="0.2">5</option>
-                            <option value="0.4">11</option>
-                            <option value="0.6">17</option>
-                            <option value="0.8">24</option>
-                        </select>
-                        </td>
-                        <td>{lights}</td><td></td>
-                        <td><input type="button" value="I pledge" 
-                        onClick={ (e) => {
-                            setTotalOffset((parseFloat(carpool) + parseFloat(organicProduce) + parseFloat(organicDairy) + parseFloat(organicMeat) + parseFloat(plantedTrees) +
-                            parseFloat(linedry) + parseFloat(lights) + parseFloat(electricity) + parseFloat(panels) + parseFloat(showerheads) + parseFloat(led)).toFixed(2));
-                            
-                            const lightPledge = document.getElementById("light-pledge");
-                            lightPledge.style.display = "none";
-                            e.target.style.display = "none";
-                        }}/></td>
-                    </tr>
-                </tbody>
-
-            </table>
-            <div>
+        </ThemeProvider>
+        {/* Commenting out bc button seems to do nothing, get 404 err
+        <div>
             <input align="center" type="button" value="See Effect of Selected Pledges" onClick={updateEmission}/>
-            </div>
-        </div>
+        </div> */}
         </div>
     )
 }
