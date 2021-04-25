@@ -1,18 +1,76 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import {Table, Box} from '@material-ui/core/';
+import { makeStyles, createMuiTheme } from '@material-ui/core/styles';
+import {Table, Box, ThemeProvider} from '@material-ui/core/';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import { GiMedallist, GiRibbon } from 'react-icons/gi';
 import { FaMedal } from 'react-icons/fa';
+import { fade } from '@material-ui/core/styles/colorManipulator';
 
 const useStyles = makeStyles((theme) => ({
   seeMore: {
     marginTop: theme.spacing(3),
   },
 }));
+
+const tableTheme = createMuiTheme({
+  overrides:{
+    MuiMenuItem: { // For ListItem, change this to MuiListItem
+      root: {
+        "&$selected": {       // this is to refer to the prop provided by M-UI
+          backgroundColor: '#83bcc4', // updated backgroundColor
+        },
+        "&:hover":{
+          backgroundColor: '#83bcc43',
+        },
+        color:"#2E4089"
+      },
+    },
+    MuiPaper: {
+      root: {
+        backgroundColor: fade('#FFFF', 0.75)
+      }
+    },
+    MuiTable:{
+      root:{
+        backgroundColor:fade('#FFFF', 0.75),
+        borderRadius: 5,
+        //borderTopRightRadius: 20
+      }
+    },
+    MuiTableHead:{
+      root:{
+        //backgroundColor: fade('#FFFF', 0.75),
+        borderRadius: 'inherit'
+        // borderTopLeftRadius: 20,
+        // borderTopRightRadius: 20 
+      }
+    },
+    MuiTableCell: {
+      root:{
+        backgroundColor: 'none',
+      },
+      head:{
+        '&:last-child': {
+          borderTopRightRadius: 5,
+        },
+        '&:first-child': {
+          borderTopLeftRadius: 5,
+        },
+        backgroundColor:'#FFFF',
+      }
+    },
+    MuiTableRow:{
+      //backgroundColor:'#FFF',
+      borderRadius: 'inherit',
+      '&:last-child td': {
+        borderBottom: 0,
+      },
+    }
+  }
+})
 
 export default function LeaderBoard() {
   const classes = useStyles();
@@ -64,10 +122,11 @@ export default function LeaderBoard() {
 
   return (
     <React.Fragment>
+      <ThemeProvider theme={tableTheme}>
       <Box fontWeight="fontWeightBold" fontSize="h6.fontSize" letterSpacing={2} style={{color:'#2E4089', paddingTop:20}}>
-        Leader Board
+        Global Leader Board
       </Box>
-      <Table size="small" style={{backgroundColor: "#B4E6CD"}}>
+      <Table size="small">
         <TableHead>
           <TableRow>
             <TableCell>Rank</TableCell>
@@ -109,6 +168,7 @@ export default function LeaderBoard() {
             </TableRow>
         </TableBody>
       </Table>
+      </ThemeProvider>
     </React.Fragment>
   );
 }
