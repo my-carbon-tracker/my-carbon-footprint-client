@@ -24,6 +24,11 @@ import GetMap from './components/map';
 const theme = createMuiTheme({
   //#DFB593 dark pinkish
   //#DFB593 light pinkish still vibrant, old primary
+  typography: {
+    fontFamily: [
+      'Istok Web',
+    ].join(','),
+  },
   palette:{
     primary: {
       main: '#D3B3A4',

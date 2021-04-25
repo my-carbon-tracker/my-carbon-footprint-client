@@ -21,6 +21,11 @@ const useStyles = makeStyles(theme=>({
 }))
 
 const theme = createMuiTheme({
+    typography: {
+        fontFamily: [
+            'Istok Web',
+        ].join(','),
+      },
     palette:{
         primary: {
           main: '#2E4089',
