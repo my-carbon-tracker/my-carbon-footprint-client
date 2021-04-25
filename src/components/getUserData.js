@@ -3,6 +3,7 @@ import { useAverageEmissionContext } from '../contexts/averageEmissionContext';
 import { useLocationContext } from '../contexts/locationContext';
 import { useEmissionContext } from "../contexts/emissionContext";
 import { useUserNameContext } from "../contexts/usernameContext";
+import getServerURL from '../serverConfig';
 
 export default function UserData(props){
     const {token} = props;
@@ -11,7 +12,7 @@ export default function UserData(props){
     const {location, setLocation} = useLocationContext();
     const {compareToOthers, setCompareToOthers} = useAverageEmissionContext();
 
-    fetch(`http://localhost:3000/auth/user/data`,{
+    fetch(`${getServerURL()}/auth/user/data`,{
             method:'GET',
             headers:{
                 "Accept": "application/json",

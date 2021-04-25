@@ -2,7 +2,7 @@ import {React, useEffect, useState} from 'react'
 import { DataGrid } from '@material-ui/data-grid'
 import EmissionGraph from './graphs'
 import food from '../footprint-quiz/food/food'
-
+import getServerURL from '../../serverConfig';
 
 export default function FoodEmission(props) {
     const [rows, setRows] = useState([])
@@ -19,7 +19,7 @@ export default function FoodEmission(props) {
         let id = 0
         const container = []
         const getEntries = async() => {
-            const response = await fetch('http://localhost:3000/food/entries',{
+            const response = await fetch(`${getServerURL()}/food/entries`,{
                 headers: {
                     "Authorization": `Bearer ${props.token}`
                 },

@@ -3,6 +3,8 @@ import { makeStyles } from '@material-ui/core/styles'
 import { Card, CardContent, Box} from '@material-ui/core'
 import Form from './Form'
 import Typography from '@material-ui/core/Typography';
+import getServerURL from '../serverConfig';
+
 const useStyles = makeStyles({
     root: {
       height: '100vh',
@@ -38,7 +40,7 @@ const useStyles = makeStyles({
     const classes = useStyles();
     const [prompt, setPrompt] = useState(false);
     const login = async (name,pass) =>{
-        const url = `http://localhost:3000/auth/login`
+        const url = `${getServerURL()}/auth/login`
         const body = {
             username: name,
             password: pass
