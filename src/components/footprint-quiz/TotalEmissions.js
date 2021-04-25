@@ -1,5 +1,7 @@
+import React from 'react';
 import { Container, Box } from "@material-ui/core/";
 import FoodEmission from '../Emissions/foodTable'
+/* eslint-disable react/prop-types */
 
 function TotalEmissions(props){
     const {totalEmissions, currentStep} = props
@@ -15,7 +17,7 @@ function TotalEmissions(props){
                 </div>
             </Box>
             
-            <Box  m={'auto'}>
+            <Box  m={'auto'} pb={5}>
                 <FoodEmission token={props.token}/>  
             </Box>
         </Container>

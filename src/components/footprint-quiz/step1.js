@@ -1,7 +1,8 @@
+import React from 'react';
 import {useState, useEffect} from 'react';
 import {Container, Box} from '@material-ui/core/';
 import PrimaryButton from '../reusable/PrimaryButton';
-
+/* eslint-disable react/prop-types */
 
 function Step1(props){
     const {currentStep, setCurrentStep, categories, setCategories} = props;

@@ -10,6 +10,7 @@ import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 import Footer from "./footer";
 import HowItWorks from "./howItWorks";
 import { fade } from "@material-ui/core/styles/colorManipulator";
+/* eslint-disable react/no-unescaped-entities */
 
 const useStyles = makeStyles((theme) => ({
   heroContent: {

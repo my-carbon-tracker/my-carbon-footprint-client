@@ -3,15 +3,42 @@ import { DataGrid } from '@material-ui/data-grid'
 import EmissionGraph from './graphs'
 import food from '../footprint-quiz/food/food'
 import getServerURL from '../../serverConfig';
+import { makeStyles, createMuiTheme } from '@material-ui/core/styles';
+import { fade } from '@material-ui/core/styles/colorManipulator';
+import {ThemeProvider} from "@material-ui/core/";
 
+const tableTheme = createMuiTheme({
+    overrides:{
+      MuiMenuItem: { // For ListItem, change this to MuiListItem
+        root: {
+          "&$selected": {       // this is to refer to the prop provided by M-UI
+            backgroundColor: '#83bcc4', // updated backgroundColor
+          },
+          "&:hover":{
+            backgroundColor: '#83bcc43',
+          },
+          color:"#2E4089"
+        },
+      },
+      MuiDataGrid:{
+        root:{
+          backgroundColor:fade('#FFFF', 0.50),
+          borderRadius: 5,
+          //borderTopRightRadius: 20
+        }
+      }
+    }
+  })
+
+/* eslint-disable react/prop-types */
 export default function FoodEmission(props) {
     const [rows, setRows] = useState([])
     const columns = [
-        {field: 'id', headerName: 'ID', width: 70},
-        {field: 'meal', headerName: 'Meal #', width: 75},
+        {field: 'meal', headerName: 'Meal #', width: 115},
         {field: 'name', headerName: 'Food Type', width: 120},
-        {field: 'serving', headerName: 'Servings', width: 100},
-        {field: 'emission', headerName: 'Emissions', width: 120}
+        {field: 'serving', headerName: 'Servings', width: 110},
+        {field: 'emission', headerName: 'Emissions', width: 120},
+        {field: 'id', headerName: 'ID', width: 70},
     ]
     console.log(props.token)
     
@@ -35,11 +62,11 @@ export default function FoodEmission(props) {
             entries.forEach(obj => {
                 id++
                 const entry = {}
-                entry.id = id
                 entry.meal = entryidx
                 entry.name = obj.name
                 entry.serving = obj.servings
                 entry.emission = obj.servings * food[obj.name].emissionsPerServing
+                entry.id = id
                 container.push(entry)
             })
         }
@@ -49,11 +76,13 @@ export default function FoodEmission(props) {
 
     return (
         <div style={{display: 'flex'}}>
-            <div style={{height:400, width: '50%', backgroundColor:'white'}}>
+            <div style={{height:400, width: '50%'}}>
+            <ThemeProvider theme={tableTheme}>
                 <DataGrid rows={rows} columns={columns} checkboxSelection />
+            </ThemeProvider>
             </div>
             <div style={{width: '50%', height:'200px'}}>
-            <EmissionGraph data ={rows}/>
+                <EmissionGraph data ={rows}/>
             </div>
         </div>
     )

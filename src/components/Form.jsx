@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
     }
 
 }));
-
+/* eslint-disable react/prop-types */
 export default function Form(props) {
     const classes = useStyles();
     const [nameInput, setName] = useState('')

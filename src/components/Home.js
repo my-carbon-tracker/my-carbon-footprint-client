@@ -33,6 +33,8 @@ const useStyles = makeStyles({
     padding:15
   }
 })
+
+/* eslint-disable react/prop-types */
 function Home (props) {
   const classes = useStyles();
   const {token} = props;
@@ -74,11 +76,6 @@ function Home (props) {
                 </Zoom> */}
               </Grid>
 
-              {/* <Grid item lg={6} sm={6} xl={12} xs={12}>
-                <Box fontWeight="fontWeightBold" fontSize="h6.fontSize" letterSpacing={2} style={{color:'#2E4089', paddingTop:30, paddingBottom:10}}>
-                  Location {location}
-                </Box>                 
-              </Grid> */}
             <Paper variant="outlined" className={classes.paper}>
               <Grid item lg={4} sm={4} xl={4} xs={4}>
                 <Box className={classes.text} fontWeight="fontWeightMedium" fontSize={16} letterSpacing={2} style={{color:'#2E4089'}}>
@@ -106,7 +103,6 @@ function Home (props) {
                 <Box className={classes.text} fontWeight="fontWeightBold" fontSize={16} letterSpacing={1} style={{color:'#2E4089', paddingTop:10, paddingBottom:10, marginLeft:10, marginRight:"-30px"}}>
                   Avg. Emissions For {location}
                 </Box>
-                {/* add graph  */}
               </Grid>
             </Paper> 
               <Grid item lg={6} md={6} xl={12} xs={12} >
@@ -114,7 +110,7 @@ function Home (props) {
               </Grid>
               <Grid item lg={6} md={6} xl={12} xs={12} >
                 {/* list of pledges you can take */}
-                <Pledges />
+                <Pledges token={token} />
               </Grid>
             </Grid>
           </Container>

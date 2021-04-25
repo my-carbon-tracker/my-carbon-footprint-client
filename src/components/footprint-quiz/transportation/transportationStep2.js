@@ -1,9 +1,11 @@
+import React from 'react';
 import { useState,useEffect } from "react"
 import MapBox from './map'
 import {Box, TextField} from '@material-ui/core'
 import PrimaryButton from '../../reusable/PrimaryButton'
+/* eslint-disable react/prop-types */
 
-export default function(props){
+export default function TransportationStep2(props){
     let {currentStep, setCurrentStep, modesOfTransport, setDistances} = props
     const [trainDistance, setTrainDistance] = useState(0)
     const [busDistance, setBusDistance] = useState(0)

@@ -5,7 +5,7 @@ const Footer = () => (
     <footer style={{ padding: '45px 0 20px', fontSize: '15px', lineHeight: '24px',  backgroundColor: "#2C5763"}}>
     <div style={{textAlign: "center"}}>
         <div>
-          <p class="copyright-text">Copyright &copy; My Carbon Footprint 2021</p>
+          <p className="copyright-text">Copyright &copy; My Carbon Footprint 2021</p>
         </div>
         <div>
           <ul style={{ paddingLeft:'0', marginBottom:'0', listStyle:'none'}}>
