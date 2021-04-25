@@ -127,7 +127,7 @@ export default function MainPage() {
           gutterBottom
           style={{
             color: "white",
-            paddingTop: theme.spacing(3),
+            paddingTop: theme.spacing(5),
           }}
         >
           Our Mission
