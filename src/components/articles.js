@@ -124,7 +124,7 @@ export default function Articles() {
             </Typography>
           </Container>
         </div>
-        <Container className={classes.cardGrid} maxWidth="md">
+        <Container className={classes.cardGrid} maxWidth="md" style={{backgroundColor:'#D3B3A4'}}>
           {/* End hero unit */}
           <Grid container spacing={4}>
 
