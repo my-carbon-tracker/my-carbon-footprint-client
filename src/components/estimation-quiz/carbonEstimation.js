@@ -3,6 +3,8 @@ import XMLParser from 'react-xml-parser';
 import {Box, TextField, Select, MenuItem} from '@material-ui/core/';
 import PrimaryButton from '../reusable/PrimaryButton';
 import CarbonEstimationResults from './carbonEstimationResults';
+/* eslint-disable react/prop-types */
+/* eslint-disable react/no-unescaped-entities */
 
 function GetUserInfo(props){
     //save to db and render in home page 
@@ -37,12 +39,12 @@ function GetUserInfo(props){
         })
         .then(res => res.text())
         .then(results => {
-            var xml = new XMLParser().parseFromString(results); 
-            let foodEmission = xml.children[264]['value'];
-            let housingEmission = xml.children[263]['value'];
-            let transportationEmission = xml.children[262]['value'];
-            let goodsEmission = xml.children[265]['value'];
-            let serviceEmission = xml.children[266]['value'];
+            const xml = new XMLParser().parseFromString(results); 
+            const foodEmission = xml.children[264]['value'];
+            const housingEmission = xml.children[263]['value'];
+            const transportationEmission = xml.children[262]['value'];
+            const goodsEmission = xml.children[265]['value'];
+            const serviceEmission = xml.children[266]['value'];
 
             setTotalEmissions(xml.children[267]['value']);
    

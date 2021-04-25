@@ -3,6 +3,7 @@ import { DataGrid } from '@material-ui/data-grid'
 import EmissionGraph from './graphs'
 import food from '../footprint-quiz/food/food'
 import getServerURL from '../../serverConfig';
+/* eslint-disable react/prop-types */
 
 export default function FoodEmission(props) {
     const [rows, setRows] = useState([])

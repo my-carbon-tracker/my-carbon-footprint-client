@@ -1,3 +1,4 @@
+import React from 'react';
 import {useState, useEffect} from 'react';
 import {Container, Grid, TextField, Box} from '@material-ui/core/';
 import PrimaryButton from '../../reusable/PrimaryButton'
@@ -9,6 +10,8 @@ const useStyles = makeStyles(theme =>
       }
     })
   );
+  
+/* eslint-disable react/prop-types */
 
 function FoodStep2(props){
     //const classes = useStyles();

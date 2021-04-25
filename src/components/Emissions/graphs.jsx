@@ -3,6 +3,7 @@ import { Doughnut } from 'react-chartjs-2'
 
 export default function EmissionsGraph(props){
     const [chartData, setChartData] = useState({})
+    /* eslint-disable react/prop-types */
     let {data} = props
     let filteredData = {}
     const chart = {

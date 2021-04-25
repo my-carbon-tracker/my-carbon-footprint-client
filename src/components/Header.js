@@ -9,6 +9,7 @@ import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import React from "react";
 import Image from "../images/darkLogo.png";
+import Link from "@material-ui/core/Link";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -21,9 +22,10 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
     textAlign: "left",
     paddingLeft: theme.spacing(2),
+    fontSize: '26px',
   },
 }));
-
+/* eslint-disable react/prop-types */
 function Header(props) {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -39,9 +41,9 @@ function Header(props) {
     props.setToken("");
   };
   return (
-    <div className="">
-      <AppBar position="static">
-        <Toolbar>
+    <div className="" >
+      <AppBar position="static" >
+        <Toolbar style={{ color: 'inherit'}}>
           <IconButton
             onClick={handleClick}
             edge="start"
@@ -64,34 +66,37 @@ function Header(props) {
               horizontal: "left",
             }}
           >
-            <div>
-              <Button color="inherit" href="/home">
-                Home
-              </Button>
-            </div>
-            <div>
-              <Button color="inherit" href="/quiz">
-                Quizzes
-              </Button>
-            </div>
-            <div>
-              <Button color="inherit" href="/carbon-estimation">
-                Compare Emissions
-              </Button>
-            </div>
-            <div>
-              <Button color="inherit" href="/carbon-map">
-                Carbon Map
-              </Button>
-            </div>
-            <Button color="inherit" href="/climate-news">
+            <Link href="/home">
+            <MenuItem color="inherit" >
+              Home
+            </MenuItem>
+            </Link>
+            <Link href="/quiz">
+            <MenuItem color="inherit">
+              Quizzes
+            </MenuItem>
+            </Link>      
+            <Link href="/carbon-estimation">
+            <MenuItem color="inherit">
+              Compare Emissions
+            </MenuItem>
+            </Link>
+            <Link href="/carbon-map">
+            <MenuItem color="inherit">
+              Carbon Map
+            </MenuItem>
+            </Link>
+            <Link href="/climate-news">
+            <MenuItem color="inherit">
               Climate News
-            </Button>
+            </MenuItem>
+            </Link>
           </Menu>
+
           <Typography>
             <p>
               <a href="/">
-                <img src={Image} height="50" width="50" align="center" />
+                <img src={Image} height="40" width="40"/>
               </a>
             </p>
           </Typography>
@@ -110,6 +115,7 @@ function Header(props) {
         </Toolbar>
       </AppBar>
     </div>
+
   );
 }
 

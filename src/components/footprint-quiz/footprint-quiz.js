@@ -19,6 +19,7 @@ const useStyles = makeStyles({
     }
 })
 
+/* eslint-disable react/prop-types */
 function FootprintQuiz(props) {
     const classes = useStyles();
     const {token} = props

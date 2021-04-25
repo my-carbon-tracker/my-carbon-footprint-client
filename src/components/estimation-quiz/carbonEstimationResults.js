@@ -1,6 +1,8 @@
+import React from 'react';
 import {Box} from '@material-ui/core/';
 import PrimaryButton from '../reusable/PrimaryButton';
 import {Pie} from 'react-chartjs-2'; 
+/* eslint-disable react/prop-types */
 
 export default function CarbonEstimationResults (props) {
     let {token,place,totalEmissions,chartData} = props
