@@ -1,5 +1,5 @@
 import {Button} from '@material-ui/core';
-import {useState, useEffect} from 'react';
+import React, {useState, useEffect} from 'react';
 import { makeStyles, createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 
 const useStyles = makeStyles(theme=>({
@@ -39,6 +39,7 @@ const theme = createMuiTheme({
     },
 });
 
+/* eslint-disable react/prop-types */
 export default function PrimaryButton(props){
     const classes = useStyles();
     const {text,size,selected,variant,onClick,...other} = props;

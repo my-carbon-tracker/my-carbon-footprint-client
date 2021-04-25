@@ -1,4 +1,5 @@
-import { createContext, useState, useMemo, useContext} from 'react';
+import React, { createContext, useState, useMemo, useContext} from 'react';
+/* eslint-disable react/prop-types */
 
 const EmissionContext = createContext();
 

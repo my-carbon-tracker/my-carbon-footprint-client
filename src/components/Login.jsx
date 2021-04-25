@@ -36,6 +36,9 @@ const useStyles = makeStyles({
     }
   });
 
+/* eslint-disable react/prop-types */
+/* eslint-disable react/no-unescaped-entities */
+
   export default function Login(props){
     const classes = useStyles();
     const [prompt, setPrompt] = useState(false);

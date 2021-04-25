@@ -9,6 +9,7 @@ import Logo from "../images/darkLogo.png";
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 import Footer from "./footer";
 import HowItWorks from "./howItWorks";
+/* eslint-disable react/no-unescaped-entities */
 
 const useStyles = makeStyles((theme) => ({
   heroContent: {

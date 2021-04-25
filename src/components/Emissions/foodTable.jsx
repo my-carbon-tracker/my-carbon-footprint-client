@@ -30,6 +30,7 @@ const tableTheme = createMuiTheme({
     }
   })
 
+/* eslint-disable react/prop-types */
 export default function FoodEmission(props) {
     const [rows, setRows] = useState([])
     const columns = [

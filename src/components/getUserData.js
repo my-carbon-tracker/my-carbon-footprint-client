@@ -4,6 +4,7 @@ import { useLocationContext } from '../contexts/locationContext';
 import { useEmissionContext } from "../contexts/emissionContext";
 import { useUserNameContext } from "../contexts/usernameContext";
 import getServerURL from '../serverConfig';
+/* eslint-disable react/prop-types */
 
 export default function UserData(props){
     const {token} = props;
