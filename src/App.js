@@ -23,9 +23,10 @@ import GetMap from './components/map';
 
 const theme = createMuiTheme({
   //#DFB593 dark pinkish
+  //#DFB593 light pinkish still vibrant, old primary
   palette:{
     primary: {
-      main: '#DFB593',
+      main: '#D3B3A4',
       contrastText: "#2E4089"
       //mainGradient: "linear-gradient(#157A42,#25DB77)"
       //background: 'linear gradient(#157A42,#25DB77)',
@@ -60,22 +61,6 @@ const theme = createMuiTheme({
          color: "#2E4089"
       }
     },
-    MuiMenuItem: { // For ListItem, change this to MuiListItem
-      root: {
-        "&$selected": {       // this is to refer to the prop provided by M-UI
-          backgroundColor: '#83bcc4', // updated backgroundColor
-        },
-        "&:hover":{
-          backgroundColor: '#83bcc43',
-        },
-        color:"#2E4089"
-      },
-    },
-    MuiPaper: {
-      root: {
-        backgroundColor: '#96C3BE'
-      }
-    }
   }
 })
 //style={{ background: theme.palette.primary.mainGradient }}

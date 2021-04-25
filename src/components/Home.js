@@ -24,7 +24,8 @@ const useStyles = makeStyles({
     opacity:'1'
   },
   paper:{
-    backgroundColor:'#B3E7CD',
+   // backgroundColor:'#B3E7CD',
+    backgroundColor:'#FFFF',
     opacity: '.75',
     display:'flex',
     alignItems:'center',
@@ -58,7 +59,7 @@ function Home (props) {
 };
 
   return(
-    <div style={{textAlign: "center", background: 'linear-gradient(#DFB593, #DF7B7D 50%)', height:'175vh'}}>
+    <div style={{textAlign: "center", background: 'linear-gradient(#D3B3A4, #DF7B7D 50%)', height:'175vh'}}>
         <Box sx={{ backgroundColor: 'background.default', minHeight: '100%', py: 3}}>
           <Container maxWidth={false}>
             <Grid container spacing={3}>
