@@ -31,13 +31,14 @@ const useStyles = makeStyles((theme) => ({
     height: "100%",
     display: "flex",
     flexDirection: "column",
-    boxShadow: '2px 3px 3px 3px #2B3B37'
+    boxShadow: "2px 3px 3px 3px #2B3B37",
   },
   cardMedia: {
     paddingTop: "90%", // 16:9
   },
   cardContent: {
     flexGrow: 1,
+    color: "rgb(85,118,123)",
   },
   footer: {
     backgroundColor: theme.palette.background.paper,
@@ -58,8 +59,10 @@ export default function Team() {
               component="h1"
               variant="h2"
               align="center"
-              color="textPrimary"
               gutterBottom
+              style={{
+                color: "rgb(85,118,123)",
+              }}
             >
               Meet the Team
             </Typography>
@@ -123,7 +126,9 @@ export default function Team() {
                   <Typography gutterBottom variant="h5" component="h2">
                     Ebony Brown
                   </Typography>
-                  <Typography>Scrum Master, Software Engineer, Graphic Designer</Typography>
+                  <Typography>
+                    Scrum Master, Software Engineer, Graphic Designer
+                  </Typography>
                 </CardContent>
                 <CardActions>
                   <Button size="small" color="primary">

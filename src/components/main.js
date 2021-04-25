@@ -9,15 +9,16 @@ import Logo from "../images/darkLogo.png";
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 import Footer from "./footer";
 import HowItWorks from "./howItWorks";
+import { fade } from "@material-ui/core/styles/colorManipulator";
 /* eslint-disable react/no-unescaped-entities */
 
 const useStyles = makeStyles((theme) => ({
   heroContent: {
     padding: theme.spacing(13, 30, 13),
-    backgroundImage: `url(https://res.cloudinary.com/dd6dpafkm/image/upload/v1618611186/ice_signin_gheuo2.jpg)`,
+    backgroundImage: `url(https://res.cloudinary.com/dd6dpafkm/image/upload/v1619376958/landing_ucs1bn.jpg)`,
+    backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
     backgroundPosition: "center center",
-    backgroungSize: "cover",
     backgroundAttachment: "fixed",
     background: "linear-gradient(#DFB593, #DF7B7D 50%)",
     color: "white",
@@ -35,9 +36,10 @@ const useStyles = makeStyles((theme) => ({
     height: "7.0vh",
   },
   textBox: {
-    backgroundColor: "rgba(196,196,196,.3)",
+    backgroundColor: fade("#C4C4C4", 0.3),
     borderRadius: 20,
     padding: theme.spacing(10, 10, 10),
+    color: "rgb(85,118,123)",
   },
 }));
 
@@ -121,12 +123,14 @@ export default function MainPage() {
       </div>
       <div className={classes.spacing} align="center">
         <HowItWorks />
-        
         <Typography
           component="h1"
           variant="h2"
           gutterBottom
-          style={{ color: "white" }}
+          style={{
+            color: "white",
+            paddingTop: theme.spacing(5),
+          }}
         >
           Our Mission
         </Typography>
@@ -169,12 +173,11 @@ export default function MainPage() {
             </Container>
           </Typography>
           <Typography
-          component="h1"
-          variant="h2"
-          gutterBottom
-          style={{ color: "white" }}
-        >
-        </Typography>
+            component="h1"
+            variant="h2"
+            gutterBottom
+            style={{ color: "white" }}
+          ></Typography>
         </ThemeProvider>
         <Container
           style={{
