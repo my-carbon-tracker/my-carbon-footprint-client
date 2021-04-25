@@ -41,25 +41,29 @@ const tableTheme = createMuiTheme({
       },
       MuiTable:{
         root:{
-          //backgroundColor:fade('#FFFF', 0.2),
-          borderTopLeftRadius: 10,
-          borderTopRightRadius: 10
+          backgroundColor:fade('#FFFF', 0.75),
+          borderRadius: 5
         }
       },
       MuiTableHead:{
         root:{
-          backgroundColor: '#FFF',
-          borderTopLeftRadius: 20,
-          borderTopRightRadius: 20 
+          borderTopLeftRadius: 10,
+          borderTopRightRadius: 10,
         }
       },
       MuiTableCell: {
         stickyHeader:{
-          backgroundColor: '#FFF',
+            '&:last-child': {
+                borderTopRightRadius: 5,
+            },
+            '&:first-child': {
+                borderTopLeftRadius: 5,
+            },
+            backgroundColor:'#FFFF',
         },
       },
       MuiTableRow:{
-        backgroundColor:'#FFF',
+        borderRadius: 'inherit',
       }
     }
 })
@@ -201,10 +205,10 @@ const Pledges = (props) => {
                 Total CO2 Emissions saved: {totalOffset}
             </Box>
             <ThemeProvider theme={tableTheme}>
-            <Paper className={classes.root}>
+            {/* <Paper className={classes.root}> */}
                 <TableContainer className={classes.container}>
                     <Table stickyHeader aria-label="sticky table">
-                        <TableHead style={{backgroundColor:'white'}}>
+                        <TableHead>
                             <TableRow>
                             {columns.map((column) => (
                                 <TableCell
@@ -464,18 +468,16 @@ const Pledges = (props) => {
                     onChangePage={handleChangePage}
                     onChangeRowsPerPage={handleChangeRowsPerPage}
                 />
-            </Paper>
+            {/* </Paper> */}
         </ThemeProvider>
         {/* Commenting out bc button seems to do nothing, get 404 err
         <div>
             <input align="center" type="button" value="See Effect of Selected Pledges" onClick={updateEmission}/>
         </div> 
-        <div>
-            <input align="center" type="button" value="Completed Pledges" onClick={updateEmission}/>
-        </div>
         */}
-        <div>
-            <input align="center" type="button" value="Completed Pledges" onClick={updateEmission}/>
+        <div style={{marginTop:10}}>
+            <PrimaryButton text="Completed Pledges" onClick={updateEmission}/>
+            {/* <input align="center" type="button" value="Completed Pledges" onClick={updateEmission}/> */}
         </div>
         </div>
     )
