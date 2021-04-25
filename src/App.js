@@ -18,6 +18,7 @@ import { AverageEmissionProvider } from './contexts/averageEmissionContext';
 import { LocationProvider } from './contexts/locationContext';
 import { EmissionProvider } from './contexts/emissionContext';
 import { UserNameProvider } from './contexts/usernameContext';
+import { ConfettiProvider } from './contexts/confettiContext';
 import GetMap from './components/map';
 
 const theme = createMuiTheme({
@@ -107,6 +108,7 @@ function App() {
             <LocationProvider>
               <EmissionProvider>
                 <UserNameProvider>
+                  <ConfettiProvider>
           <Route exact path="/home" component={Home}>
             <Home token={token}/>
           </Route>
@@ -128,6 +130,7 @@ function App() {
           <Route path="/carbon-map">
             <GetMap />
           </Route>
+          </ConfettiProvider>
           </UserNameProvider>
           </EmissionProvider>
           </LocationProvider>
