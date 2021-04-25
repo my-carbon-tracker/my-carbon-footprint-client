@@ -8,6 +8,7 @@ import Team from "./team";
 import Logo from "../images/darkLogo.png";
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 import Footer from "./footer";
+import HowItWorks from "./howItWorks";
 
 const useStyles = makeStyles((theme) => ({
   heroContent: {
@@ -26,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
   },
   spacing: {
     padding: theme.spacing(12, 5, 1),
-    backgroundColor: "black",
+    backgroundColor: "#2C5763",
   },
   btn: {
     opacity: 0.75,
@@ -70,7 +71,7 @@ export default function MainPage() {
             </Typography>
           </ThemeProvider>
           <div className={classes.heroButtons}>
-            <Grid container spacing={3} justify="center">
+            <Grid container spacing={2} justify="center">
               <Grid item>
                 <Button
                   variant="contained"
@@ -116,6 +117,8 @@ export default function MainPage() {
         </Container>
       </div>
       <div className={classes.spacing} align="center">
+        <HowItWorks />
+        
         <Typography
           component="h1"
           variant="h2"
@@ -163,6 +166,13 @@ export default function MainPage() {
               reduce global warming by making changes in our daily life
             </Container>
           </Typography>
+          <Typography
+          component="h1"
+          variant="h2"
+          gutterBottom
+          style={{ color: "white" }}
+        >
+        </Typography>
         </ThemeProvider>
         <Container
           style={{

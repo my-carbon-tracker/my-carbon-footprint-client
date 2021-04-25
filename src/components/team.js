@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
     marginRight: theme.spacing(2),
   },
   heroContent: {
-    backgroundColor: "#FED7D9",
+    backgroundColor: "#B8CCC8",
     padding: theme.spacing(5, 10, 5),
     margin: theme.spacing(0, 18, 0),
   },
@@ -27,10 +27,11 @@ const useStyles = makeStyles((theme) => ({
     paddingBottom: theme.spacing(8),
   },
   card: {
-    backgroundColor: "#FED7D9",
+    backgroundColor: "#B8CCC8",
     height: "100%",
     display: "flex",
     flexDirection: "column",
+    boxShadow: '2px 3px 3px 3px #2B3B37'
   },
   cardMedia: {
     paddingTop: "90%", // 16:9
@@ -68,7 +69,7 @@ export default function Team() {
               color="textSecondary"
               paragraph
             >
-              “Saving the planet one code at a time” - Climate Developers
+              “Saving the planet, one line of code at a time” - Climate Developers
             </Typography>
           </Container>
         </div>
@@ -122,7 +123,7 @@ export default function Team() {
                   <Typography gutterBottom variant="h5" component="h2">
                     Ebony Brown
                   </Typography>
-                  <Typography>Scrum Master, Software Engineer</Typography>
+                  <Typography>Scrum Master, Software Engineer, Graphic Designer</Typography>
                 </CardContent>
                 <CardActions>
                   <Button size="small" color="primary">
