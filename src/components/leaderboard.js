@@ -8,6 +8,7 @@ import TableRow from '@material-ui/core/TableRow';
 import { GiMedallist, GiRibbon } from 'react-icons/gi';
 import { FaMedal } from 'react-icons/fa';
 import { fade } from '@material-ui/core/styles/colorManipulator';
+import getServerURL from '../serverConfig';
 
 const useStyles = makeStyles((theme) => ({
   seeMore: {
@@ -90,7 +91,7 @@ export default function LeaderBoard() {
   const [fifthPlaceEmissions, setFifthPlaceEmissions] = React.useState();
   const [fifthPlaceGoal, setFifthPlaceGoal] = React.useState();
 
-    fetch(`http://localhost:3000/data`,{
+    fetch(`${getServerURL()}/data`,{
         method:'GET',
         headers:{
           "Content-Type":"application/json",
