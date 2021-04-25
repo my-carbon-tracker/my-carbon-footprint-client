@@ -11,6 +11,7 @@ import { makeStyles, createMuiTheme } from "@material-ui/core/styles";
 import PrimaryButton from "./reusable/PrimaryButton";
 import { fade } from '@material-ui/core/styles/colorManipulator';
 import { useConfettiContext } from "../contexts/confettiContext";
+import getServerURL from '../serverConfig';
 
 const useStyles = makeStyles({
     root: {
@@ -143,7 +144,7 @@ const Pledges = (props) => {
         setParty(true);
         setEmissionWithPledge(totalEmission - totalOffset * 1000)
 
-        fetch(`http://localhost:3000/logEmission/completed-pledge`,{
+        fetch(`${getServerURL()}/logEmission/completed-pledge`,{
             method:'POST',
             headers:{
                 "Content-Type":"application/json",
