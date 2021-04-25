@@ -15,7 +15,7 @@ function TotalEmissions(props){
                 </div>
             </Box>
             
-            <Box  m={'auto'}>
+            <Box  m={'auto'} pb={5}>
                 <FoodEmission token={props.token}/>  
             </Box>
         </Container>

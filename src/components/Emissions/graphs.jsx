@@ -9,23 +9,8 @@ export default function EmissionsGraph(props){
         labels: [],
         datasets:[{
             label:'Food emissions',
-            backgroundColor: [
-                'rgb(255, 99, 132)',
-                'rgb(54, 162, 235)',
-                'rgb(255, 205, 86)',
-                'rgb(66, 135, 245)',
-                'rgb(66, 188, 245)',
-                'rgb(245, 194, 66)',
-                'rgb(255, 99, 132)',
-                'rgb(54, 162, 235)',
-                'rgb(255, 205, 86)',
-                'rgb(245, 194, 66)',
-                'rgb(227, 66, 245)',
-                'rgb(245, 66, 206)',
-                'rgb(66, 161, 245)',
-                'rgb(209, 66, 245)'
-            ],
-            borderColor: 'rgb(255, 99, 132)',
+            backgroundColor: ['#7D9ECA','#A8CBF0','#5CABFF','#467EAF','#334D84'],
+            borderColor: '#7D9ECA',
             data: [],
         }]
     }
@@ -45,7 +30,13 @@ export default function EmissionsGraph(props){
 
     return (
         <div>
-            <Doughnut data={chart}></Doughnut>
+            <Doughnut 
+                data={chart} 
+                options={{
+                    responsive: true,
+                    maintainAspectRatio: true,
+                }}
+            />
         </div>
     )
 }
