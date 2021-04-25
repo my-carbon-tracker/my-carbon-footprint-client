@@ -10,6 +10,7 @@ import TransportationStep2 from './transportation/transportationStep2';
 import TotalEmissions from './TotalEmissions';
 import {Paper, Container, Box} from '@material-ui/core';
 import { fade } from '@material-ui/core/styles/colorManipulator';
+import getServerURL from '../../serverConfig';
 
 const useStyles = makeStyles({
     background: 'linear-gradient(#41B898 50%, #84C57F 50%)',
@@ -42,7 +43,7 @@ function FootprintQuiz(props) {
             return accum + itemEmissions
         },0)
 
-        fetch(`http://localhost:3000/food/logFood`,{
+        fetch(`${getServerURL()}/food/logFood`,{
             method:'POST',
             headers:{
                 "Content-Type":"application/json",
@@ -66,7 +67,7 @@ function FootprintQuiz(props) {
             return accum + tripEmissions
         },0)
         //totalTransportEmissions = Math.round(totalTransportEmissions)
-        fetch(`http://localhost:3000/transport/logTransport`,{
+        fetch(`${getServerURL()}/transport/logTransport`,{
             method:'POST',
             headers:{
                 "Content-Type":"application/json",
@@ -95,7 +96,7 @@ function FootprintQuiz(props) {
 
     useEffect(() => {
         if(totalEmissions){
-            fetch(`http://localhost:3000/auth/adjust/total`,{
+            fetch(`${getServerURL()}/auth/adjust/total`,{
                 method:'PATCH',
                 headers:{
                     "Content-Type":"application/json",
