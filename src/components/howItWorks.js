@@ -16,6 +16,7 @@ const useStyles = makeStyles((theme) => ({
     align: "center",
     // paddingRight: theme.spacing(5),
     backgroundColor: "#B8CCC8",
+    color:"white",
   },
   cardMedia: {
     marginTop: "60%", 
