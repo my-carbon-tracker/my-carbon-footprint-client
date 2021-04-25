@@ -1,14 +1,16 @@
 import { Box, Container, Grid, Zoom, Card, Paper, Divider } from '@material-ui/core';
 import Pledges from '../components/pledges';
 import LeaderBoard from './leaderboard';
-import React, { useContext } from 'react';
+import React from 'react';
 import { useOffsetContext } from '../contexts/pledgeContext'
 import { useAverageEmissionContext } from '../contexts/averageEmissionContext';
 import UserData from "./getUserData";
 import { useLocationContext } from '../contexts/locationContext';
 import { useEmissionContext } from '../contexts/emissionContext';
 import { useUserNameContext } from "../contexts/usernameContext";
+import { useConfettiContext } from "../contexts/confettiContext";
 import { makeStyles } from '@material-ui/styles';
+import Confetti from "react-dom-confetti";
 
 const useStyles = makeStyles({
   card: {
@@ -38,7 +40,22 @@ function Home (props) {
   const { compareToOthers, setCompareToOthers } = useAverageEmissionContext();
   const { location, setLocation } = useLocationContext()
   const { totalEmission, setTotalEmission } = useEmissionContext();
+  const { party, setParty } = useConfettiContext();
   let carbonFootprint  = totalEmission - (totalOffset * 1000);
+
+  const config = {
+    angle: "72",
+    spread: 360,
+    startVelocity: "32",
+    elementCount: "123",
+    dragFriction: 0.11,
+    duration: "6000",
+    stagger: "7",
+    width: "11px",
+    height: "18px",
+    perspective: "500px",
+    colors: ["#a864fd", "#29cdff", "#78ff44", "#ff718d", "#fdff6a"]
+};
 
   return(
     <div style={{textAlign: "center", background: 'linear-gradient(#DFB593, #DF7B7D 50%)', height:'175vh'}}>
@@ -77,6 +94,7 @@ function Home (props) {
                 </Box>
                 <Box className={classes.text} fontWeight="fontWeightBold" fontSize={16} letterSpacing={2} style={{color:'#2E4089', paddingTop:10, paddingBottom:10}}>
                   Emissions Goal
+                  <Confetti active={ party } config={ config }/>
                 </Box>
               </Grid>
               <Divider orientation="vertical" flexItem style={{marginLeft:"-1px"}}/>

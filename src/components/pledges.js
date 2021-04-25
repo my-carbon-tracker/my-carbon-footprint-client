@@ -1,5 +1,4 @@
 import React from "react";
-import { Box, Grid, Paper } from '@material-ui/core';
 import { AiFillCar, AiOutlineSkin} from "react-icons/ai";
 import { GiTreeGrowth, GiSolarPower, GiElectric, GiMilkCarton, GiCow } from "react-icons/gi";
 import { FaShower, FaCarrot, FaAward } from "react-icons/fa";
@@ -7,6 +6,7 @@ import { RiLightbulbLine } from "react-icons/ri";
 import { ImSwitch } from "react-icons/im";
 import { useOffsetContext } from "../contexts/pledgeContext";
 import { useEmissionContext } from "../contexts/emissionContext";
+import { useConfettiContext } from "../contexts/confettiContext";
 
 const Pledges = (props) => {
     const [carpool, setCarpool] = React.useState("0");
@@ -24,7 +24,10 @@ const Pledges = (props) => {
     const { totalEmission, setTotalEmission } = useEmissionContext();
     const [emissionWithPledge, setEmissionWithPledge] = React.useState();
     const {token} = props;
-    console.log(totalOffset)
+    console.log(totalOffset);
+
+    //confetti
+    const { party, setParty } = useConfettiContext();
 
 const changeCarpoolDays = (e) => {
     setCarpool(e.target.value)
@@ -50,6 +53,7 @@ const changeDairy = (e) => {
 
 const updateEmission = (e) => {
     e.preventDefault();
+    setParty(true);
     setEmissionWithPledge(totalEmission - totalOffset * 1000)
 
     fetch(`http://localhost:3000/logEmission/completed-pledge`,{
@@ -336,9 +340,9 @@ const handleLED = (e) => {
                 </tbody>
 
             </table>
-            <div>
-            <input align="center" type="button" value="See Effect of Selected Pledges" onClick={updateEmission}/>
-            </div>
+        </div>
+        <div>
+            <input align="center" type="button" value="Completed Pledges" onClick={updateEmission}/>
         </div>
         </div>
     )
