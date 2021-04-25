@@ -17,6 +17,11 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const tableTheme = createMuiTheme({
+  typography: {
+    fontFamily: [
+      'Istok Web',
+    ].join(','),
+  },
   overrides:{
     MuiMenuItem: { // For ListItem, change this to MuiListItem
       root: {
@@ -131,7 +136,7 @@ export default function LeaderBoard() {
         <TableHead>
           <TableRow>
             <TableCell>Rank</TableCell>
-            <TableCell>User Name</TableCell>
+            <TableCell>Username</TableCell>
             <TableCell>Carbon Footprint kg CO2 Per kg</TableCell>
             <TableCell>Emission Goal</TableCell>
           </TableRow>

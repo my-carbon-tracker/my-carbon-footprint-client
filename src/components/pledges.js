@@ -24,6 +24,11 @@ const useStyles = makeStyles({
 })
 
 const tableTheme = createMuiTheme({
+    typography: {
+        fontFamily: [
+            'Istok Web',
+        ].join(','),
+      },
     overrides:{
       MuiMenuItem: { // For ListItem, change this to MuiListItem
         root: {
@@ -75,7 +80,7 @@ const columns = [
     { id: 'code', label: 'Select', minWidth: 100 },
     { id: 'population', label: 'Tons Saved Per Year', minWidth: 120, align: 'right', format: (value) => value.toLocaleString('en-US') },
     { id: 'size', label: 'Status', minWidth: 170, align: 'right', format: (value) => value.toLocaleString('en-US') },
-    { id: 'density', label: 'Incentives', minWidth: 170, align: 'right', format: (value) => value.toFixed(2)},
+    { id: 'density', label: 'Incentives', minWidth: 130, align: 'right', format: (value) => value.toFixed(2)},
   ];
 
 function createData(name, code, population, size) {

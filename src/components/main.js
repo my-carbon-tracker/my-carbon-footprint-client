@@ -44,6 +44,9 @@ const useStyles = makeStyles((theme) => ({
 const theme = createMuiTheme({
   typography: {
     fontSize: 16,
+    fontFamily: [
+      'Istok Web',
+    ].join(','),
   },
 });
 
@@ -59,13 +62,12 @@ export default function MainPage() {
           </Typography>
           <ThemeProvider theme={theme}>
             <Typography spacing="10px">
-              <strong>What is A Carbon Footprint? </strong>
+              <strong>What's a Carbon Footprint? </strong>
               <div></div>
               <span>
-                A carbon footprint is a form of measurement that expresses the
-                amount of carbon dioxide generated through the burring of fossil
+                A carbon footprint is the measurement of carbon dioxide generated through the burning of fossil
                 fuels as the result of human activities. The average American
-                produces 20 tons of CO2, three times higher than the World's
+                produces 20 tons of CO2, three times higher than the world's
                 average. Here's your chance to put some of that carbon back in
                 the ground.
               </span>
@@ -161,10 +163,9 @@ export default function MainPage() {
                 textAlign: "left",
               }}
             >
-              Founded by our mission of helping us reach our lifeline before the
-              deadline by demonstrating that there exist great potential for the
-              collective actions of individuals worldwide to make an impact and
-              reduce global warming by making changes in our daily life
+              My Climate Footprint was created with the mission of helping us reach our lifeline before the
+              deadline. We recognize the potential there is in our collective actions to make an impact and
+              reduce global warming by making changes in our daily lives.
             </Container>
           </Typography>
           <Typography
