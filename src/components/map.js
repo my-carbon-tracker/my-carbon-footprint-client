@@ -17,7 +17,8 @@ class GetData extends Component {
  
   render() {
     return (
-      <div ref={(div) => { this.vizContainer = div }}>
+      <div style={{backgroundColor:'#D3B3A4', height:'100vh'}}>
+        <div ref={(div) => { this.vizContainer = div }} />
       </div>
     )
   }
