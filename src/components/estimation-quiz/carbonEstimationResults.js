@@ -2,6 +2,8 @@ import React from 'react';
 import {Box} from '@material-ui/core/';
 import PrimaryButton from '../reusable/PrimaryButton';
 import {Pie} from 'react-chartjs-2'; 
+import getServerURL from '../serverConfig';
+
 /* eslint-disable react/prop-types */
 
 export default function CarbonEstimationResults (props) {
@@ -9,7 +11,7 @@ export default function CarbonEstimationResults (props) {
     // //send data to database:
     const handleSave = (e) => {
         e.preventDefault();
-        fetch(`http://localhost:3000/logEmission/estimated`,{
+        fetch(`${getServerURL()}/logEmission/estimated`,{
             method:'POST',
             headers:{
                 "Content-Type":"application/json",
@@ -37,7 +39,7 @@ export default function CarbonEstimationResults (props) {
                 <Box fontWeight="fontWeightBold" fontSize="h6.fontSize" letterSpacing={2} style={{color:'#2E4089', paddingTop:30, paddingBottom:10}}>
                     Here is the breakdown of your carbon emissions
                 </Box>                  
-                <Pie data={chartData}/>
+                <Pie data={chartData} />
             </div>
             <div style={{margin:20}}>
                 <PrimaryButton type="save" text="Save Results" value="Save" id="savebtn" onClick={handleSave}/>
