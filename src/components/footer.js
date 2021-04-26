@@ -2,7 +2,7 @@ import React from "react";
 
 const Footer = () => (
 
-    <footer style={{ padding: '45px 0 20px', fontSize: '15px', lineHeight: '24px',  backgroundColor: "#2C5763"}}>
+    <footer style={{ padding: '1px 0 20px', fontSize: '15px', lineHeight: '24px',  backgroundColor: "#2C5763"}}>
     <div style={{textAlign: "center"}}>
         <div>
           <p className="copyright-text">Copyright &copy; My Carbon Footprint 2021</p>

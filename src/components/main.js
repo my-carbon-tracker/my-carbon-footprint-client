@@ -9,15 +9,16 @@ import Logo from "../images/darkLogo.png";
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 import Footer from "./footer";
 import HowItWorks from "./howItWorks";
+import { fade } from "@material-ui/core/styles/colorManipulator";
 /* eslint-disable react/no-unescaped-entities */
 
 const useStyles = makeStyles((theme) => ({
   heroContent: {
     padding: theme.spacing(13, 30, 13),
-    backgroundImage: `url(https://res.cloudinary.com/dd6dpafkm/image/upload/v1618611186/ice_signin_gheuo2.jpg)`,
+    backgroundImage: `url(https://res.cloudinary.com/dd6dpafkm/image/upload/v1619376958/landing_ucs1bn.jpg)`,
+    backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
     backgroundPosition: "center center",
-    backgroungSize: "cover",
     backgroundAttachment: "fixed",
     background: "linear-gradient(#DFB593, #DF7B7D 50%)",
     color: "white",
@@ -35,9 +36,10 @@ const useStyles = makeStyles((theme) => ({
     height: "7.0vh",
   },
   textBox: {
-    backgroundColor: "rgba(196,196,196,.3)",
+    backgroundColor: fade("#C4C4C4", 0.3),
     borderRadius: 20,
     padding: theme.spacing(10, 10, 10),
+    color: "rgb(85,118,123)",
   },
 }));
 
@@ -121,12 +123,14 @@ export default function MainPage() {
       </div>
       <div className={classes.spacing} align="center">
         <HowItWorks />
-        
         <Typography
           component="h1"
           variant="h2"
           gutterBottom
-          style={{ color: "white" }}
+          style={{
+            color: "white",
+            paddingTop: theme.spacing(5),
+          }}
         >
           Our Mission
         </Typography>
@@ -146,35 +150,18 @@ export default function MainPage() {
                 textAlign: "left",
               }}
             >
-              The Climate Clock shows two numbers. The first, in red, is our
-              deadline, the time we have left to take decisive action to keep
-              warming under the 1.5°C threshold, a count down of how long it
-              will take, at our current rates of emissions, to burn through our
-              carbon budget. The second number, in green, is the growing
-              percentage of the world’s energy currently supplied by renewable
-              sources, our lifeline. The goal is to get our lifeline to 100%
-              before our deadline reaches 0.
-            </Container>
-            <Container
-              style={{
-                color: "white",
-                wordSpacing: 3,
-                marginTop: 8,
-                textAlign: "left",
-              }}
-            >
-              My Climate Footprint was created with the mission of helping us reach our lifeline before the
-              deadline. We recognize the potential there is in our collective actions to make an impact and
-              reduce global warming by making changes in our daily lives.
+              Every little thing matters. What you eat, how you get to work, what you buy. No matter how small you think your choices are, 
+              it matters a lot not only to us but to our planet. We built this application with the intention of letting our users know exactly 
+              how much carbon emission is produced by the choices they make and keep track of it. We recognize the potential there is in our 
+              collective actions to make an impact and reduce global warming by making changes in our daily lives.
             </Container>
           </Typography>
           <Typography
-          component="h1"
-          variant="h2"
-          gutterBottom
-          style={{ color: "white" }}
-        >
-        </Typography>
+            component="h1"
+            variant="h2"
+            gutterBottom
+            style={{ color: "white" }}
+          ></Typography>
         </ThemeProvider>
         <Container
           style={{
