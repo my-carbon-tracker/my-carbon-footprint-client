@@ -150,26 +150,10 @@ export default function MainPage() {
                 textAlign: "left",
               }}
             >
-              The Climate Clock shows two numbers. The first, in red, is our
-              deadline, the time we have left to take decisive action to keep
-              warming under the 1.5°C threshold, a count down of how long it
-              will take, at our current rates of emissions, to burn through our
-              carbon budget. The second number, in green, is the growing
-              percentage of the world’s energy currently supplied by renewable
-              sources, our lifeline. The goal is to get our lifeline to 100%
-              before our deadline reaches 0.
-            </Container>
-            <Container
-              style={{
-                color: "white",
-                wordSpacing: 3,
-                marginTop: 8,
-                textAlign: "left",
-              }}
-            >
-              My Climate Footprint was created with the mission of helping us reach our lifeline before the
-              deadline. We recognize the potential there is in our collective actions to make an impact and
-              reduce global warming by making changes in our daily lives.
+              Every little thing matters. What you eat, how you get to work, what you buy. No matter how small you think your choices are, 
+              it matters a lot not only to us but to our planet. We built this application with the intention of letting our users know exactly 
+              how much carbon emission is produced by the choices they make and keep track of it. We recognize the potential there is in our 
+              collective actions to make an impact and reduce global warming by making changes in our daily lives.
             </Container>
           </Typography>
           <Typography
