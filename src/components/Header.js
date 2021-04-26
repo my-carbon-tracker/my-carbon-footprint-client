@@ -10,6 +10,7 @@ import MenuItem from "@material-ui/core/MenuItem";
 import React from "react";
 import Image from "../images/darkLogo.png";
 import Link from "@material-ui/core/Link";
+import { fade } from '@material-ui/core/styles/colorManipulator';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -24,7 +25,11 @@ const useStyles = makeStyles((theme) => ({
     paddingLeft: theme.spacing(2),
     fontSize: '26px',
   },
+  menuPaper: {
+    backgroundColor: fade('#2F4088', 0.90)
+  },
 }));
+
 /* eslint-disable react/prop-types */
 function Header(props) {
   const classes = useStyles();
@@ -65,29 +70,30 @@ function Header(props) {
               vertical: "bottom",
               horizontal: "left",
             }}
+            classes={{ paper: classes.menuPaper }}
           >
             <Link href="/home">
-            <MenuItem color="inherit" >
+            <MenuItem style={{color:'#FFF'}} >
               Home
             </MenuItem>
             </Link>
             <Link href="/quiz">
-            <MenuItem color="inherit">
+            <MenuItem style={{color:'#FFF'}}>
               Quizzes
             </MenuItem>
             </Link>      
             <Link href="/carbon-estimation">
-            <MenuItem color="inherit">
+            <MenuItem style={{color:'#FFF'}}>
               Compare Emissions
             </MenuItem>
             </Link>
             <Link href="/carbon-map">
-            <MenuItem color="inherit">
+            <MenuItem style={{color:'#FFF'}}>
               Carbon Map
             </MenuItem>
             </Link>
             <Link href="/climate-news">
-            <MenuItem color="inherit">
+            <MenuItem style={{color:'#FFF'}}>
               Climate News
             </MenuItem>
             </Link>
