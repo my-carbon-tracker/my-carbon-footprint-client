@@ -2,7 +2,7 @@ import React from 'react';
 import {Box} from '@material-ui/core/';
 import PrimaryButton from '../reusable/PrimaryButton';
 import {Pie} from 'react-chartjs-2'; 
-import getServerURL from '../serverConfig';
+import getServerURL from '../../serverConfig';
 
 /* eslint-disable react/prop-types */
 
